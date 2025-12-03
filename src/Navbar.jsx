@@ -25,7 +25,7 @@ const Navbar = () => {
             <li>Azienda</li>
             <li>Servizi</li>
             <li>Settori</li>
-            <li>Feed Manager</li>
+            <li>Prodotti</li>
             <li>I nostri lavori</li>
           </ul>
 

@@ -3,7 +3,8 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 1440px;
+  height: 96px;
   z-index: 100;
   display: flex;
   justify-content: center;
@@ -11,6 +12,9 @@
   opacity: 0;
   transform: translateY(-20px);
   transition: opacity .4s ease, transform .4s ease;
+  margin: 0 auto;
+  right: 0;
+  left: 0;
 }
 
 .navbar-visible {
@@ -20,15 +24,12 @@
 
 /* CONTENITORE INTERNO */
 .navbar-glass-inner {
-  width: 100%;
-  max-width: 1300px;
-  padding: 0.8rem 1.8rem;
-
+  width: 1440px;
+  height: 96px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-
+  position: relative;
   /* effetto glass */
   background: rgba(8, 12, 20, 0.55);
   backdrop-filter: blur(18px) saturate(180%);
@@ -43,26 +44,34 @@
   display: flex;
   align-items: center;
   gap: 0.6rem;
+  width: 205px;
+  height: 32px;
+  margin-left: 40px;
 }
 
 .navbar-logo {
-  height: 28px;
+  height: 32px;
+  width: 32px;
 }
 
 .navbar-title {
   font-size: 1.3rem;
   font-weight: 600;
   color: #ffffff;
+  line-height: 32px;
 }
 
 /* CENTRO: MENU ORIZZONTALE */
 .navbar-menu {
-  flex: 1;
+  position: absolute;
+  left: 527.5px;
+  top: 20px;
+  width: 482px;
+  height: 56px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
   align-items: center;
-  gap: 3rem;
+  gap: 24px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -75,6 +84,9 @@
   cursor: pointer;
   white-space: nowrap;
   transition: color .2s ease, opacity .2s ease;
+  height: 56px;
+  display: flex;
+  align-items: center;
 }
 
 .navbar-menu li:hover {
@@ -83,6 +95,10 @@
 
 /* DESTRA: BOTTONE */
 .navbar-right {
+  position: absolute;
+  right: 40px;
+  top: 0;
+  height: 96px;
   display: flex;
   align-items: center;
 }
@@ -92,11 +108,15 @@
   color: #001b66;
   border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 999px;
-  padding: 0.45rem 1.8rem;
+  width: 120px;
+  height: 56px;
   font-size: 0.95rem;
   font-weight: 500;
   cursor: pointer;
   transition: background .2s ease, transform .1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .navbar-contact:hover {
