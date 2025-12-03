@@ -245,24 +245,22 @@ export const WaitlistHero: React.FC = () => {
         />
 
         {/* Content Container */}
-        <div className="relative z-20 w-full h-full flex flex-col items-center justify-end pb-24 gap-6">
-          <div className="w-16 h-16 rounded-2xl shadow-lg overflow-hidden mb-2 ring-1 ring-white/10">
-            
-          </div>
+        <div className="relative z-20 w-full h-full flex flex-col items-center justify-center pb-16 gap-4">
 
           <h1
-            className="text-5xl md:text-6xl font-bold text-center tracking-tight"
+            className="text-5xl md:text-6xl font-bold text-center tracking-tight leading-tight"
             style={{ color: colors.textMain }}
           >
-            Take a screenshot.
+            Aggiungi valore alla tua azienda
           </h1>
 
           <p
-            className="text-lg font-medium"
+            className="text-lg font-medium text-center"
             style={{ color: colors.textSecondary }}
           >
-            Save anything with a screenshot.
+            Contattaci, sarai servito.
           </p>
+          
 
           {/* Form / Success Container */}
           <div className="w-full max-w-md px-4 mt-4 h-[60px] relative perspective-1000">
@@ -335,7 +333,7 @@ export const WaitlistHero: React.FC = () => {
               <input
                 type="email"
                 required
-                placeholder="name@email.com"
+                placeholder="Inserisci la tua email"
                 value={email}
                 disabled={status === "loading"}
                 onChange={(e) => setEmail(e.target.value)}
@@ -376,7 +374,7 @@ export const WaitlistHero: React.FC = () => {
                       ></path>
                     </svg>
                   ) : (
-                    "Join waitlist"
+                    "Contattaci"
                   )}
                 </button>
               </div>

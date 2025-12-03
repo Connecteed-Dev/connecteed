@@ -1,0 +1,157 @@
+footer.footer {
+  width: 100%;
+  min-height: 100vh;
+  color: #ffffff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background: linear-gradient(180deg, #050608 0%, #232d47 100%);
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-inner {
+  flex: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 4rem 2.5rem 2.5rem;
+  box-sizing: border-box;
+}
+
+.footer-logo-wrapper {
+  display: flex;
+  align-items: flex-start;
+}
+
+.footer-logo {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 2.5rem;
+}
+
+.footer-title-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.footer-title {
+  font-weight: 300;
+  font-size: clamp(2.75rem, 4vw, 3.8rem);
+  line-height: 1.15;
+  max-width: 920px;
+}
+
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 2.5rem;
+  gap: 2rem;
+}
+
+.footer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.footer-info-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-info-label {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.footer-info-text,
+.footer-info-link {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+}
+
+.footer-info-link {
+  text-decoration: underline;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 0.75rem;
+  margin-left: auto;
+}
+
+.footer-social-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  transition: background 0.2s ease;
+}
+
+.footer-social-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.footer-social-icon {
+  width: 22px;
+  height: 22px;
+  opacity: 0.8;
+}
+
+.footer-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.footer-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+.footer-copy {
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .footer-bottom {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+
+  .footer-info {
+    flex-direction: row;
+    gap: 4rem;
+  }
+
+  .footer-bar {
+    flex-direction: row;
+  }
+}
+
+

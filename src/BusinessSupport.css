@@ -1,22 +1,21 @@
 .business-support-bg-white {
-  background: #fff;
- 
-  box-shadow: 0 8px 32px 0 rgba(60,60,60,0.10);
+  background: transparent;
+  box-shadow: none;
   padding: 32px 24px;
 }
 
 .business-support-section {
-  width: 100%;
-  max-width: 1300px;
-  margin: 0 auto;
+  width: 100vw;
+  max-width: 100vw;
+  margin: 0;
   padding: 64px 0 32px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #fff;
+  background: transparent;
   color: #222;
-  
-  box-shadow: 0 8px 32px 0 rgba(60,60,60,0.10);
+  box-shadow: none;
+  background-color: #fff;
 }
 
 
@@ -91,7 +90,6 @@
 .business-support-card-img {
   width: 56px;
   height: 56px;
-  background: #eaeaea;
   border-radius: 8px;
   margin-bottom: 18px;
 }
@@ -123,4 +121,18 @@
 
 .business-support-btn:hover {
   background: #0057c2;
+}
+.business-support-card-img {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.business-support-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }

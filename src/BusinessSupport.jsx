@@ -17,13 +17,15 @@ export default function BusinessSupport() {
         </p>
       </div>
       <div className="business-support-grid business-support-bg-white">
-        {tools.map((tool) => (
-          <div className="business-support-card" key={tool}>
-            <div className="business-support-card-img" />
-            <div className="business-support-card-title">{tool}</div>
-          </div>
-        ))}
+  {tools.map((tool) => (
+    <div className="business-support-card" key={tool.title}>
+      <div className="business-support-card-img">
+        <img src={tool.img} alt={tool.title} />
       </div>
+      <div className="business-support-card-title">{tool.title}</div>
+    </div>
+  ))}
+</div>
       <div className="business-support-btn-block">
         <button className="business-support-btn">Scopri tutti</button>
       </div>
