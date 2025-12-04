@@ -1,160 +1,192 @@
-.business-support-bg-white {
-  background: transparent;
-  box-shadow: none;
-  padding: 32px 24px;
-}
-
+/* SEZIONE GENERALE */
 .business-support-section {
   width: 100vw;
-  max-width: 100vw;
-  margin: 0;
-  padding: 64px 0 32px 0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: transparent;
-  color: #222;
-  box-shadow: none;
-  background-color: #fff;
+  justify-content: center;
+  background-color: #ffffff;
 }
 
+/* CONTENITORE INTERNO (larghezza massima + padding laterale 40px) */
+.business-support-inner {
+  width: 100%;
+  max-width: 1440px;        /* come layout grande */
+  margin: 0 auto;
+  padding: 0 40px;          /* ⬅️ distanza laterale di 40px */
+  box-sizing: border-box;
+}
 
+/* BLOCCO TITOLO */
 .business-support-title-block {
   text-align: center;
-  margin-bottom: 32px;
-  color: #222;
+  color: #10101c;
+  margin-bottom: 48px; /* spazio prima delle card */
 }
 
+/* — Cosa facciamo —  */
 .business-support-subtitle {
-  color: #0070f3;
-  font-size: 1.2rem;
-  font-weight: 500;
-  margin-bottom: 12px;
+  font-family: "Host Grotesk", sans-serif;
+  font-weight: 400;          /* Regular */
+  font-size: 20px;
+  line-height: 28px;
+  color: #003dd6;
+  margin-bottom: 40px;       /* 40px tra subtitle e H2 */
 }
 
-
+/* H2 PRINCIPALE */
 .business-support-title {
-  font-size: 2.6rem;
-  font-weight: 700;
-  margin-bottom: 12px;
-  line-height: 1.2;
-  color: #222;
+  font-family: "Host Grotesk", sans-serif;
+  font-weight: 500;          /* Medium */
+  font-size: 40px;
+  line-height: 48px;
+  color: #10101c;
+  margin: 0 0 24px 0;        /* 24px verso il paragrafo */
 }
 
 .business-support-title .blue {
-  color: #0070f3;
+  color: #003dd6;
 }
 
-.business-support-title .dark {
-  color: #222;
-  font-weight: 600;
-}
-
-
+/* PARAGRAFI */
 .business-support-desc {
-  color: #444;
-  font-size: 1.1rem;
-  margin-bottom: 8px;
+  font-family: "Host Grotesk", sans-serif;
+  font-weight: 300;          /* Light */
+  font-size: 20px;
+  line-height: 28px;
+  color: #656565;
+  margin: 0 0 24px 0;        /* 24px tra P1 e P2 */
 }
 
+/* SECOND PARAGRAPH (più scuro) */
+.business-support-desc-secondary {
+  color: #10101c;
+  margin-bottom: 48px;       /* 48px verso le card, da guida */
+}
 
+/* PARTI EVIDENZIATE IN GRASSETTO/MEDIUM */
 .business-support-highlight {
-  color: #0070f3;
-  font-weight: 500;
+  font-weight: 500;          /* Medium */
+}
+
+/* GRID 2×6 CARD */
+.business-support-bg-white {
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
 }
 
 .business-support-grid {
+  width: 100%;
+  margin: 48px 0 32px 0;        /* 48px da linee guida */
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr)); /* 6 card per riga */
-  gap: 32px;
-  width: 100vw;
-  max-width: 100vw;
-  margin: 40px 0 32px 0; /* margini orizzontali rimossi */
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 24px;                    /* 24px da guida */
 }
 
-/* responsive: 3 colonne su tablet */
+
+/* RESPONSIVE GRID */
 @media (max-width: 1200px) {
   .business-support-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
-/* responsive: 2 colonne su mobile */
 @media (max-width: 768px) {
+  .business-support-inner {
+    padding: 96px 20px 64px;
+  }
+
   .business-support-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .business-support-title {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .business-support-desc,
+  .business-support-desc-secondary {
+    font-size: 18px;
+    line-height: 26px;
+  }
 }
 
-/* 1 colonna su schermi molto piccoli */
 @media (max-width: 480px) {
   .business-support-grid {
     grid-template-columns: 1fr;
   }
+
+  .business-support-title {
+    font-size: 28px;
+    line-height: 36px;
+  }
 }
 
+/* CARD SINGOLA */
 .business-support-card {
-  background: #fff;
+  background: #ffffff;
   border-radius: 18px;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.13);
+  box-shadow: 0 24px 40px rgba(0, 0, 0, 0.08); /* ombra come da guideline */
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 32px 12px 18px 12px;
-  min-height: 140px;
-  transition: box-shadow 0.2s;
+  padding: 24px 16px 24px;
+  min-height: 122px;         /* da specifica */
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .business-support-card:hover {
-  box-shadow: 0 12px 32px rgba(0,112,243,0.13);
+  box-shadow: 0 32px 60px rgba(0, 61, 214, 0.18);
+  transform: translateY(-2px);
 }
 
+/* ICONA NELLA CARD */
 .business-support-card-img {
-  width: 56px;
-  height: 56px;
-  border-radius: 8px;
-  margin-bottom: 18px;
-}
-
-.business-support-card-title {
-  color: #222;
-  font-size: 1.15rem;
-  font-weight: 500;
-  text-align: center;
-}
-
-.business-support-btn-block {
-  margin-top: 24px;
-  text-align: center;
-}
-
-.business-support-btn {
-  background: #0070f3;
-  color: #fff;
-  border: none;
-  border-radius: 22px;
-  padding: 0.7rem 2.2rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 2px 16px rgba(0,112,243,0.10);
-  transition: background 0.2s, color 0.2s;
-}
-
-.business-support-btn:hover {
-  background: #0057c2;
-}
-.business-support-card-img {
-  width: 56px;
-  height: 56px;
+  width: 50px;               /* 50×50 come specificato */
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 18px;
+  margin-bottom: 16px;       /* 16px tra icona e testo */
 }
 
 .business-support-card-img img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+/* TITOLO CARD */
+.business-support-card-title {
+  font-family: "Host Grotesk", sans-serif;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 400;          /* Regular */
+  color: #10101c;
+  text-align: center;
+}
+
+/* BOTTONE FINALE */
+.business-support-btn-block {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.business-support-btn {
+  background: #003dd6;
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 32px;
+  font-family: "Host Grotesk", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0, 61, 214, 0.25);
+  transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.business-support-btn:hover {
+  background: #002a9e;
+  transform: translateY(-1px);
 }
