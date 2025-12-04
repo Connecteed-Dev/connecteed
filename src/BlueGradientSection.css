@@ -1,0 +1,55 @@
+.blue-section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  min-height: 920px;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding-left: 151px;
+  padding-right: 151px;
+  box-sizing: border-box;
+
+  background: linear-gradient(
+    180deg,
+    #000000 0%,
+    #00318f 20%,
+    #0054ff 50%,
+    #9fc3ff 80%,
+    #ffffff 100%
+  );
+
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+.blue-section.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 🎯 TESTO CON DIMENSIONI FISSE 1138 × 256 */
+.blue-gradient-text {
+  position: relative;
+  z-index: 2;
+
+  width: 1138px;      /* larghezza esatta da tavola */
+  height: 256px;      /* altezza esatta 4 righe × 64px */
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  /* centra verticalmente le righe */
+
+  font-family: "Host Grotesk", sans-serif;
+  font-weight: 400;
+  font-size: 56px;
+  line-height: 64px;
+  text-align: center;
+  color: #F8FAFF;
+
+  margin: 0 auto;   /* centra orizzontalmente */
+}

@@ -1,83 +1,77 @@
-
-.hero-gradient-section {
-  width: 100vw;
-  max-width: 100vw;
-  min-height: 220px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(to bottom, #0d1014 0%, #232a33 40%, #e6e8ea 100%);
-}
-
-.hero-gradient-text {
-  color: #fff;
-  font-size: 2rem;
-  font-weight: 400;
-  text-align: center;
-  line-height: 1.3;
-  margin-top: 32px;
-  margin-bottom: 32px;
-  text-shadow: 0 2px 16px rgba(0,0,0,0.18);
-}
-
-
+/* SEZIONE HERO CON VIDEO DI SFONDO */
 .hero-section {
+  position: relative;
   width: 100vw;
   max-width: 100vw;
   margin: 0 auto;
-  min-height: 70vh;
+
+  height: 920px;          /* come tavola: 920 di altezza */
+  min-height: 920px;
+
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #0d1014;
-  padding-top: 90px;
-}
+  align-items: center;    /* testo centrato verticalmente */
+  justify-content: center;/* testo centrato orizzontalmente */
 
-.hero-text-block {
-  text-align: center;
-  width: 901px;
-  height: 160px;
-  margin-left: 269.5px;
-  margin-right: 269.5px;
-  margin-top: 380px;
-  margin-bottom: 380px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
+  overflow: hidden;
+  background: #000;       /* fallback se il video non carica */
 
-
-
-.hero-title {
-  color: #f8f8f8;
-  font-size: 3.6rem;
-  font-weight: 500;
-  letter-spacing: 1px;
-  line-height: 1.1;
-  text-shadow: 0 2px 16px rgba(0,0,0,0.25);
-}
-
-
-
-.hero-subtitle {
-  color: #d1d1d1;
-  font-size: 2.8rem;
-  font-weight: 400;
-  letter-spacing: 1px;
-  line-height: 1.1;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.18);
-}
-
-
-
-.hero-section {
   opacity: 0;
   transform: translateY(40px);
-  transition: opacity 1.2s cubic-bezier(0.4,0,0.2,1), transform 1.2s cubic-bezier(0.4,0,0.2,1);
+  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* FADE IN dopo qualche centesimo di secondo (gestito da useEffect) */
 .hero-section.fade-in {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* VIDEO FULLSCREEN BACKGROUND */
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 0.8;          /* se vuoi più scuro/chiaro, regola qui */
+  pointer-events: none;
+}
+
+/* TESTO HERO COME DA SPEC */
+.hero-heading {
+  font-family: "Host Grotesk", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  font-weight: 400;       /* Regular */
+  font-size: 72px;        /* grandezza 72px */
+  line-height: 80px;      /* interlinea 80 */
+  text-align: center;
+  color: #f5f4f9;         /* colore specificato */
+
+  max-width: 1380px;      /* testo in blocco centrale */
+  padding: 0 269.5px;     /* 269.5px da sinistra e destra come in tavola */
+  box-sizing: border-box;
+}
+
+/* un minimo di adattamento per schermi piccoli */
+@media (max-width: 1200px) {
+  .hero-heading {
+    padding: 0 48px;
+    font-size: 52px;
+    line-height: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    height: auto;
+    min-height: 80vh;
+  }
+
+  .hero-heading {
+    padding: 0 24px;
+    font-size: 36px;
+    line-height: 42px;
+  }
 }

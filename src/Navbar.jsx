@@ -11,32 +11,35 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`navbar-glass${visible ? " navbar-visible" : ""}`}>
-      <div className="navbar-glass-inner">
+    <>
+      <nav className={`navbar-glass${visible ? " navbar-visible" : ""}`}>
+        <div className="navbar-glass-inner">
 
-        {/* SINISTRA: LOGO SVG (icona + scritta) */}
-        <div className="navbar-left">
-          <img src={logo} alt="Connecteed logo" className="navbar-logo" />
+          {/* SINISTRA: LOGO SVG (icona + scritta) */}
+          <div className="navbar-left">
+            <img src={logo} alt="Connecteed logo" className="navbar-logo" />
+          </div>
+
+          {/* CENTRO: MENU */}
+          <ul className="navbar-menu">
+            <li>Azienda</li>
+            <li>Servizi</li>
+            <li>Settori</li>
+            <li>Prodotti</li>
+            <li>I nostri lavori</li>
+          </ul>
+
+          {/* DESTRA: CTA */}
+          <div className="navbar-right">
+            <button className="navbar-contact">
+              Contattaci
+            </button>
+          </div>
+
         </div>
-
-        {/* CENTRO: MENU */}
-        <ul className="navbar-menu">
-          <li>Azienda</li>
-          <li>Servizi</li>
-          <li>Settori</li>
-          <li>Prodotti</li>
-          <li>I nostri lavori</li>
-        </ul>
-
-        {/* DESTRA: CTA */}
-        <div className="navbar-right">
-          <button className="navbar-contact">
-            Contattaci
-          </button>
-        </div>
-
-      </div>
-    </nav>
+      </nav>
+     
+    </>
   );
 };
 
