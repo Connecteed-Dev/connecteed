@@ -1,9 +1,9 @@
-/* NAVBAR ESTERNA */
+/* NAVBAR ESTERNA (96px) */
 .navbar-glass {
   position: fixed;
   top: 0;
   left: 0;
-  width: 1440px;
+  width: 100%;
   height: 96px;
   z-index: 100;
   display: flex;
@@ -12,24 +12,28 @@
   opacity: 0;
   transform: translateY(-20px);
   transition: opacity .4s ease, transform .4s ease;
-  margin: 0 auto;
-  right: 0;
-  left: 0;
 }
 
+/* animazione ingresso */
 .navbar-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* CONTENITORE INTERNO */
+/* CONTENITORE INTERNO
+   altezza 96px, padding orizzontale 32px, max-width 1440 */
 .navbar-glass-inner {
-  width: 1440px;
+  width: 100%;
   height: 96px;
+  margin: 0 auto;
+  padding: 0 32px;
+  box-sizing: border-box;
+
   display: flex;
   flex-direction: row;
   align-items: center;
-  position: relative;
+  justify-content: space-between; /* blocchi: logo | menu | button */
+
   /* effetto glass */
   background: rgba(8, 12, 20, 0.55);
   backdrop-filter: blur(18px) saturate(180%);
@@ -39,90 +43,125 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
-/* SINISTRA: LOGO + NOME */
+/* SINISTRA: LOGO SVG (blocco 40px di altezza) */
 .navbar-left {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  width: 205px;
-  height: 32px;
-  margin-left: 40px;
+  height: 40px; /* come lo spec a sinistra: blocco 40px dentro i 96px */
 }
 
+/* il tuo SVG contiene già icona + testo "Connecteed" */
 .navbar-logo {
-  height: 32px;
-  width: 32px;
+  height: 40px;  /* 40px come da guida */
+  width: auto;
+  display: block;
 }
 
-.navbar-title {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #ffffff;
-  line-height: 32px;
-}
-
-/* CENTRO: MENU ORIZZONTALE */
+/* CENTRO: MENU ORIZZONTALE
+   voci con spazi 24px */
 .navbar-menu {
-  position: absolute;
-  left: 527.5px;
-  top: 20px;
-  width: 482px;
-  height: 56px;
+  flex: 1;
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 24px;
+  justify-content: center;
+  gap: 24px;        /* 24px tra Azienda / Servizi / ... */
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
+/* MENU DEFAULT / HOVER / PRESSED */
 .navbar-menu li {
-  font-size: 0.95rem;
+  font-family: "Host Grotesk", sans-serif;
+  font-size: 16px;
   font-weight: 400;
-  color: #f5f5f5;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: color .2s ease, opacity .2s ease;
-  height: 56px;
+  line-height: 24px;
+
+  color: rgba(255,255,255,0.85);  /* DEFAULT (come nello screenshot) */
+
+  min-width: 74px;
+  height: 36px;
+  padding: 8px 8px;
+
   display: flex;
   align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  white-space: nowrap;
+  transition: 
+    color .18s ease,
+    text-decoration .18s ease,
+    transform .10s ease;
 }
 
+/* HOVER (seconda riga immagine) */
 .navbar-menu li:hover {
-  color: #ffffff;
+  color: #D7EBFF;                      /* bianco pieno */
+  text-decoration: underline;          /* underline come nello screen */
 }
 
-/* DESTRA: BOTTONE */
+/* PRESSED (terza riga immagine) */
+.navbar-menu li:active {
+  color: #1DA1FF;                       /* blu come screenshot */
+  text-decoration: underline;           /* underline */
+  transform: scale(0.97);               /* pressione visiva */
+}
+
+/* DESTRA: BLOCCO CTA (allineato verticalmente) */
 .navbar-right {
-  position: absolute;
-  right: 40px;
-  top: 0;
   height: 96px;
   display: flex;
   align-items: center;
 }
 
+/* CONTATTACI — Default */
 .navbar-contact {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255,255,255,0.9);
   color: #001b66;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: 999px;
-  width: 108px;
+  border: 1px solid rgba(255,255,255,0.35);
+
   height: 40px;
-  font-size: 0.95rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background .2s ease, transform .1s ease;
+  padding: 8px 16px;
+  border-radius: 20px;
+
+  font-family: "Host Grotesk", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  cursor: pointer;
+  transition:
+    background .18s ease,
+    color .18s ease,
+    transform .10s ease;
 }
 
+/* Hover — colore AZZURRO come immagine */
 .navbar-contact:hover {
-  background: #ffffff;
+  background: #D7EBFF;    /* AZZURRO */
+  color: #001B66;
 }
 
+/* Pressed — blu pieno come immagine */
 .navbar-contact:active {
+  background: #2D8CFF;    /* BLU */
+  color: white;
   transform: scale(0.97);
+}
+
+/* RESPONSIVE di base: per ora nascondo il menu su mobile
+   (puoi poi aggiungere hamburger) */
+@media (max-width: 900px) {
+  .navbar-glass-inner {
+    padding: 0 16px;
+  }
+
+  .navbar-menu {
+    display: none;
+  }
 }

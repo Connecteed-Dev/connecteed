@@ -14,7 +14,6 @@ import postVendita from "./assets/Nuova cartella (2)/postvendita.svg";
 import cyber from "./assets/Nuova cartella (2)/cybersecurity.svg";
 import adic from "./assets/Nuova cartella (2)/adic.svg";
 import bankRisk from "./assets/Nuova cartella (2)/bankriskanalysis.svg";
-
 export const tools = [
   { title: "CRM", img: crm },
   { title: "ERP", img: erp },

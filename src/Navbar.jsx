@@ -1,52 +1,43 @@
 import React, { useEffect, useState } from "react";
 import "./Navbar.css";
-import logo from "./assets/Vector.png";
+import logo from "./assets/logo.svg";   // il tuo SVG con icona + scritta Connecteed
 
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
-  const [showContact, setShowContact] = useState(false);
 
   useEffect(() => {
-    // piccola animazione in ingresso
     const timer = setTimeout(() => setVisible(true), 100);
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <>
-      <nav className={`navbar-glass${visible ? " navbar-visible" : ""}`}>
-        <div className="navbar-glass-inner">
-          <div className="navbar-left">
-            <img src={logo} alt="Connecteed logo" className="navbar-logo" />
-            <span className="navbar-title">Connecteed</span>
-          </div>
+    <nav className={`navbar-glass${visible ? " navbar-visible" : ""}`}>
+      <div className="navbar-glass-inner">
 
-          <ul className="navbar-menu">
-            <li>Azienda</li>
-            <li>Servizi</li>
-            <li>Settori</li>
-            <li>Prodotti</li>
-            <li>I nostri lavori</li>
-          </ul>
-
-          <div className="navbar-right">
-              <button
-                className="navbar-contact"
-                onClick={() => {
-                  const footer = document.querySelector('footer');
-                  if (footer) {
-                    footer.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-              >
-                Contattaci
-              </button>
-          </div>
+        {/* SINISTRA: LOGO SVG (icona + scritta) */}
+        <div className="navbar-left">
+          <img src={logo} alt="Connecteed logo" className="navbar-logo" />
         </div>
-      </nav>
-        {/* ...nessuna modal, solo scroll verso il footer... */}
-    
-    </>
+
+        {/* CENTRO: MENU */}
+        <ul className="navbar-menu">
+          <li>Azienda</li>
+          <li>Servizi</li>
+          <li>Settori</li>
+          <li>Prodotti</li>
+          <li>I nostri lavori</li>
+        </ul>
+
+        {/* DESTRA: CTA */}
+        <div className="navbar-right">
+          <button className="navbar-contact">
+            Contattaci
+          </button>
+        </div>
+
+      </div>
+    </nav>
   );
-}
+};
+
 export default Navbar;
