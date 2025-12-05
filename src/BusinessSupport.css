@@ -1,17 +1,18 @@
 /* SEZIONE GENERALE */
 .business-support-section {
-  width: 100vw;
+  width: 100%;                  /* niente 100vw per evitare scrollbar orizzontale */
   display: flex;
   justify-content: center;
   background-color: #ffffff;
+  padding: 161px 0 161px;       /* distanza verticale dalla guida (161px sopra e sotto) */
 }
 
 /* CONTENITORE INTERNO (larghezza massima + padding laterale 40px) */
 .business-support-inner {
   width: 100%;
-  max-width: 1440px;        /* come layout grande */
+  max-width: 1440px;            /* come layout grande */
   margin: 0 auto;
-  padding: 0 40px;          /* ⬅️ distanza laterale di 40px */
+  padding: 0 40px;              /* 40px di distanza laterale */
   box-sizing: border-box;
 }
 
@@ -19,27 +20,26 @@
 .business-support-title-block {
   text-align: center;
   color: #10101c;
-  margin-bottom: 48px; /* spazio prima delle card */
 }
 
 /* — Cosa facciamo —  */
 .business-support-subtitle {
   font-family: "Host Grotesk", sans-serif;
-  font-weight: 400;          /* Regular */
+  font-weight: 400;             /* Regular */
   font-size: 20px;
   line-height: 28px;
-  color: #003dd6;
-  margin-bottom: 40px;       /* 40px tra subtitle e H2 */
+  color: #003dd6;               /* blu guida */
+  margin-bottom: 40px;          /* 40px tra subtitle e H2 */
 }
 
 /* H2 PRINCIPALE */
 .business-support-title {
   font-family: "Host Grotesk", sans-serif;
-  font-weight: 500;          /* Medium */
+  font-weight: 500;             /* Medium */
   font-size: 40px;
   line-height: 48px;
-  color: #10101c;
-  margin: 0 0 24px 0;        /* 24px verso il paragrafo */
+  color: #10101c;               /* #10101C nero */
+  margin: 0 0 24px 0;           /* 24px verso il paragrafo */
 }
 
 .business-support-title .blue {
@@ -49,22 +49,29 @@
 /* PARAGRAFI */
 .business-support-desc {
   font-family: "Host Grotesk", sans-serif;
-  font-weight: 300;          /* Light */
+  font-weight: 300;             /* Light */
   font-size: 20px;
   line-height: 28px;
-  color: #656565;
-  margin: 0 0 24px 0;        /* 24px tra P1 e P2 */
+  color: #464646;               /* grigio #464646 come da specifica */
+  margin: 0 0 24px 0;           /* 24px tra P1 e P2 */
+  text-align: center;
 }
 
 /* SECOND PARAGRAPH (più scuro) */
 .business-support-desc-secondary {
-  color: #10101c;
-  margin-bottom: 48px;       /* 48px verso le card, da guida */
+  color: #10101c;               /* nero per il secondo paragrafo */
+  margin-bottom: 48px;          /* 48px verso le card, da guida */
 }
 
 /* PARTI EVIDENZIATE IN GRASSETTO/MEDIUM */
 .business-support-highlight {
-  font-weight: 500;          /* Medium */
+  font-weight: 500;             /* Medium */
+  color: #01010c;               /* nero pieno per il testo evidenziato */
+}
+
+/* BACKGROUND “TRACCIA” DELLA GRID (solo per separare visivamente la parte card) */
+.business-support-cards-wrapper {
+  margin-top: 40px;             /* 40px dal blocco testi alla fascia card */
 }
 
 /* GRID 2×6 CARD */
@@ -76,12 +83,11 @@
 
 .business-support-grid {
   width: 100%;
-  margin: 48px 0 32px 0;        /* 48px da linee guida */
+  margin: 0 0 32px 0;           /* la distanza testo->card è gestita sopra (48px) */
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 24px;                    /* 24px da guida */
+  gap: 24px;                    /* 24px sia in riga che in colonna */
 }
-
 
 /* RESPONSIVE GRID */
 @media (max-width: 1200px) {
@@ -91,8 +97,12 @@
 }
 
 @media (max-width: 768px) {
+  .business-support-section {
+    padding: 96px 0 96px;
+  }
+
   .business-support-inner {
-    padding: 96px 20px 64px;
+    padding: 0 20px;
   }
 
   .business-support-grid {
@@ -126,12 +136,12 @@
 .business-support-card {
   background: #ffffff;
   border-radius: 18px;
-  box-shadow: 0 24px 40px rgba(0, 0, 0, 0.08); /* ombra come da guideline */
+  box-shadow: 0 24px 40px rgba(0, 0, 0, 0.08);    /* ombreggiatura richiesta */
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 24px 16px 24px;
-  min-height: 122px;         /* da specifica */
+  min-height: 122px;                                /* da specifica */
   transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
@@ -144,6 +154,8 @@
 .business-support-card-img {
   width: 50px;               /* 50×50 come specificato */
   height: 50px;
+  min-width: 50px;
+  min-height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -162,8 +174,9 @@
   font-size: 20px;
   line-height: 28px;
   font-weight: 400;          /* Regular */
-  color: #10101c;
+  color: #010f1c;            /* colore testo card da guida */
   text-align: center;
+  max-width: 122px;          /* larghezza testo card */
 }
 
 /* BOTTONE FINALE */

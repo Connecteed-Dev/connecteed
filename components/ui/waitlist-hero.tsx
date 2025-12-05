@@ -1,4 +1,4 @@
-import React, { useState, useRef, FormEvent } from "react";
+import React, { useState, useRef, type FormEvent } from "react";
 
 export const WaitlistHero: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -161,6 +161,19 @@ export const WaitlistHero: React.FC = () => {
         .animate-ring {
           animation: celebration-ring 0.8s ease-out forwards;
         }
+        /* Custom 3D classes to replace plugins */
+        .perspective-1000 {
+          perspective: 1000px;
+        }
+        .rotate-x-0 {
+          transform: rotateX(0deg);
+        }
+        .rotate-x-90 {
+          transform: rotateX(90deg);
+        }
+        .-rotate-x-90 {
+          transform: rotateX(-90deg);
+        }
       `}</style>
 
       {/* Main Container */}
@@ -231,7 +244,11 @@ export const WaitlistHero: React.FC = () => {
                 zIndex: 2,
               }}
             >
-             
+               <img
+                src="https://framerusercontent.com/images/Ans5PAxtJfg3CwxlrPMSshx2Pqc.png"
+                alt=""
+                className="w-full h-full object-cover opacity-80"
+              />
             </div>
           </div>
         </div>

@@ -1,162 +1,210 @@
-.service-card-img-real {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-}
+/* SEZIONE GENERALE */
 .services-section {
-  width: 100vw;
-  max-width: 100vw;
+  width: 100%;                     /* NO 100vw → niente overflow orizzontale */
   margin: 0;
-  padding: 64px 0 32px 0;
+  padding: 161px 0 161px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
   background: #f5f8fc;
 }
 
+/* CONTENITORE INTERNO */
+.services-inner {
+  width: 100%;
+  max-width: 1440px;               /* larghezza layout */
+  margin: 0 auto;
+  padding: 0 40px;                 /* 40px + 40px → area utile 1360px */
+  box-sizing: border-box;          /* padding incluso nei 1440 */
+}
+
+/* BLOCCO TITOLO */
 .services-title-block {
   width: 100%;
-  max-width: 1100px;
-  margin: 0 auto 32px auto;
+  max-width: 1138px;
+  margin: 0 auto 40px auto;
   text-align: center;
 }
 
+/* — I nostri servizi — */
 .services-subtitle {
-  color: #0070f3;
-  font-size: 1.2rem;
-  font-weight: 500;
-  margin-bottom: 12px;
+  font-family: "Host Grotesk", sans-serif;
+  font-weight: 400;             /* Regular */
+  font-size: 20px;
+  line-height: 28px;
+  color: #003dd6;
+  text-align: center;
+  margin-bottom: 28px;          /* come in Figma */
 }
 
-.services-icons {
-  color: #0070f3;
-  font-size: 2.2rem;
-  font-weight: 700;
-  margin-bottom: 12px;
+/* H2 PRINCIPALE */
+.services-title {
+  font-family: "Host Grotesk", sans-serif;
+  font-weight: 500;             /* Medium */
+  font-size: 40px;
+  line-height: 48px;
+  color: #10101c;
+  text-align: center;
+  margin: 0 0 24px 0;           /* 24px verso il paragrafo */
 }
 
-.services-icon-underscore {
-  font-size: 2.2rem;
-  font-weight: 700;
-  margin: 0 8px;
-}
-
+/* PARAGRAFO */
 .services-desc {
-  color: #222;
-  font-size: 1.05rem;
-  margin-bottom: 8px;
-  line-height: 1.5;
+  font-family: "Host Grotesk", sans-serif;
+  font-weight: 300;             /* Light */
+  font-size: 20px;
+  line-height: 28px;
+  color: #464646;
+  text-align: center;
+  margin: 0;
 }
 
+
+/* GRID SERVIZI */
 .services-grid {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  align-items: center;
+  width: 100%;                     /* usa tutta l’area utile (max 1360) */
+  margin: 40px auto 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;                       /* 24px orizzontali e verticali */
 }
 
-.services-row {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 32px;
-}
-
-.services-row-full {
-  justify-content: center;
-}
-
+/* CARD */
 .service-card {
-  background: #fff;
-  border-radius: 18px;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.13);
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 24px 40px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 32px 12px 18px 12px;
-  min-width: 320px;
-  max-width: 420px;
-  flex: 1;
-  transition: box-shadow 0.2s;
+  padding: 24px;
 }
 
+/* CARD FULL-WIDTH (centrale) */
 .service-card-full {
-  min-width: 700px;
-  max-width: 900px;
-  width: 100%;
+  grid-column: 1 / -1;             /* prende entrambe le colonne */
 }
 
+/* IMMAGINE */
 .service-card-img {
   width: 100%;
-  height: 180px;
-  background: linear-gradient(135deg, #e0e0e0 0%, #c7c7c7 100%);
-  border-radius: 12px;
-  margin-bottom: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 450px;                   /* da Figma */
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 24px;
 }
 
-.service-card-img-placeholder {
-  width: 80px;
-  height: 80px;
-  background: #d1d1d1;
-  color: #888;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  font-weight: 600;
+/* IMMAGINE SPECIALE: nessun bordo, nessun taglio, sempre intera */
+.service-card-img-real[src$="Frame 1707480709 (1).svg"] {
+  border-radius: 0 !important;
+  object-fit: contain !important;
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
+/* CONTENUTO CARD */
 .service-card-content {
   text-align: center;
 }
 
 .service-card-title {
-  color: #222;
-  font-size: 1.3rem;
-  font-weight: 700;
+  font-family: "Host Grotesk", sans-serif;
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 500;
+  color: #10101c;
   margin-bottom: 8px;
 }
 
 .service-card-desc {
-  color: #444;
-  font-size: 1rem;
-  margin-bottom: 18px;
+  font-family: "Host Grotesk", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 300;
+  color: #464646;
+  margin-bottom: 15px;
 }
 
+/* CTA */
 .service-card-btns {
   display: flex;
-  gap: 12px;
   justify-content: center;
 }
 
+/* default */
 .service-btn {
-  background: #fff;
-  color: #0070f3;
-  border: 2px solid #0070f3;
-  border-radius: 22px;
-  padding: 0.5rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  min-height: 40px;
+  border-radius: 24px;
+  border: none;
+  font-family: "Host Grotesk", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0,112,243,0.10);
-  transition: background 0.2s, color 0.2s;
+  background: #2877ff;
+  color: #ffffff;
+  box-shadow:
+    0 4px 6px rgba(10, 13, 18, 0.03),
+    0 12px 16px rgba(10, 13, 18, 0.08);
+  transition: background 0.15s ease,
+              box-shadow 0.15s ease,
+              transform 0.05s ease;
 }
 
-.service-btn.main {
-  background: #0070f3;
-  color: #fff;
-}
-
+/* hover */
 .service-btn:hover {
-  background: #0057c2;
-  color: #fff;
+  background: #2877ff;
+  transform: translateY(-2px);
+  box-shadow:
+    0 6px 10px rgba(10, 13, 18, 0.06),
+    0 16px 24px rgba(10, 13, 18, 0.12);
+}
+
+/* pressed */
+.service-btn:active {
+  background: #07205f;
+  transform: translateY(0);
+  box-shadow:
+    0 4px 6px rgba(10, 13, 18, 0.08),
+    0 12px 16px rgba(10, 13, 18, 0.16);
+}
+
+/* RESPONSIVE: niente scroll orizzontale, card impilate */
+@media (max-width: 1024px) {
+  .services-section {
+    padding: 96px 0 96px;
+  }
+
+  .services-inner {
+    padding: 0 20px;              /* padding ridotto ma sempre dentro il 100% */
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;   /* una sola colonna → mai overflow */
+  }
+
+  .service-card-full {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-title {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .services-desc {
+    font-size: 18px;
+    line-height: 26px;
+  }
+}
+
+.no-border {
+  border-radius: 0 !important;
+  object-fit: contain !important;
+  background: transparent !important;
+  box-shadow: none !important;
 }
