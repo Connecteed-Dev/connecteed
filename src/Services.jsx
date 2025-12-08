@@ -93,13 +93,30 @@ function ServiceCard({ title, desc, img, full }) {
           <h3 className="service-card-title">{title}</h3>
           <p className="service-card-desc">{desc}</p>
           <div className="service-card-btns">
-            <button
-              className="service-btn"
-              type="button"
-              onClick={() => setShowContact(true)}
-            >
-              Contattaci
-            </button>
+            {!showContact ? (
+              <button
+                className="service-btn"
+                type="button"
+                onClick={() => setShowContact(true)}
+              >
+                Contattaci
+              </button>
+            ) : (
+              <span
+                style={{
+                  display: "inline-block",
+                  background: "#10b981",
+                  color: "#fff",
+                  borderRadius: 24,
+                  padding: "12px 32px",
+                  fontWeight: 600,
+                  fontSize: 18,
+                  boxShadow: "0 2px 12px rgba(16,185,129,0.10)",
+                }}
+              >
+                You're on the list!
+              </span>
+            )}
           </div>
         </div>
       </div>

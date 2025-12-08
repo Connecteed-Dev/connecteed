@@ -208,3 +208,11 @@
   background: transparent !important;
   box-shadow: none !important;
 }
+
+.services-section,
+.services-inner,
+.services-grid {
+  max-width: 100vw;
+  box-sizing: border-box;
+  
+}

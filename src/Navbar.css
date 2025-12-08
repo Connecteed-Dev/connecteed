@@ -165,3 +165,12 @@
     display: none;
   }
 }
+
+/* Regola globale: nessuno scroll orizzontale, larghezza massima viewport */
+html, body, #root {
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  /* NON mettere height: 100vh qui! */
+}

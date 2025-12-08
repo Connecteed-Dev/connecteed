@@ -178,21 +178,25 @@ export const WaitlistHero: React.FC = () => {
 
       {/* Main Container */}
       <div
-        className="relative w-full h-screen overflow-hidden shadow-2xl"
-        style={{
-          backgroundColor: colors.baseBg,
-          fontFamily:
-            'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-        }}
-      >
+  className="relative flex items-center justify-center w-full h-screen bg-transparent overflow-hidden"
+  style={{
+    fontFamily:
+      'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+    position: "relative",
+    zIndex: 1,
+  }}
+>
+
+      
         {/* Background Decorative Layer */}
         <div
-          className="absolute inset-0 w-full h-full pointer-events-none"
+          className="absolute inset-0 w-full h-full pointer-events-none flex items-center justify-center"
           style={{
             perspective: "1200px",
             transform: "perspective(1200px) rotateX(15deg)",
             transformOrigin: "center bottom",
             opacity: 1,
+            zIndex: 0, // immagini rotanti sotto tutto
           }}
         >
           {/* Image 3 (Back) - spins clockwise */}
@@ -207,7 +211,7 @@ export const WaitlistHero: React.FC = () => {
               }}
             >
               <img
-                src="https://framerusercontent.com/images/oqZEqzDEgSLygmUDuZAYNh2XQ9U.png?scale-down-to=2048"
+                src="https://framerusercontent.com/images/oqZEqzDEgSLygmUDuZAYNh2XQ9U.png?scale-down-to-2048"
                 alt=""
                 className="w-full h-full object-cover opacity-50"
               />
@@ -226,7 +230,7 @@ export const WaitlistHero: React.FC = () => {
               }}
             >
               <img
-                src="https://framerusercontent.com/images/UbucGYsHDAUHfaGZNjwyCzViw8.png?scale-down-to=1024"
+                src="https://framerusercontent.com/images/UbucGYsHDAUHfaGZNjwyCzViw8.png?scale-down-to-1024"
                 alt=""
                 className="w-full h-full object-cover opacity-60"
               />
@@ -255,97 +259,152 @@ export const WaitlistHero: React.FC = () => {
 
         {/* Gradient Overlay */}
         <div
-          className="absolute inset-0 z-10 pointer-events-none"
+          className="absolute inset-0 pointer-events-none"
           style={{
             background: `linear-gradient(to top, ${colors.baseBg} 10%, rgba(9, 9, 11, 0.8) 40%, transparent 100%)`,
+            zIndex: 0, // overlay sotto il contenuto
           }}
         />
 
         {/* Content Container */}
-        <div className="relative z-20 w-full h-full flex flex-col items-center justify-center pb-16 gap-4">
+        <div
+          className="w-full flex flex-col items-center justify-center"
+          style={{
+            position: "relative",
+            zIndex: 2,
+          }}
+        >
+          {/* ICONA CENTRALE */}
 
-          <h1
-            className="text-5xl md:text-6xl font-bold text-center tracking-tight leading-tight"
-            style={{ color: colors.textMain }}
+          {/* BOX CENTRALE */}
+          <div
+            style={{
+              width: "100%",
+              maxWidth: 700,
+              margin: "0 auto",
+              background: "transparent",
+              borderRadius: 32,
+              boxShadow: "none",
+              padding: 0,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
           >
-            Aggiungi valore alla tua azienda
-          </h1>
-
-          <p
-            className="text-lg font-medium text-center"
-            style={{ color: colors.textSecondary }}
-          >
-            Contattaci, sarai servito.
-          </p>
-          
-
-          {/* Form / Success Container */}
-          <div className="w-full max-w-md px-4 mt-4 h-[60px] relative perspective-1000">
-            {/* Confetti Canvas - overlays everything but ignores clicks */}
-            <canvas
-              ref={canvasRef}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none z-50"
-            />
-
             {/* SUCCESS STATE */}
             <div
-              className={`absolute inset-0 flex items-center justify-center rounded-full transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] ${
-                status === "success"
-                  ? "opacity-100 scale-100 rotate-x-0 animate-success-pulse animate-success-glow"
-                  : "opacity-0 scale-95 -rotate-x-90 pointer-events-none"
-              }`}
-              style={{ backgroundColor: colors.success }}
+              style={{
+                position: "relative",
+                width: "100%",
+                maxWidth: 520,
+                margin: "0 auto",
+                height: 62,
+              }}
             >
-              {/* Celebration rings */}
-              {status === "success" && (
-                <>
-                  <div
-                    className="absolute top-1/2 left-1/2 w-full h-full rounded-full border-2 border-emerald-400 animate-ring"
-                    style={{ animationDelay: "0s" }}
-                  />
-                  <div
-                    className="absolute top-1/2 left-1/2 w-full h-full rounded-full border-2 border-emerald-300 animate-ring"
-                    style={{ animationDelay: "0.15s" }}
-                  />
-                  <div
-                    className="absolute top-1/2 left-1/2 w-full h-full rounded-full border-2 border-emerald-200 animate-ring"
-                    style={{ animationDelay: "0.3s" }}
-                  />
-                </>
-              )}
+              <canvas
+                ref={canvasRef}
+                style={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                  width: 600,
+                  height: 600,
+                  pointerEvents: "none",
+                  zIndex: 50,
+                }}
+              />
               <div
-                className={`flex items-center gap-2 text-white font-semibold text-lg ${
-                  status === "success" ? "animate-bounce-in" : ""
-                }`}
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  display: status === "success" ? "flex" : "none",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: 32,
+                  background: "#10b981",
+                  transition: "opacity 0.5s, transform 0.5s",
+                  opacity: status === "success" ? 1 : 0,
+                  zIndex: 10,
+                }}
               >
-                <div className="bg-white/20 p-1 rounded-full">
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 8,
+                    color: "#fff",
+                    fontWeight: 600,
+                    fontSize: 20,
+                  }}
+                >
+                  <div
+                    style={{
+                      background: "rgba(255,255,255,0.2)",
+                      padding: 8,
+                      borderRadius: "50%",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
                   >
-                    <path
-                      className={status === "success" ? "animate-checkmark" : ""}
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={3}
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={3}
+                        d="M5 13l4 4L19 7"
+                        style={{
+                          strokeDasharray: 24,
+                          strokeDashoffset: status === "success" ? 0 : 24,
+                          transition: "stroke-dashoffset 0.4s ease-out 0.3s",
+                        }}
+                      />
+                    </svg>
+                  </div>
+                  <span>You're on the list!</span>
                 </div>
-                <span>You're on the list!</span>
               </div>
             </div>
+            <h1
+              style={{
+                color: "#fff",
+                fontWeight: 800,
+                fontSize: 64,
+                textAlign: "center",
+                marginBottom: 16,
+                lineHeight: "1.1",
+                letterSpacing: "-2px",
+              }}
+            >
+              Aggiungi valore alla tua azienda
+            </h1>
+            <p
+              style={{
+                color: "#94a3b8",
+                fontSize: 22,
+                textAlign: "center",
+                marginBottom: 32,
+                fontWeight: 500,
+              }}
+            >
+              Contattaci, sarai servito
+            </p>
 
-            {/* FORM STATE */}
+            {/* FORM */}
             <form
               onSubmit={handleSubmit}
-              className={`relative w-full h-full group transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] ${
-                status === "success"
-                  ? "opacity-0 scale-95 rotate-x-90 pointer-events-none"
-                  : "opacity-100 scale-100 rotate-x-0"
-              }`}
+              style={{
+                width: "100%",
+                maxWidth: 520,
+                margin: "0 auto",
+                display: status === "success" ? "none" : "flex",
+                alignItems: "center",
+                background: "#23232a",
+                borderRadius: 32,
+                boxShadow: "0 2px 12px rgba(0,0,0,0.10)",
+                padding: 6,
+              }}
             >
               <input
                 type="email"
@@ -354,47 +413,38 @@ export const WaitlistHero: React.FC = () => {
                 value={email}
                 disabled={status === "loading"}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full h-[60px] pl-6 pr-[150px] rounded-full outline-none transition-all duration-200 placeholder-zinc-500 disabled:opacity-70 disabled:cursor-not-allowed"
                 style={{
-                  backgroundColor: colors.inputBg,
-                  color: colors.textMain,
-                  boxShadow: `inset 0 0 0 1px ${colors.inputShadow}`,
+                  flex: 1,
+                  height: 56,
+                  border: "none",
+                  outline: "none",
+                  background: "transparent",
+                  color: "#fff",
+                  fontSize: 20,
+                  paddingLeft: 24,
+                  borderRadius: 32,
                 }}
               />
-
-              <div className="absolute top-[6px] right-[6px] bottom-[6px]">
-                <button
-                  type="submit"
-                  disabled={status === "loading"}
-                  className="h-full px-6 rounded-full font-medium text-white transition-all active:scale-95 hover:brightness-110 disabled:hover:brightness-100 disabled:active:scale-100 disabled:cursor-wait flex items-center justify-center min-w-[130px]"
-                  style={{ backgroundColor: colors.bluePrimary }}
-                >
-                  {status === "loading" ? (
-                    <svg
-                      className="animate-spin h-5 w-5 text-white"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <circle
-                        className="opacity-25"
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        strokeWidth="4"
-                      ></circle>
-                      <path
-                        className="opacity-75"
-                        fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                      ></path>
-                    </svg>
-                  ) : (
-                    "Contattaci"
-                  )}
-                </button>
-              </div>
+              <button
+                type="submit"
+                disabled={status === "loading"}
+                style={{
+                  height: 56,
+                  padding: "0 32px",
+                  borderRadius: 32,
+                  fontWeight: 600,
+                  fontSize: 20,
+                  background: "#0079da",
+                  color: "#fff",
+                  border: "none",
+                  cursor: "pointer",
+                  marginLeft: 0,
+                  boxShadow: "0 2px 12px rgba(0,121,218,0.10)",
+                  transition: "background .2s, transform .1s",
+                }}
+              >
+               Contattaci
+              </button>
             </form>
           </div>
         </div>
