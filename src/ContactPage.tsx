@@ -1,166 +1,171 @@
-import React from "react";
-// import bg from "./assets/Artboard1.png";
+import React, { useState } from 'react';
+// Assumi che ContactFormData e FormStatus siano definiti qui o importati
+import { ContactFormData, FormStatus } from './types'; 
 
-export default function ContactPage() {
-  return (
-    <section
-      className="w-full min-h-screen flex flex-col lg:flex-row"
-      style={{
-        backgroundColor: '#051b3b', // Fallback color
-        backgroundImage: `url('/assets/Artboard 1.png')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}
-    >
-      {/* Colonna sinistra */}
-      <div className="w-full lg:w-1/2 bg-black/80 text-white px-10 py-16 flex flex-col justify-between rounded-tr-[32px] rounded-br-[32px]">
-        <div className="space-y-6">
-          {/* Badge disponibile */}
-          <div className="inline-flex items-center gap-2 bg-white text-black text-sm font-medium px-4 py-1 rounded-full">
-            <span className="w-2.5 h-2.5 bg-green-500 rounded-full"></span>
-            Sempre disponibili
-          </div>
+export const ContactForm: React.FC = () => {
+  const [formData, setFormData] = useState<ContactFormData>({
+    fullName: '',
+    company: '',
+    email: '',
+    phone: '',
+    message: '',
+    agreedToTerms: false
+  });
 
-          <h2 className="text-3xl md:text-4xl font-semibold">
-            Teniamoci in contatto
-          </h2>
+  const [status, setStatus] = useState<FormStatus>(FormStatus.IDLE);
 
-          <p className="text-white/90 text-base leading-relaxed max-w-md">
-            Siamo a un messaggio di distanza! Scrivici tramite il form e il nostro team ti ricontatterà rapidamente. Che si tratti di informazioni, supporto o curiosità sul nostro prodotto, siamo felici di darti una mano.
-          </p>
-        </div>
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
 
-        <div className="mt-16 space-y-8 text-sm md:text-base">
-          {/* Indirizzo */}
-          <div className="flex items-start gap-4">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-6 h-6 flex-shrink-0"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth="1.5"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M15 10a3 3 0 11-6 0 3 3 0 016 0z"
-              />
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M19.5 10c0 7.5-7.5 11-7.5 11S4.5 17.5 4.5 10a7.5 7.5 0 1115 0z"
-              />
-            </svg>
-            <div>
-              <p className="font-semibold">Sede legale</p>
-              <p className="text-white/80">
-                Via della Conciliazione, 44<br />00193 – Roma
-              </p>
-            </div>
-          </div>
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData(prev => ({ ...prev, agreedToTerms: e.target.checked }));
+  };
 
-          {/* Email */}
-          <div className="flex items-start gap-4">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-6 h-6 flex-shrink-0"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth="1.5"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-18 8h18a2 2 0 002-2V6a2 2 0 00-2-2H3a2 2 0 00-2 2v8a2 2 0 002 2z"
-              />
-            </svg>
-            <div>
-              <p className="font-semibold">Email</p>
-              <a
-                href="mailto:contact@connecteed.com"
-                className="text-white/80 underline underline-offset-2"
-              >
-                contact@connecteed.com
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.agreedToTerms) {
+      alert("Devi accettare i termini e le condizioni.");
+      return;
+    }
+    
+    setStatus(FormStatus.SUBMITTING);
+    
+    // Simulate API call
+    setTimeout(() => {
+      setStatus(FormStatus.SUCCESS);
+      console.log("Form payload:", formData);
+      // Reset after success
+      setTimeout(() => setStatus(FormStatus.IDLE), 3000);
+      setFormData({
+        fullName: '',
+        company: '',
+        email: '',
+        phone: '',
+        message: '',
+        agreedToTerms: false
+      });
+    }, 1500);
+  };
 
-      {/* Colonna destra */}
-      <div className="w-full lg:w-1/2 bg-white text-black p-10 md:p-16 rounded-tl-[32px] rounded-bl-[32px]">
-        <form className="space-y-6 text-sm md:text-base">
-          {/* Nome e Azienda */}
-          <div>
-            <label className="block font-medium mb-1">
-              Nome e Cognome <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              placeholder="Inserisci il tuo nome completo"
-              className="w-full border border-[#1d2a58] rounded-lg px-4 py-2 outline-none"
-              required
-            />
-          </div>
+  // Classe unificata per gli input per replicare lo stile: 
+  // Bordo inferiore, sfondo trasparente, testo e placeholder bianchi/grigi
+  const inputClasses = "w-full bg-transparent text-white placeholder-gray-400 py-3 border-b border-gray-500 focus:border-white outline-none transition-colors duration-300 font-light text-base mb-6";
+  
+  // La TextArea nell'immagine sembra avere un placeholder 'Messaggio' che funge da titolo
+  // e la linea di separazione è appena sotto, non un bordo lungo la linea.
 
-          <div>
-            <label className="block font-medium mb-1">
-              Azienda <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              placeholder="Inserisci il nome dell’azienda"
-              className="w-full border border-[#1d2a58] rounded-lg px-4 py-2 outline-none"
-              required
-            />
-          </div>
+  return (
+    <form onSubmit={handleSubmit} className="w-full max-w-lg lg:max-w-none">
 
-          <div>
-            <label className="block font-medium mb-1">
-              Email <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="email"
-              placeholder="Inserisci la tua email"
-              className="w-full border border-[#1d2a58] rounded-lg px-4 py-2 outline-none"
-              required
-            />
-          </div>
+      {/* Nome E Cognome */}
+      <input
+        type="text"
+        name="fullName"
+        value={formData.fullName}
+        onChange={handleChange}
+        placeholder="Nome E Cognome"
+        className={inputClasses}
+        required
+      />
 
-          <div>
-            <label className="block font-medium mb-1">
-              Vogliamo capire la tua esigenza <span className="text-red-500">*</span>
-            </label>
-            <textarea
-              rows={4}
-              placeholder="Per quale motivo ci contatti? Ci servirà ai fini della call di contatto"
-              className="w-full border border-[#1d2a58] rounded-lg px-4 py-2 outline-none resize-none"
-              required
-            />
-          </div>
+      {/* Azienda */}
+      <input
+        type="text"
+        name="company"
+        value={formData.company}
+        onChange={handleChange}
+        placeholder="Azienda"
+        className={inputClasses}
+      />
 
-          {/* Checkbox e CTA */}
-          <div>
-            <label className="inline-flex items-start gap-2 text-xs leading-snug">
-              <input type="checkbox" required className="mt-1" />
-              <span>
-                Autorizzo il trattamento dei miei dati personali secondo quanto riportato
-                nell’informativa ai sensi del Decreto legislativo 30 Giugno 2003, n. 196
-              </span>
-            </label>
-          </div>
+      {/* Email */}
+      <input
+        type="email"
+        name="email"
+        value={formData.email}
+        onChange={handleChange}
+        placeholder="Email"
+        className={inputClasses}
+        required
+      />
 
-          <button
-            type="submit"
-            className="w-full bg-[#0045ff] hover:bg-[#0036cc] text-white py-3 mt-2 rounded-full font-semibold transition"
-          >
-            Invia messaggio
-          </button>
-        </form>
-      </div>
-    </section>
-  );
-}
+      {/* Numero Di Telefono */}
+      <input
+        type="tel"
+        name="phone"
+        value={formData.phone}
+        onChange={handleChange}
+        placeholder="Numero Di Telefono"
+        className={inputClasses}
+      />
+
+      {/* Messaggio (Textarea) */}
+      <textarea
+        name="message"
+        value={formData.message}
+        onChange={handleChange}
+        placeholder="Messaggio"
+        rows={2} // Ridotto a 2 righe per replicare lo spazio contenuto nell'immagine
+        className={`${inputClasses} resize-none`}
+      />
+
+      {/* Termini e Condizioni */}
+      <div className="mb-8 mt-2">
+        <label className="flex items-start gap-3 cursor-pointer group">
+          <div className="relative flex items-center">
+            <input
+              type="checkbox"
+              name="agreedToTerms"
+              checked={formData.agreedToTerms}
+              onChange={handleCheckboxChange}
+              className="peer h-5 w-5 cursor-pointer appearance-none rounded border border-gray-400 bg-transparent transition-all checked:border-white checked:bg-white"
+            />
+            <svg
+              className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[#020b2d] opacity-0 peer-checked:opacity-100 transition-opacity"
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10 3L4.5 8.5L2 6"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+          {/* Il testo e il titolo sono stati combinati per replicare lo stile dell'immagine */}
+          <div className="text-sm text-gray-200 font-light leading-snug">
+            <span className="font-normal block text-base mb-1">Termini e Condizioni*</span>
+            <p className="text-gray-400 text-xs leading-relaxed">
+              Autorizzo il trattamento dei miei dati personali secondo quanto riportato nell'informativa ai sensi del Decreto legislativo 30 Giugno 2003, n. 196
+            </p>
+          </div>
+        </label>
+      </div>
+
+      {/* Pulsante di Invio */}
+      <button
+        type="submit"
+        disabled={status === FormStatus.SUBMITTING}
+        // Colore del testo impostato sul blu scuro dello sfondo e sfondo bianco
+        className="w-full bg-white text-[#020b2d] font-bold text-lg rounded-full py-4 px-8 hover:bg-gray-100 transition-all duration-300 transform hover:scale-[1.01] active:scale-[0.99] disabled:opacity-70 disabled:cursor-not-allowed shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+      >
+        {status === FormStatus.SUBMITTING ? 'Invio in corso...' : 'Invia messaggio'}
+      </button>
+
+      {/* Messaggio di successo */}
+      {status === FormStatus.SUCCESS && (
+        <div className="mt-4 text-green-400 text-center text-sm font-medium animate-pulse">
+          Messaggio inviato con successo!
+        </div>
+      )}
+    </form>
+  );
+};
+export default ContactForm; 

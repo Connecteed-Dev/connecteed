@@ -1,163 +1,273 @@
 import React from "react";
-
-import { useState } from "react";
-import ContactPage from "./ContactPage";
+import logo from "./assets/Logo (1).svg";
+import {
+  LinkedInIcon,
+  InstagramIcon,
+  FacebookIcon,
+} from "./Icons";
+function SocialBtn({
+  children,
+  label,
+}: {
+  children: React.ReactNode;
+  label: string;
+}) {
+  return (
+    <a
+      href="#"
+      aria-label={label}
+      className="w-[48px] h-[48px] rounded-[14px] border border-white/40 flex items-center justify-center hover:border-white transition-colors duration-200"
+    >
+      <div className="w-[20px] h-[20px] text-white opacity-90">{children}</div>
+    </a>
+  );
+}
 
 export default function Footer() {
-  const [showContact, setShowContact] = useState(false);
   return (
-    <>
-      <footer
-        className="w-full min-h-screen flex flex-col justify-between text-white font-sans"
-        style={{
-          background: `url('/assets/Artboard 1.png') center/cover no-repeat, linear-gradient(180deg, #0a0a0a 0%, #232d47 100%)`,
-        }}
-      >
-        <div className="max-w-[1600px] mx-auto px-8 pt-24 pb-12 flex flex-col lg:flex-row gap-16 lg:gap-32">
-          {/* Colonna sinistra */}
-          <div className="flex-1 flex flex-col justify-start">
-            <img
-              src="/assets/Vector.png"
-              alt="Logo"
-              className="w-20 h-20 mb-10"
-            />
-            <h2
-              className="text-6xl md:text-7xl font-light leading-tight mb-16"
-              style={{ fontFamily: "Space Grotesk, sans-serif" }}
+    <footer
+      className="w-full h-[746px] bg-[linear-gradient(180deg,#050608_0%,#232d47_100%)] text-white flex justify-center overflow-hidden"
+      style={{ fontFamily: 'Host Grotesk, system-ui, sans-serif' }}
+    >
+      {/* FRAME 1440 × 746 */}
+      <div className="w-full h-full max-w-[1440px] px-[40px] pt-[40px] pb-[40px] box-border flex flex-col justify-between">
+        {/* ----------------- BLOCCO SUPERIORE ----------------- */}
+        <div className="flex w-full">
+          {/* COLONNA SINISTRA – larghezza visiva 1179px */}
+          <div className="w-[1179px] flex flex-col items-start">
+            {/* Logo: 40px dal top/left grazie al padding del wrapper */}
+            <div className="mb-[40px]">
+              <img src={logo} alt="Logo" className="w-[72px] h-[72px]" />
+            </div>
+
+            {/* TITOLO – Host Grotesk, Regular 64 / 72, Neutral/50 */}
+            <h1
+              style={{
+                width: 883,
+                height: 144,
+                fontFamily: "Host Grotesk, system-ui, sans-serif",
+                fontWeight: 400,
+                fontSize: 64,
+                lineHeight: "72px",
+                letterSpacing: "0px",
+                color: "rgba(248,250,255,0.98)",
+                marginBottom: 48,
+                textAlign: "left", // allinea a sinistra
+                display: "block",
+              }}
             >
-              Restiamo
+              Tecnologia che Unisce,
               <br />
-              In Contatto
-            </h2>
-            <div className="flex flex-row gap-16 mt-8">
-              <div>
-                <span className="font-semibold text-lg">Indirizzo</span>
-                <br />
-                <span className="text-white/80 text-base">
-                  Via della Conciliazione, 44
-                  <br />
-                  00193 – Roma IT
+              Automatizza e fa Crescere.
+            </h1>
+
+            {/* BLOCCO INDIRIZZO + CONTATTI */}
+            <div className="flex flex-col gap-[24px] items-start w-full">
+              {/* INDIRIZZO */}
+              <div className="flex flex-col gap-[4px] items-start">
+                {/* Label: Bold 18 / 26, bianco */}
+                <span
+                  style={{
+                    fontFamily: "Host Grotesk, system-ui, sans-serif",
+                    fontWeight: 700,
+                    fontSize: 18,
+                    lineHeight: "26px",
+                    letterSpacing: "0px",
+                    color: "#FFFFFF",
+                  }}
+                >
+                  Indirizzo
                 </span>
+
+                {/* Testo: Regular 16 / 24, Neutral/300 chiaro */}
+                <p
+                  style={{
+                    
+                    fontFamily: "Host Grotesk, system-ui, sans-serif",
+                    fontWeight: 400,
+                    fontSize: 16,
+                    lineHeight: "24px",
+                    letterSpacing: "0px",
+                    color: "rgba(248,250,255,0.80)",
+                  }}
+                >
+                  Via della Conciliazione, 44
+                  
+                  00193 – Roma IT
+                </p>
               </div>
-              <div>
-                <span className="font-semibold text-lg">Email</span>
-                <br />
+
+              {/* CONTATTI */}
+              <div className="flex flex-col gap-[4px] items-start">
+                {/* Label: Bold 18 / 26, bianco */}
+                <span
+                  style={{
+                    fontFamily: "Host Grotesk, system-ui, sans-serif",
+                    fontWeight: 700,
+                    fontSize: 18,
+                    lineHeight: "26px",
+                    letterSpacing: "0px",
+                    color: "#FFFFFF",
+                  }}
+                >
+                  Contatti
+                </span>
+
+                {/* Email: Regular 16 / 24, underline */}
                 <a
                   href="mailto:contact@connecteed.com"
-                  className="text-white/80 text-base underline"
+                  style={{
+                    fontFamily: "Host Grotesk, system-ui, sans-serif",
+                    fontWeight: 400,
+                    fontSize: 16,
+                    lineHeight: "24px",
+                    letterSpacing: "0px",
+                    color: "rgba(248,250,255,0.80)",
+                    textDecoration: "underline",
+                  }}
+                  className="hover:text-white transition-colors"
                 >
                   contact@connecteed.com
                 </a>
+
+                {/* PEC: Regular 16 / 24 */}
+                <span
+                  style={{
+                    fontFamily: "Host Grotesk, system-ui, sans-serif",
+                    fontWeight: 400,
+                    fontSize: 16,
+                    lineHeight: "24px",
+                    letterSpacing: "0px",
+                    color: "rgba(248,250,255,0.80)",
+                  }}
+                >
+                  Pec: progetriosrl@pec.it
+                </span>
               </div>
             </div>
           </div>
-          {/* Colonna destra: form */}
-          <form className="flex-1 flex flex-col gap-10 justify-center" onSubmit={e => {e.preventDefault(); setShowContact(true);}}>
-            <div className="grid grid-cols-2 gap-10">
-              <div>
-                <label className="block text-base font-semibold mb-2">
-                  Nome E Cognome
-                </label>
-                <input className="w-full bg-transparent border-b border-white/40 text-white py-2 outline-none" />
-              </div>
-              <div>
-                <label className="block text-base font-semibold mb-2">
-                  Azienda
-                </label>
-                <input className="w-full bg-transparent border-b border-white/40 text-white py-2 outline-none" />
-              </div>
-            </div>
-            <div className="grid grid-cols-2 gap-10">
-              <div>
-                <label className="block text-base font-semibold mb-2">Email</label>
-                <input
-                  type="email"
-                  className="w-full bg-transparent border-b border-white/40 text-white py-2 outline-none"
-                />
-              </div>
-              <div>
-                <label className="block text-base font-semibold mb-2">
-                  Numero Di Telefono
-                </label>
-                <input
-                  type="text"
-                  className="w-full bg-transparent border-b border-white/40 text-white py-2 outline-none"
-                />
-              </div>
-            </div>
-            <div>
-              <label className="block text-base font-semibold mb-2">Messaggio</label>
-              <input className="w-full bg-transparent border-b border-white/40 text-white py-2 outline-none" />
-            </div>
-            <div className="flex justify-end mt-4">
-              <button
-                type="submit"
-                className="text-xl font-semibold flex items-center gap-2 text-white"
-              >
-                Invia{" "}
-                <span style={{ fontSize: 28 }}>&rarr;</span>
-              </button>
-            </div>
-          </form>
-        </div>
-        {/* Bottom bar */}
-        <div className="w-full flex flex-col lg:flex-row justify-between items-center mt-12 pt-8 border-t border-white/20 text-white/80 text-base gap-4 px-8">
-          <div className="flex gap-8">
-            <a href="#" className="hover:underline">
-              Termini &amp; Condizioni
-            </a>
-            <a href="#" className="hover:underline">
-              Privacy Policy
-            </a>
-            <a href="#" className="hover:underline">
-              Cookies
-            </a>
-          </div>
-          <div>© 2025 Copyright Connecteed</div>
-          <div className="flex gap-4">
-            <a
-              href="#"
-              className="w-10 h-10 border border-white/20 rounded flex items-center justify-center hover:bg-white/10"
+
+          {/* COLONNA DESTRA – MENU A CHIP */}
+          <div className="flex flex-col items-end justify-start w-[181px] h-[432px] ">
+            <nav
+              className="flex flex-col items-end gap-[16px]"
+              aria-label="Footer navigation"
             >
-              <img
-                src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg"
-                alt="LinkedIn"
-                className="w-6 h-6 opacity-80"
-              />
-            </a>
-            <a
-              href="#"
-              className="w-10 h-10 border border-white/20 rounded flex items-center justify-center hover:bg-white/10"
-            >
-              <img
-                src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg"
-                alt="Instagram"
-                className="w-6 h-6 opacity-80"
-              />
-            </a>
-            <a
-              href="#"
-              className="w-10 h-10 border border-white/20 rounded flex items-center justify-center hover:bg-white/10"
-            >
-              <img
-                src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg"
-                alt="Facebook"
-                className="w-6 h-6 opacity-80"
-              />
-            </a>
+              {[
+                "Azienda",
+                "Servizi",
+                "Settori",
+                "Prodotti",
+                "I nostri lavori",
+                "Termini & Condizioni",
+                "Privacy Policy",
+                "Cookies",
+              ].map((item) => (
+                <a
+                  key={item}
+                  href="#"
+                  style={{
+                    fontFamily: "Host Grotesk, system-ui, sans-serif",
+                    fontWeight: 400,
+                    fontSize: 16,
+                    lineHeight: "24px",
+                    letterSpacing: "0px",
+                    color: "#FFFFFF",
+                    textAlign: "left",
+                  }}
+                  className="flex items-center justify-center"
+                >
+                  {item}
+                </a>
+              ))}
+            </nav>
           </div>
         </div>
-      </footer>
-      {showContact && (
-        <div style={{position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: 9999, background: 'rgba(0,0,0,0.7)'}}>
-          <div style={{position: 'absolute', top: 0, left: 0, width: '100vw', height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-            <div style={{background: 'white', borderRadius: 24, overflow: 'hidden', maxWidth: 900, width: '100%', boxShadow: '0 8px 32px rgba(0,0,0,0.2)'}}>
-              <ContactPage />
-            </div>
-            <button onClick={() => setShowContact(false)} style={{position: 'absolute', top: 32, right: 32, background: 'rgba(0,0,0,0.6)', color: 'white', border: 'none', borderRadius: 8, padding: '8px 16px', fontSize: 18, cursor: 'pointer'}}>Chiudi</button>
+
+        {/* ----------------- BLOCCO INFERIORE ----------------- */}
+        <div className="relative w-full flex items-end justify-between">
+          {/* Testo legale in basso a sinistra – Regular 16 / 24, Neutral/10 */}
+          <div className="flex flex-col gap-[4px] max-w-[360px] items-start">
+            <span
+              style={{
+                fontFamily: "Host Grotesk, system-ui, sans-serif",
+                fontWeight: 400,
+                fontSize: 16,
+                lineHeight: "24px",
+                color: "rgba(248,250,255,0.70)",
+                marginBottom: "99px",
+              }}
+            >
+              Connecteed S.r.l. PMI innovativa – società benefit
+            </span>
+            <span
+              style={{
+                fontFamily: "Host Grotesk, system-ui, sans-serif",
+                fontWeight: 400,
+                fontSize: 16,
+                lineHeight: "24px",
+                color: "rgba(248,250,255,0.70)",
+                
+              }}
+            >
+              P IVA: IT15798401004
+            </span>
+            <span
+              style={{
+                fontFamily: "Host Grotesk, system-ui, sans-serif",
+                fontWeight: 400,
+                fontSize: 16,
+                lineHeight: "24px",
+                color: "rgba(248,250,255,0.70)",
+              }}
+            >
+              Numero REA: RM-1614796
+            </span>
+            <span
+              style={{
+                fontFamily: "Host Grotesk, system-ui, sans-serif",
+                fontWeight: 400,
+                fontSize: 16,
+                lineHeight: "24px",
+                color: "rgba(248,250,255,0.70)",
+                 // <-- SPAZIO DI 99px
+                display: "block"
+              }}
+            >
+              Capitale sociale €5.437.953,14
+            </span>
+          </div>
+
+          {/* Copyright centrato rispetto al frame 1440 – Regular 16 / 24 */}
+          <p
+            className="absolute left-1/2 -translate-x-1/2 text-center"
+            style={{
+              fontFamily: "Host Grotesk, system-ui, sans-serif",
+              fontWeight: 400,
+              fontSize: 16,
+              lineHeight: "24px",
+              color: "rgba(248,250,255,0.80)",
+            }}
+          >
+            © 2025 Copyright Connecteed
+          </p>
+
+          {/* Social in basso a destra – card 48×48, gap 16 */}
+          <div className="flex gap-[16px]">
+            <SocialBtn label="LinkedIn">
+              <LinkedInIcon />
+            </SocialBtn>
+            <SocialBtn label="Instagram">
+              <InstagramIcon />
+            </SocialBtn>
+            <SocialBtn label="Facebook">
+              <FacebookIcon />
+            </SocialBtn>
           </div>
         </div>
-      )}
-    </>
+      </div>
+    </footer>
   );
 }
+
+/* Pulsante Social – 48×48, radius 14, bordo bianco al 40%, gap 16 */

@@ -1,10 +1,95 @@
+/* SEZIONE GENERALE (1440 + padding 40) */
+.partners-section {
+  width: 100vw;
+  max-width: 100vw;
+  margin: 0;
+  padding: 80px 0 80px; /* 80 top come in Figma */
+  display: flex;
+  justify-content: center;
+  background: #ffffff; /* mantengo il colore attuale della sezione */
+}
+
+/* CONTENITORE INTERNO */
+.partners-inner {
+  width: 100vw;
+  max-width: 100vw;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BLOCCO TITOLO */
+.partners-title-block {
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto 72px auto; /* spazio verso "Tra i nostri clienti" */
+  text-align: center;
+}
+
+/* — Partnership & Clienti — */
+.partners-subtitle {
+  font-family: "Host Grotesk", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  color: #003dd6;
+  margin-bottom: 28px;
+}
+
+/* H2 "Chi si affida a noi" */
+.partners-title {
+  font-family: "Host Grotesk", sans-serif;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 48px;
+  color: #10101c;
+  margin: 0 0 24px 0;
+}
+
+/* PARAGRAFO (terza immagine) */
+.partners-desc {
+  font-family: "Host Grotesk", sans-serif;
+  font-weight: 300;        /* Light */
+  font-size: 20px;
+  line-height: 28px;
+  color: #464646;
+  margin: 0;
+}
+
+/* GRUPPI (clienti + partner) */
+.partners-group {
+  width: 100%;
+ 
+  margin: 0 auto;
+}
+
+/* extra spazio tra il primo e il secondo gruppo */
+.partners-group-bottom {
+  margin-top: 80px;
+}
+
+/* LABEL "Tra i nostri clienti" / "E i nostri partner" */
+.partners-label {
+  width: 100%;
+  text-align: center;
+  font-family: "Host Grotesk", sans-serif;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 400;
+  color: #000000;
+  margin: 72px 0 40px 0; /* 72 dal testo sopra, 40 dal carosello (come in Figma) */
+  letter-spacing: 0.02em;
+}
+
+/* WRAPPER CAROSELLO (1360) */
 .partners-slider-wrapper {
   width: 100%;
   overflow: hidden;
-  margin-top: 32px;
-  background: #fff;
+  margin: 0 auto;
+  background: transparent; /* carte restano bianche, niente banda bianca piena */
 }
 
+/* ANIMAZIONI – invariate */
 .partners-slider {
   display: flex;
   gap: 32px;
@@ -12,54 +97,25 @@
   width: max-content;
 }
 
+.partners-slider-alt {
+  animation: partners-scroll-alt 22s linear infinite;
+}
+
 @keyframes partners-scroll {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
-.partners-section {
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 64px 0 32px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: #fff;
- 
+
+@keyframes partners-scroll-alt {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
-.partners-title-block {
-  text-align: center;
-  margin-bottom: 32px;
-}
-
-.partners-subtitle {
-  color: #0070f3;
-  font-size: 1.2rem;
-  font-weight: 500;
-  margin-bottom: 12px;
-}
-
-.partners-desc {
-  color: #222;
-  font-size: 1.15rem;
-  margin-bottom: 8px;
-  line-height: 1.5;
-}
-
-.partners-list {
-  width: 100%;
-  display: flex;
-  gap: 32px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 32px;
-}
-
+/* CARD */
 .partner-card {
-  background: #fff;
+  background: #ffffff;
   border-radius: 48px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   display: flex;
   align-items: center;
   gap: 12px;
@@ -67,19 +123,51 @@
   min-width: 220px;
   font-size: 1.5rem;
   font-weight: 600;
-  border: 1px solid #eee;
+  border: 1px solid #eeeeee;
   transition: box-shadow 0.2s;
 }
 
 .partner-card:hover {
-  box-shadow: 0 4px 24px rgba(0,112,243,0.10);
+  box-shadow: 0 4px 24px rgba(0, 112, 243, 0.1);
 }
 
 .partner-icon {
-  font-size: 2rem;
+  font-size: 2.5rem;
+  width: 64px !important;
+  height: 64px !important;
+  min-width: 64px;
+  min-height: 64px;
+  object-fit: contain;
 }
 
 .partner-name {
   font-size: 1.3rem;
   font-weight: 600;
+  color: #10101c;
+}
+
+/* RESPONSIVE: niente overflow orizzontale */
+@media (max-width: 1024px) {
+  .partners-section {
+    padding: 64px 0 64px;
+  }
+
+  .partners-inner {
+    padding: 0 20px;
+  }
+
+  .partners-title {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .partners-desc {
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  .partners-label {
+    margin-top: 56px;
+    margin-bottom: 32px;
+  }
 }

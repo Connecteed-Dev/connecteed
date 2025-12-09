@@ -1,77 +1,86 @@
 footer.footer {
   width: 100%;
-  min-height: 100vh;
+  height: 746px;            /* altezza fissa come da Figma */
+  min-height: 746px;
   color: #ffffff;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
   background: linear-gradient(180deg, #050608 0%, #232d47 100%);
   display: flex;
-  flex-direction: column;
 }
 
+/* contenitore interno ancorato all’altezza fissa */
 .footer-inner {
   flex: 1;
-  min-height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 4rem 2.5rem 2.5rem;
+  justify-content: space-between;       /* top blocco e bottom blocco ai bordi */
   box-sizing: border-box;
+
+  /* padding calibrato per 1440:
+     top 40, bottom 40, left/right 64 (simile a Figma) */
+  padding: 40px 64px 40px;
+}
+
+/* -------- BLOCCO SUPERIORE -------- */
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 64px;
+}
+
+/* colonna sinistra */
+
+.footer-left {
+  max-width: 720px;
 }
 
 .footer-logo-wrapper {
-  display: flex;
-  align-items: flex-start;
+  margin-bottom: 32px;
 }
 
 .footer-logo {
-  width: 80px;
-  height: 80px;
-  margin-bottom: 2.5rem;
+  width: 72px;
+  height: 72px;
 }
 
-.footer-title-wrapper {
-  flex: 1;
-  display: flex;
-  align-items: center;
-}
+/* titolo grande */
 
 .footer-title {
   font-weight: 300;
-  font-size: clamp(2.75rem, 4vw, 3.8rem);
-  line-height: 1.15;
-  max-width: 920px;
+  font-size: 56px;
+  line-height: 1.08;
+  max-width: 720px;
+  margin: 0 0 40px 0;    /* distanza dal blocco Indirizzo */
 }
 
-.footer-bottom {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  margin-top: 2.5rem;
-  gap: 2rem;
-}
+/* blocchi Indirizzo / Contatti */
 
-.footer-info {
+.footer-info-blocks {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 24px;             /* spazio tra Indirizzo e Contatti */
 }
 
 .footer-info-block {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 4px;
 }
 
 .footer-info-label {
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 14px;
 }
 
 .footer-info-text,
 .footer-info-link {
-  font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.85);
   text-decoration: none;
 }
 
@@ -79,79 +88,192 @@ footer.footer {
   text-decoration: underline;
 }
 
+/* colonna destra: menu verticale */
+
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 24px;                  /* distanza costante tra le voci come in Figma */
+  font-size: 14px;
+}
+
+.footer-nav-link {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.footer-nav-link:hover {
+  text-decoration: underline;
+}
+
+/* -------- BLOCCO INFERIORE -------- */
+
+.footer-bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* testo legale a sinistra */
+
+.footer-company {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 420px;
+}
+
+/* copyright centrato */
+
+.footer-copy {
+  flex: 1;
+  text-align: center;
+}
+
+/* social in basso a destra */
+
 .footer-socials {
   display: flex;
-  gap: 0.75rem;
-  margin-left: auto;
+  gap: 16px;                /* 16px fra le card (vedi Figma) */
 }
 
 .footer-social-btn {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: transparent;
-  transition: background 0.2s ease;
+  background: rgba(5, 6, 8, 0.25);
+  backdrop-filter: blur(16px);
+  transition: background 0.2s ease, transform 0.1s ease;
 }
 
 .footer-social-btn:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-1px);
 }
 
 .footer-social-icon {
   width: 22px;
   height: 22px;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
-.footer-bar {
+/* -------- RESPONSIVE (facoltativo) -------- */
+/* Se vuoi che sotto 1024px l’altezza possa crescere, sblocchiamo il 746px */
+
+@media (max-width: 1024px) {
+  footer.footer {
+    height: auto;
+    min-height: 746px;   /* mantiene comunque un buon respiro */
+  }
+
+  .footer-inner {
+    padding: 32px 24px 32px;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .footer-nav {
+    align-items: flex-start;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .footer-copy {
+    text-align: left;
+    flex: initial;
+  }
+}
+
+.footer-fullwidth {
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden;
+  background: linear-gradient(180deg, #0a0a0a 0%, #232d47 100%);
+}
+
+.footer-inner.footer-col {
+  width: 100vw;
+  max-width: 100vw;
+  margin: 0;
+  padding: 80px 80px 40px 80px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  margin-top: 3rem;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 0.95rem;
+  align-items: flex-start;
+  box-sizing: border-box;
 }
 
-.footer-links {
+.footer-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 300;
+  font-size: 64px;
+  line-height: 1.1;
+  color: #fff;
+  text-align: left;
+}
+
+.footer-nav.footer-nav-col {
   display: flex;
-  gap: 2rem;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
 }
 
-.footer-link {
-  color: inherit;
+.footer-nav-link {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
   text-decoration: none;
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+  transition: color .2s;
 }
 
-.footer-link:hover {
-  text-decoration: underline;
+.footer-bottom.footer-bottom-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 40px;
+  gap: 0;
 }
 
-.footer-copy {
-  white-space: nowrap;
+.footer-socials {
+  margin-top: 8px;
 }
 
-@media (min-width: 768px) {
-  .footer-bottom {
-    flex-direction: row;
-    align-items: flex-end;
-  }
-
-  .footer-info {
-    flex-direction: row;
-    gap: 4rem;
-  }
-
-  .footer-bar {
-    flex-direction: row;
-  }
+.footer-social-btn {
+  width: 44px;
+  height: 44px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  transition: background .2s;
+  margin-right: 8px;
 }
 
+.footer-social-btn:last-child {
+  margin-right: 0;
+}
 
+.footer-logo {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 48px;
+}

@@ -5,7 +5,7 @@ import imgSaas from "./assets/Group 1171275099.svg";
 import imgFeed from "./assets/image 1.svg";
 import imgUi from "./assets/Frame 1707480709 (1).svg";
 import imgEcom from "./assets/E-commerce.svg";
-import ContactPage from "./ContactPage";
+import { ContactForm as ContactPage } from "./ContactPage";
 
 const services = [
   {
@@ -75,6 +75,10 @@ export default function Services() {
 function ServiceCard({ title, desc, img, full }) {
   const [showContact, setShowContact] = useState(false);
 
+  const goToContact = () => {
+    window.location.href = "/ContactPage";
+  };
+
   return (
     <>
       <div className={`service-card${full ? " service-card-full" : ""}`}>
@@ -97,7 +101,7 @@ function ServiceCard({ title, desc, img, full }) {
               <button
                 className="service-btn"
                 type="button"
-                onClick={() => setShowContact(true)}
+                onClick={goToContact}
               >
                 Contattaci
               </button>

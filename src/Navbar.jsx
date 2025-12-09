@@ -31,7 +31,11 @@ const Navbar = () => {
 
           {/* DESTRA: CTA */}
           <div className="navbar-right">
-            <button className="navbar-contact">
+            <button
+              className="navbar-contact"
+              type="button"
+              onClick={() => window.location.href = "/ContactPage"}
+            >
               Contattaci
             </button>
           </div>
