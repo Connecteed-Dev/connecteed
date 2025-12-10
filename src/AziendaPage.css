@@ -1,0 +1,139 @@
+/* --- Immagini AboutSection layout --- */
+#azienda-page-root .about-section-images {
+  position: relative !important;
+  width: 100% !important;
+  min-height: 520px !important;
+}
+
+/* Immagine rossa (main) */
+#azienda-page-root .about-section-img.main-img {
+  position: relative !important;
+  width: 420px !important;
+  aspect-ratio: 4/3 !important;
+  border-radius: 32px !important;
+  overflow: hidden !important;
+  z-index: 5 !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08) !important;
+  display: inline-block !important;
+}
+
+/* Immagine desk (grayscale, sopra la rossa, spostata a destra) */
+#azienda-page-root .about-section-img.grayscale {
+  position: absolute !important;
+  left: 260px !important;
+  top: 60px !important;
+  width: 260px !important;
+  height: 260px !important;
+  border-radius: 32px !important;
+  overflow: hidden !important;
+  filter: grayscale(1) !important;
+  z-index: 8 !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08) !important;
+  display: inline-block !important;
+}
+
+/* Immagine codice (in alto a destra, sopra le altre) */
+#azienda-page-root .about-section-code-img {
+  position: absolute !important;
+  right: 0 !important;
+  top: 0 !important;
+  width: 340px !important;
+  height: 220px !important;
+  border-radius: 32px !important;
+  overflow: hidden !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12) !important;
+  z-index: 10 !important;
+  display: inline-block !important;
+}
+
+/* Responsive: stack images vertically on small screens */
+@media (max-width: 1024px) {
+  #azienda-page-root .about-section-images {
+    min-height: 700px !important;
+  }
+  #azienda-page-root .about-section-img.main-img,
+  #azienda-page-root .about-section-code-img,
+  #azienda-page-root .about-section-img.grayscale {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    margin-bottom: 24px !important;
+    aspect-ratio: 16/9 !important;
+    left: auto !important;
+    top: auto !important;
+    right: auto !important;
+  }
+}
+/* Corregge text-align ereditato dal #root */
+#azienda-page-root {
+  text-align: left !important;
+  margin-top: 100px !important; /* adatta il valore all'altezza della tua navbar */
+}
+
+/* --- Immagini AboutSection layout --- */
+
+/* Contenitore principale per il posizionamento relativo */
+#azienda-page-root .about-section-images {
+position: relative !important;
+width: 100% !important;
+max-width: 1200px !important;
+/* Definiamo un'altezza fissa/minima per contenere gli elementi assoluti */
+min-height: 500px !important; 
+margin: 0 auto !important; /* Centra il contenitore */
+}
+
+/* Immagine 1 (RED WORKSHOP - Grande, a sinistra) */
+#azienda-page-root .about-section-img.main-img {
+position: absolute !important;
+left: 0 !important;
+top: 0 !important;
+width: 60% !important; /* Larghezza dominante */
+height: 450px !important; /* Altezza definita */
+border-radius: 32px !important;
+overflow: hidden !important;
+box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+z-index: 10 !important; /* Deve stare sotto le altre nella zona di sovrapposizione */
+}
+
+/* Immagine 2 (CODE SCREEN - In alto a destra) */
+#azienda-page-root .about-section-code-img {
+position: absolute !important;
+right: 0 !important;
+top: 0 !important;
+width: 45% !important; /* Più stretta, occupa il lato destro */
+height: 280px !important; /* Altezza per la parte superiore */
+border-radius: 32px !important;
+overflow: hidden !important;
+box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+z-index: 15 !important; /* Sopra a main-img */
+}
+
+/* Immagine 3 (DESK OFFICE - Sotto CODE SCREEN, a destra) */
+#azienda-page-root .about-section-img.grayscale {
+position: absolute !important;
+right: 0 !important;
+top: 260px !important; /* Posizionata appena sotto l'immagine CODE SCREEN (280px - 20px di sovrapposizione) */
+width: 45% !important; /* Stessa larghezza dell'immagine CODE SCREEN */
+height: 280px !important;
+border-radius: 32px !important;
+overflow: hidden !important;
+box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+filter: grayscale(1) !important;
+z-index: 12 !important; /* Tra le due */
+}
+
+/* Media Query per schermi più piccoli: rimuoviamo il posizionamento assoluto */
+@media (max-width: 1024px) {
+  #azienda-page-root .about-section-images {
+    min-height: auto !important;
+  }
+  #azienda-page-root .about-section-img.main-img,
+  #azienda-page-root .about-section-code-img,
+  #azienda-page-root .about-section-img.grayscale {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    margin-bottom: 24px !important;
+    aspect-ratio: 16/9 !important;
+  }
+}

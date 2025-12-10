@@ -46,9 +46,7 @@ export default function BusinessSupport() {
           </div>
 
           <div className="business-support-btn-block">
-            <button type="button" className="business-support-btn">
-              Scopri tutti
-            </button>
+            
           </div>
         </div>
       </div>

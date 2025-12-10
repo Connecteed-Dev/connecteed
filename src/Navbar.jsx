@@ -28,7 +28,15 @@ const Navbar = () => {
 
           {/* CENTRO: MENU */}
           <ul className="navbar-menu">
-            <li>Azienda</li>
+            <li>
+              <button
+                type="button"
+                style={{ background: "none", border: "none", color: "inherit", font: "inherit", cursor: "pointer", padding: 0 }}
+                onClick={() => window.location.pathname = "/Azienda"}
+              >
+                Azienda
+              </button>
+            </li>
             <li>Servizi</li>
             <li>Settori</li>
             <li>Prodotti</li>

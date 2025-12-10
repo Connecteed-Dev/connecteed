@@ -9,7 +9,8 @@ import { HoverPreview } from '../components/ui/hover-preview';
 import Partners from './Partners';
 import { WaitlistHero } from '../components/ui/waitlist-hero';
 import Footer from "./Footer.tsx";
-import { ContactForm } from "./ContactPage"; // Assicurati che ContactForm sia esportato
+import { ContactForm } from "./ContactPage";
+import AziendaPage from "./AziendaPage"; // importa la pagina Azienda
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           </>
         } />
         <Route path="/ContactPage" element={<ContactForm />} />
+        <Route path="/Azienda" element={<AziendaPage />} />
       </Routes>
     </BrowserRouter>
   );
