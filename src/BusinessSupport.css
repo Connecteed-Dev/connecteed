@@ -145,10 +145,7 @@
   transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-.business-support-card:hover {
-  box-shadow: 0 32px 60px rgba(0, 61, 214, 0.18);
-  
-}
+
 
 /* ICONA NELLA CARD */
 .business-support-card-img {
