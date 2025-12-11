@@ -43,7 +43,7 @@ function FloatingInput({
         required={required}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
-        className="w-full bg-transparent text-white text-[20px] leading-[28px] h-[56px] border-b border-white focus:border-white outline-none transition-colors duration-200 px-0"
+        className="w-full bg-transparent text-white text-[18px] leading-[28px] h-[56px] border-b border-white focus:border-white outline-none transition-colors duration-200 px-0"
         style={{
           fontFamily: "Host Grotesk, system-ui, sans-serif",
           fontWeight: 400,
@@ -296,12 +296,14 @@ const ContactForm: React.FC = () => {
                 type="tel"
                 value={formData.phone}
                 onChange={handleChange}
+                required
               />
               <FloatingInput
                 label="Messaggio"
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
+                required
               />
 
               {/* Termini e Condizioni */}
@@ -322,6 +324,7 @@ const ContactForm: React.FC = () => {
                       name="agreedToTerms"
                       checked={formData.agreedToTerms}
                       onChange={handleCheckboxChange}
+                      required
                       className="peer h-[16px] w-[16px] cursor-pointer appearance-none border border-white bg-transparent rounded-[4px]"
                       style={{
                         borderRadius: 4,
@@ -365,32 +368,36 @@ const ContactForm: React.FC = () => {
               <button
                 type="submit"
                 disabled={status === FormStatus.SUBMITTING}
+                style={{
+                  background: "rgba(255,255,255,0.9)",
+                  color: "#001b66",
+                  border: "1px solid rgba(255,255,255,0.35)",
+                  height: 40,
+                  width: 108,
+                  padding: "8px 16px",
+                  borderRadius: 20,
+                  fontFamily: "Host Grotesk, sans-serif",
+                  fontSize: 16,
+                  lineHeight: "24px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  cursor: "pointer",
+                  transition:
+                    "background .18s ease, color .18s ease, transform .10s ease",
+                  fontWeight: 400,
+                  marginTop: 16,
+                  boxShadow: "0_0_20px_rgba(255,255,255,0.35)",
+                  opacity: status === FormStatus.SUBMITTING ? 0.7 : 1,
+                }}
                 className="
-                  w-full
-                  h-[40px]
-                  rounded-full
-                  bg-[#FFFFFF]
-                  text-[#020b2d]
-                  text-[20px]
-                  font-medium
-                  tracking-[0.01em]
                   shadow-[0_0_20px_rgba(255,255,255,0.35)]
                   transition-transform
                   hover:scale-[1.01]
                   active:scale-[0.99]
-                  disabled:opacity-70
                   disabled:cursor-not-allowed
                   mt-8
                 "
-                style={{
-                  fontFamily: "Host Grotesk, system-ui, sans-serif",
-                  fontWeight: 400,
-                  padding: "8px 16px",
-                  width: 550,
-                  height: 40,
-                  borderRadius: 24,
-                  marginTop: 16,
-                }}
               >
                 {status === FormStatus.SUBMITTING ? "Invio in corso..." : "Invia messaggio"}
               </button>
