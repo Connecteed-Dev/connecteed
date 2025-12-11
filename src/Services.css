@@ -2,7 +2,7 @@
 .services-section {
   width: 100%;                     /* NO 100vw → niente overflow orizzontale */
   margin: 0;
-  padding: 161px 0 161px;
+  padding: 0 0 161px;
   display: flex;
   justify-content: center;
   background: #ffffff;
