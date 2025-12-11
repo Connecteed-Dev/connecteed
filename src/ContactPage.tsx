@@ -52,8 +52,11 @@ function FloatingInput({
           border: "none",
           borderBottom: "2px solid #fff",
           background: "transparent",
+          color: "#fff", // <-- testo digitato bianco
+          // placeholder bianco
         }}
         autoComplete="off"
+        placeholder={isActive ? "" : label}
       />
     </div>
   );
@@ -260,6 +263,7 @@ const ContactForm: React.FC = () => {
               maxWidth: 550,
               background: "transparent",
               padding: "0",
+              color: "#FFFFFF",
             }}
           >
             <form
