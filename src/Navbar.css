@@ -52,7 +52,7 @@
 
 /* il tuo SVG contiene già icona + testo "Connecteed" */
 .navbar-logo {
-  height: 40px;  /* 40px come da guida */
+  height: 32px;  /* 40px come da guida */
   width: auto;
   display: block;
 }
