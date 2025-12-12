@@ -22,6 +22,61 @@ const previewData = {
 }
 
 const styles = `
+  @media (max-width: 480px) {
+    .hover-preview-container {
+      margin: 0;
+      padding: 0 !important;
+      min-height: 100vh;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: stretch;
+    }
+    .ambient-glow {
+      width: 320px;
+      height: 320px;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -30%);
+    }
+    .content-container {
+      max-width: 320px;
+      width: 100%;
+      padding: 0 16px;
+      box-sizing: border-box;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .text-block {
+      font-size: 24px;
+      line-height: 1.4;
+      color: #e5e5e5;
+      text-align: center;
+      font-weight: 400;
+      max-width: 320px;
+      width: 100%;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .text-block p {
+      margin-bottom: 1.2em;
+      font-size: 24px;
+      line-height: 1.4;
+      opacity: 1;
+      animation: none;
+      text-align: center;
+    }
+    .hover-link {
+      font-size: 24px;
+    }
+  }
 
   @import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@300;400;500;700&display=swap');
 
