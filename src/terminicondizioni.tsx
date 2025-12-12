@@ -32,7 +32,23 @@ const TerminiCondizioni: React.FC = () => {
             >
               Termini E Condizioni
             </h1>
-            <p className="text-terms-subtitle text-lg">
+            <p
+              className="text-terms-subtitle text-lg"
+              style={{
+                width: 706,
+                height: 22,
+                fontFamily: 'Host Grotesk, sans-serif',
+                fontWeight: 400,
+                fontSize: 32,
+                lineHeight: '40px',
+                letterSpacing: 0,
+                color: '#464646',
+                textAlign: 'center',
+                margin: '0 auto 76px auto',
+                display: 'block',
+                padding: 0
+              }}
+            >
               Termini e condizioni di utilizzo del software SaaS
             </p>
           </header>
