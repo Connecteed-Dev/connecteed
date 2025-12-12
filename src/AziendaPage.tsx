@@ -16,7 +16,7 @@ const IMG_LAPTOP_DASHBOARD =
 
 const AboutSection: React.FC = () => {
   return (
-    <section className="w-full bg-background pt-[180px] pb-[120px] px-10">
+    <section className="w-full bg-background pt-[180px] px-10">
       <div className="max-w-[1360px] mx-auto">
         <h1 className="text-[56px] leading-[64px] font-semibold text-navy mb-10">
           Qualcosa Su Di Noi
@@ -39,6 +39,7 @@ const AboutSection: React.FC = () => {
               src={IMG_RED_WORKSHOP}
               alt="Workshop alla lavagna"
               className="w-full h-full object-cover"
+              style={{ margin: 78 }}
             />
           </div>
 
@@ -69,10 +70,10 @@ const AboutSection: React.FC = () => {
 };
 
 const StatsSection: React.FC = () => {
-  return (
-    <section className="w-full bg-background mt-[280px]">
-      <div className="max-w-[1360px] mx-auto px-10 py-10 border-t border-b border-border">
-        <div className="flex justify-between items-center">
+return (
+  <section className="w-full bg-background mt-[80px] mb-[80px]">
+    <div className="max-w-[1360px] mx-auto px-10 py-10 border-t border-b border-border">
+      <div className="flex justify-between items-center">
           <div className="text-center flex-1">
             <div className="text-[80px] leading-none font-semibold text-navy">2020</div>
             <div className="mt-3 text-xl text-navy">Anno di fondazione</div>
@@ -93,20 +94,37 @@ const StatsSection: React.FC = () => {
 
 const ValuesSection: React.FC = () => {
   return (
-    <section className="w-full bg-background mt-[120px]">
-      <div className="max-w-[1360px] mx-auto px-10 grid grid-cols-[553px_1fr] gap-10 items-center">
+    <section className="w-full bg-background ">
+      <div className="max-w-[1360px] mx-auto px-10 grid grid-cols-[553px_1fr] gap-[179px] items-center">
         {/* Text */}
-        <div className="w-[553px]">
-          <h2 className="text-[40px] leading-[48px] font-semibold text-navy mb-6">
+        <div className="w-[553px]" style={{ minHeight: 256 }}>
+          <h2
+            style={{
+              fontFamily: 'Host Grotesk, sans-serif',
+              fontWeight: 400,
+              fontSize: 32,
+              lineHeight: '40px',
+              color: '#10101C',
+              marginBottom: 24,
+              textAlign: 'left',
+              letterSpacing: 0
+            }}
+          >
             I nostri valori
           </h2>
-          <p className="text-gray-text text-base leading-[26px]">
-            Persone, idee, risultati.
-            <br />
-            Dietro ogni progetto di successo ci sono persone: volti, storie,
-            idee. Il nostro team è prima di tutto una squadra, crediamo nella
-            forza della collaborazione, nell'ascolto reciproco e nella
-            diversità di pensiero come motore di innovazione.
+          <p
+            style={{
+              fontFamily: 'Host Grotesk, sans-serif',
+              fontWeight: 400,
+              fontSize: 18,
+              lineHeight: '26px',
+              color: '#464646',
+              textAlign: 'left',
+              margin: 0
+            }}
+          >
+            Persone, idee, risultati.<br />
+            Dietro ogni progetto di successo ci sono persone: volti, storie, idee. Il nostro team è prima di tutto una squadra, crediamo nella forza della collaborazione, nell'ascolto reciproco e nella diversità di pensiero come motore di innovazione.
           </p>
         </div>
 
@@ -153,11 +171,15 @@ const approaches = [
 
 const ApproachSection: React.FC = () => {
   return (
-    <section className="w-full bg-background py-24 mt-20">
+    <section className="w-full bg-background py-24" style={{ marginTop: 160 , marginBottom: 203 }}>
       <div className="max-w-[1360px] mx-auto px-10">
-        <h2 className="text-[40px] leading-[48px] font-semibold text-navy mb-16">
+        <h2
+          className="text-[40px] leading-[48px] font-semibold text-navy mb-0 text-left"
+          style={{ textAlign: "left" }}
+        >
           Il nostro approccio
         </h2>
+        <div style={{ height: 120 }} />
         <div className="flex gap-12 justify-center items-start">
           {approaches.map((approach, index) => (
             <div key={index} className="text-center flex flex-col items-center flex-1 max-w-[400px]">
