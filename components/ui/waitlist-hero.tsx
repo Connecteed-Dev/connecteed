@@ -104,7 +104,10 @@ export const WaitlistHero: React.FC = () => {
   };
 
   return (
-    <div className="w-full min-h-screen bg-black flex items-center justify-center">
+    <div
+      className="w-full min-h-screen bg-black flex items-center justify-center"
+      style={{ fontFamily: 'Host Grotesk, sans-serif' }}
+    >
       {/* Animation Styles */}
       <style>{`
         @keyframes spin-slow {
@@ -366,7 +369,7 @@ export const WaitlistHero: React.FC = () => {
                 </div>
               </div>
             </div>
-            <h1
+            <h2
               style={{
                 color: "#fff",
                 fontWeight: 800,
@@ -378,7 +381,7 @@ export const WaitlistHero: React.FC = () => {
               }}
             >
               Aggiungi valore alla tua azienda
-            </h1>
+            </h2>
             <p
               style={{
                 color: "#94a3b8",

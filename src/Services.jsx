@@ -42,11 +42,12 @@ export default function Services() {
       <div className="services-inner">
         {/* BLOCCO TITOLO */}
         <div className="services-title-block">
-  
-  <div className="services-subtitle">— I nostri servizi —</div>
+    
+
+  <div className="services-subtitle" ><span style={{ color: '#003DD6' }}>— I nostri servizi —</span></div>
 
   <h2 className="services-title">
-    Il cuore del &lt;tailor_made/&gt;
+    Il cuore del <span style={{ color: '#023DD7' }}>&lt;</span>tailor<span style={{ color: '#023DD7' }}>_</span>made<span style={{ color: '#023DD7' }}>/&gt;</span>
   </h2>
 
   <p className="services-desc">

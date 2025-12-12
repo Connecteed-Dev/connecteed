@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   background-color: #ffffff;
-  padding: 161px 0 161px;       /* distanza verticale dalla guida (161px sopra e sotto) */
+  padding: 0 0 161px;       /* distanza verticale dalla guida (161px sopra e sotto) */
 }
 
 /* CONTENITORE INTERNO (larghezza massima + padding laterale 40px) */
@@ -12,7 +12,8 @@
   width: 100%;
   max-width: 1440px;            /* come layout grande */
   margin: 0 auto;
-  padding: 0 40px;              /* 40px di distanza laterale */
+  padding-left: 40px;
+  padding-right: 40px;
   box-sizing: border-box;
 }
 

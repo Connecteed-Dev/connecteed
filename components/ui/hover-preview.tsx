@@ -22,7 +22,8 @@ const previewData = {
 }
 
 const styles = `
-  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Syne:wght@400;700;800&display=swap');
+
+  @import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@300;400;500;700&display=swap');
 
   .hover-preview-container {
     min-height: 100vh;
@@ -31,7 +32,7 @@ const styles = `
     align-items: center;
     justify-content: center;
     padding: 40px;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Host Grotesk', sans-serif !important;
     overflow-x: hidden;
     position: relative;
   }
@@ -71,6 +72,7 @@ const styles = `
   .content-container {
     max-width: 900px;
     width: 100%;
+    font-family: 'Host Grotesk', sans-serif !important;
   }
 
   .text-block {
@@ -79,6 +81,7 @@ const styles = `
     color: #888;
     font-weight: 400;
     letter-spacing: -0.02em;
+    font-family: 'Host Grotesk', sans-serif !important;
   }
 
   .text-block p {
@@ -105,7 +108,7 @@ const styles = `
   .hover-link {
     color: #fff;
     font-weight: 700;
-    font-family: 'Syne', sans-serif;
+    font-family: 'Host Grotesk', sans-serif !important;
     cursor: pointer;
     position: relative;
     display: inline-block;

@@ -1,3 +1,11 @@
+.partner-icon-eprice {
+  width: 80px !important;
+  height: 68px !important;
+  min-width: 80px !important;
+  min-height: 68px !important;
+}
+
+
 /* SEZIONE GENERALE (1440 + padding 40) */
 .partners-section {
   width: 100vw;
@@ -143,12 +151,21 @@
   box-shadow: 0 4px 24px rgba(0, 112, 243, 0.1);
 }
 
-.partner-icon {
+.partner-icon:not(.partner-icon-eprice) {
   width: 152px !important;
   height: 119px !important;
   min-width: 152px;
   min-height: 119px;
+}
+.partner-icon {
   object-fit: contain;
+}
+
+.partner-icon-novare {
+  width: 90px !important;
+  height: 68px !important;
+  min-width: 90px !important;
+  min-height: 68px !important;
 }
 
 

@@ -1,7 +1,6 @@
 import React from "react";
 import "./Partners.css";
 import leoniana from "./assets/partners/leoniana.svg";
-import overture from "./assets/partners/overture.svg";
 import bounz from "./assets/partners/bounz.svg";
 import luxr from "./assets/partners/luxr.svg";
 import insyde from "./assets/partners/insyde.svg";
@@ -18,7 +17,7 @@ import shopify from "./assets/partners/shopify.svg";
 
 const clienti = [
   { name: "Leoniana", logo: leoniana },
-  { name: "Overture", logo: overture },
+ 
   { name: "Bounz", logo: bounz, url: "https://www.bounz.it/" },
   { name: "LUXR", logo: luxr, url: "https://luxr.com/" },
   { name: "Insyde", logo: insyde },
@@ -74,8 +73,15 @@ export default function Partners() {
                   <img
                     src={p.logo}
                     alt={p.name + " logo"}
-                    className="partner-icon"
-                    style={{ width: 152, height: 119 }}
+                    className={
+                      p.name === "NovaRe"
+                        ? "partner-icon partner-icon-novare"
+                        : p.name === "Eprice"
+                        ? "partner-icon partner-icon-eprice"
+                        : p.name === "Shopify"
+                        ? "partner-icon partner-icon-shopify"
+                        : "partner-icon"
+                    }
                   />
                 </a>
               ))}
@@ -102,8 +108,15 @@ export default function Partners() {
                     <img
                       src={p.logo}
                       alt={p.name + " logo"}
-                      className="partner-icon"
-                      style={{ width: 152, height: 119 }}
+                      className={
+                        p.name === "NovaRe"
+                          ? "partner-icon partner-icon-novare"
+                          : p.name === "Eprice"
+                          ? "partner-icon partner-icon-eprice"
+                          : p.name === "Shopify"
+                          ? "partner-icon partner-icon-shopify"
+                          : "partner-icon"
+                      }
                     />
                   )}
                 </a>
