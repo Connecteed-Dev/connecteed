@@ -243,14 +243,16 @@ const AspirationsSection: React.FC = () => {
 
 const AziendaPage: React.FC = () => {
   return (
-    <div className="w-full mx-auto min-h-screen bg-background">
-      <AboutSection />
-      <StatsSection />
-      <ValuesSection />
-      <ApproachSection />
-      <AspirationsSection />
+    <>
+      <div className="w-full mx-auto min-h-screen bg-background">
+        <AboutSection />
+        <StatsSection />
+        <ValuesSection />
+        <ApproachSection />
+        <AspirationsSection />
+      </div>
       <Footer />
-    </div>
+    </>
   );
 };
 
