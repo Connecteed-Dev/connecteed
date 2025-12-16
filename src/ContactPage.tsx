@@ -103,7 +103,7 @@ function FloatingInput({
             }}
             autoComplete="off"
             placeholder={contextualPlaceholder}
-          />rendi inserisci il
+          />
         </>
       ) : (
         <input
