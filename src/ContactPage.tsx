@@ -53,7 +53,7 @@ function FloatingInput({
           left: 0,
           top: isActive ? -18 : 16,
           fontSize: isActive ? 14 : 20,
-          color: isActive ? "#D7EBFF" : "#F5F4F9",
+          color: isActive ? "#dcdcdc" : "#F5F4F9",
           fontFamily: "Host Grotesk, system-ui, sans-serif",
           fontWeight: 400,
           lineHeight: isActive ? "18px" : "28px",
@@ -69,6 +69,12 @@ function FloatingInput({
             /* Nascondi scrollbar per textarea messaggio */
             .no-scrollbar::-webkit-scrollbar { display: none; }
             .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+              /* Placeholder bianco per tutti gli input e textarea */
+              .floating-input::placeholder,
+              .floating-textarea::placeholder {
+                color: #fff !important;
+                opacity: 1 !important;
+              }
           `}</style>
           <textarea
             id={name}
@@ -97,7 +103,7 @@ function FloatingInput({
             }}
             autoComplete="off"
             placeholder={contextualPlaceholder}
-          />
+          />rendi inserisci il
         </>
       ) : (
         <input
@@ -410,7 +416,7 @@ const ContactForm: React.FC = () => {
                       className="peer h-[16px] w-[16px] cursor-pointer appearance-none border border-white bg-transparent rounded-[4px]"
                       style={{
                         borderRadius: 4,
-                        border: "1px solid #F5F4F9",
+                        border: "1px solid #ffffffff",
                         background: "transparent",
                         verticalAlign: "top",
                         marginTop: 4,
