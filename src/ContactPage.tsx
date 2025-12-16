@@ -17,12 +17,16 @@ function FloatingInput({
 }) {
   const [focused, setFocused] = useState(false);
   const isActive = focused || value;
-  // Placeholder contestuale per ogni campo
+  
+  // Placeholder contestuale (omesso per brevità, resta invariato)
   let contextualPlaceholder = "";
   if (isActive && !value) {
     switch (name) {
       case "fullName":
         contextualPlaceholder = "Inserisci nome e cognome";
+        break;
+      case "company":
+        contextualPlaceholder = "Inserisci azienda";
         break;
       case "email":
         contextualPlaceholder = "Inserisci email";
@@ -39,9 +43,11 @@ function FloatingInput({
   }
 
   return (
-    <div style={{ position: "relative", marginBottom: 32 }}>
+    // AGGIUNTO w-[288px] PER DESKTOP E MOBILE (sarà sovrascritto in mobile via CSS/JSX)
+    <div className="floating-input-container w-[550px] md:w-[288px]" style={{ position: "relative", marginBottom: 32 }}>
       <label
         htmlFor={name}
+        className="floating-label"
         style={{
           position: "absolute",
           left: 0,
@@ -72,7 +78,8 @@ function FloatingInput({
             required={required}
             onFocus={() => setFocused(true)}
             onBlur={() => setFocused(false)}
-            className="w-full bg-transparent text-white text-[16px] leading-[28px] min-h-[56px] max-h-[200px] border-b border-white focus:border-white outline-none transition-colors duration-200 px-0 resize-y no-scrollbar"
+            // LA LARGHEZZA w-full QUI È SOSTITUITA DA w-288px NEL CSS
+            className="floating-textarea bg-transparent text-white text-[16px] leading-[28px] min-h-[56px] max-h-[200px] border-b border-white focus:border-white outline-none transition-colors duration-200 px-0 resize-y no-scrollbar"
             style={{
               fontFamily: "Host Grotesk, system-ui, sans-serif",
               fontWeight: 400,
@@ -86,6 +93,7 @@ function FloatingInput({
               paddingBottom: 8,
               resize: "vertical",
               overflowY: "auto",
+              width: "100%", // Prende la larghezza del container (550px desktop)
             }}
             autoComplete="off"
             placeholder={contextualPlaceholder}
@@ -101,7 +109,8 @@ function FloatingInput({
           required={required}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
-          className="w-full bg-transparent text-white text-[16px] leading-[28px] h-[56px] border-b border-white focus:border-white outline-none transition-colors duration-200 px-0"
+          // LA LARGHEZZA w-full QUI È SOSTITUITA DA w-288px NEL CSS
+          className="floating-input bg-transparent text-white text-[16px] leading-[28px] h-[56px] border-b border-white focus:border-white outline-none transition-colors duration-200 px-0"
           style={{
             fontFamily: "Host Grotesk, system-ui, sans-serif",
             fontWeight: 400,
@@ -111,6 +120,7 @@ function FloatingInput({
             borderBottom: "2px solid #fff",
             background: "transparent",
             color: "#fff",
+            width: "100%", // Prende la larghezza del container (550px desktop)
           }}
           autoComplete="off"
           placeholder={contextualPlaceholder}
@@ -167,26 +177,12 @@ const ContactForm: React.FC = () => {
     }, 1500);
   };
 
-  const labelStyle: React.CSSProperties = {
-    fontFamily: "Host Grotesk, system-ui, sans-serif",
-    fontWeight: 400,
-    fontSize: 14,
-    lineHeight: "22px",
-    color: "#FFFFFF",
-    marginBottom: 4,
-  };
-
-  const inputClasses =
-    "w-full bg-transparent text-white text-[16px] leading-[24px] " +
-    "h-[56px] border-b border-white/40 focus:border-white outline-none " +
-    "transition-colors duration-200 placeholder-white/40";
-
   return (
     <>
       <section
         className="relative w-full min-h-[920px] flex justify-center text-white overflow-hidden"
       >
-        {/* VIDEO DI SFONDO */}
+        {/* VIDEO DI SFONDO (omesso per brevità, resta invariato) */}
         <video
           src={videoBg}
           autoPlay
@@ -196,7 +192,7 @@ const ContactForm: React.FC = () => {
           className="absolute inset-0 w-full h-full object-cover z-0"
         />
 
-        {/* OVERLAY SCURO PER LEGGIBILITÀ */}
+        {/* OVERLAY SCURO (omesso per brevità, resta invariato) */}
         <div
           className="absolute inset-0 z-10"
           style={{ background: "rgba(2, 11, 45, 0.78)" }}
@@ -204,16 +200,17 @@ const ContactForm: React.FC = () => {
 
         {/* CONTENUTO */}
         <div
-          className="relative z-20 w-full max-w-[1440px] px-[40px] pt-[0px] pb-[40px] box-border flex gap-[142px]"
+          className="relative z-20 w-full max-w-[1440px] px-[40px] pt-[0px] pb-[40px] box-border flex gap-[142px] contact-form-container"
           style={{
             marginTop: 236,
             minHeight: "920px",
             marginBottom: 0,
           }}
         >
-          {/* COLONNA SINISTRA – TESTO */}
-          <div className="w-[668px] flex flex-col">
+          {/* COLONNA SINISTRA – TESTO (omesso per brevità, resta invariato) */}
+          <div className="text-column w-[668px] flex flex-col">
             <h2
+              className="contact-title"
               style={{
                 width: 668,
                 fontFamily: "Host Grotesk, system-ui, sans-serif",
@@ -228,6 +225,7 @@ const ContactForm: React.FC = () => {
             </h2>
 
             <p
+              className="contact-description"
               style={{
                 width: 668,
                 fontFamily: "Host Grotesk, system-ui, sans-serif",
@@ -246,13 +244,14 @@ const ContactForm: React.FC = () => {
               prodotto, siamo felici di darti una mano.
             </p>
 
-            {/* CARD – SEDE LEGALE */}
-            <div className="w-[668px] border-b border-white/25 pb-[24px] mb-[24px] flex items-start gap-[16px]">
-              <div className="w-[32px] h-[32px] flex items-center justify-center">
+            {/* CARD – SEDE LEGALE (omesso per brevità, resta invariato) */}
+            <div className="contact-info-card w-[668px] border-b border-white/25 pb-[24px] mb-[24px] flex items-start gap-[16px] ">
+              <div className="contact-icon w-[32px] h-[32px] flex items-center justify-center">
                 <img src={markerPin} alt="Sede legale" style={{ width: 24, height: 24 }} />
               </div>
-              <div style={{ textAlign: "left" }}>
+              <div className="contact-info-text," style={{ textAlign: "left" }}>
                 <div
+                  className="contact-info-title"
                   style={{
                     fontFamily: "Host Grotesk, system-ui, sans-serif",
                     fontWeight: 600,
@@ -266,6 +265,7 @@ const ContactForm: React.FC = () => {
                   Sede legale
                 </div>
                 <div
+                  className="contact-info-value"
                   style={{
                     fontFamily: "Host Grotesk, system-ui, sans-serif",
                     fontWeight: 400,
@@ -280,13 +280,14 @@ const ContactForm: React.FC = () => {
               </div>
             </div>
 
-            {/* CARD – EMAIL */}
-            <div className="w-[668px] border-b border-white/25 pb-[24px] flex items-start gap-[16px]">
-              <div className="w-[32px] h-[32px] flex items-center justify-center">
+            {/* CARD – EMAIL (omesso per brevità, resta invariato) */}
+            <div className="contact-info-card w-[668px] border-b border-white/25 pb-[24px] flex items-start gap-[16px]">
+              <div className="contact-icon w-[32px] h-[32px] flex items-center justify-center">
                 <img src={mailIcon} alt="Email" style={{ width: 24, height: 24 }} />
               </div>
-              <div style={{ textAlign: "left" }}>
+              <div className="contact-info-text" style={{ textAlign: "left" }}>
                 <div
+                  className="contact-info-title"
                   style={{
                     fontFamily: "Host Grotesk, system-ui, sans-serif",
                     fontWeight: 600,
@@ -301,6 +302,7 @@ const ContactForm: React.FC = () => {
                 </div>
                 <a
                   href="mailto:contact@connecteed.com"
+                  className="contact-info-value contact-email-link"
                   style={{
                     fontFamily: "Host Grotesk, system-ui, sans-serif",
                     fontWeight: 400,
@@ -319,7 +321,7 @@ const ContactForm: React.FC = () => {
 
           {/* COLONNA DESTRA – FORM */}
           <div
-            className="w-[550px] flex flex-col items-center"
+            className="form-column w-[550px] flex flex-col items-center"
             style={{
               minWidth: 550,
               maxWidth: 550,
@@ -330,19 +332,26 @@ const ContactForm: React.FC = () => {
           >
             <form
               onSubmit={handleSubmit}
-              className="w-full flex flex-col"
+              className="contact-form w-full flex flex-col"
               style={{
                 width: 550,
                 maxWidth: 550,
                 gap: 0,
               }}
             >
+              {/* Gli input ora hanno la classe w-[288px] in mobile grazie al CSS */}
               <FloatingInput
                 label="Nome E Cognome"
                 name="fullName"
                 value={formData.fullName}
                 onChange={handleChange}
                 required
+              />
+              <FloatingInput
+                label="Azienda"
+                name="company"
+                value={formData.company}
+                onChange={handleChange}
               />
               <FloatingInput
                 label="Email"
@@ -368,10 +377,10 @@ const ContactForm: React.FC = () => {
                 required
               />
 
-              {/* Termini e Condizioni */}
-              <div className="mt-[24px]" style={{ marginBottom: 24 }}>
+              {/* Termini e Condizioni (omesso per brevità, resta invariato) */}
+              <div className="terms-container mt-[24px]" style={{ marginBottom: 24 }}>
                 <span
-                  className="block font-medium text-[20px] leading-[28px] text-white mb-[8px]"
+                  className="terms-title block font-medium text-[20px] leading-[28px] text-white mb-[8px]"
                   style={{
                     fontFamily: "Host Grotesk, system-ui, sans-serif",
                     fontWeight: 400,
@@ -380,7 +389,7 @@ const ContactForm: React.FC = () => {
                   Termini e Condizioni*
                 </span>
                 <label
-                  className="flex gap-[12px] cursor-pointer"
+                  className="terms-checkbox flex gap-[12px] cursor-pointer terms-container"
                   style={{ alignItems: "flex-start" }}
                 >
                   <div
@@ -414,6 +423,7 @@ const ContactForm: React.FC = () => {
                       <img
                         src={rectangleCheck}
                         alt="Checkbox checked"
+                        className="checkbox-checked"
                         style={{
                           position: "absolute",
                           left: "52.5%",
@@ -427,7 +437,7 @@ const ContactForm: React.FC = () => {
                     )}
                   </div>
                   <p
-                    className="font-normal text-[16px] leading-[24px] text-white"
+                    className="terms-text font-normal text-[16px] leading-[24px] text-white"
                     style={{
                       fontFamily: "Host Grotesk, system-ui, sans-serif",
                       fontWeight: 400,
@@ -461,8 +471,156 @@ const ContactForm: React.FC = () => {
               )}
             </form>
           </div>
-
         </div>
+
+        {/* STILI MOBILE AGGIORNATI CON W-288PX */}
+        <style>{`
+          @media (max-width: 768px) {
+            .contact-form-container {
+              flex-direction: column !important;
+              gap: 40px !important;
+              padding: 0 16px !important; 
+              margin-top: 96px !important;
+              padding-bottom: 40px !important;
+              min-height: auto !important;
+            }
+
+            .text-column {
+              width: 100% !important;
+              max-width: 100% !important;
+              order: 1 !important;
+            }
+
+            .contact-title {
+              width: 100% !important;
+              font-size: 24px !important; 
+              line-height: 32px !important;
+              margin-bottom: 12px !important;
+              font-weight: 700 !important;
+            }
+
+            .contact-description {
+              width: 100% !important;
+              font-size: 14px !important;
+              line-height: 22px !important;
+              margin-bottom: 32px !important;
+              min-height: auto !important;
+            }
+
+            /* Sezione Informazioni (omessa per brevità, resta invariata) */
+            .contact-info-card {
+              width: 100% !important;
+              margin-bottom: 20px !important;
+              padding-bottom: 16px !important;
+            }
+            .contact-info-card:first-of-type { border-bottom: 1px solid rgba(255, 255, 255) !important; }
+            .contact-info-card:nth-of-type(2) { border-bottom:1px solid rgba(255, 255, 255) !important; margin-bottom: 0 !important; }
+            .contact-icon { width: 24px !important; height: 24px !important; min-width: 24px !important; padding-top: 0px !important; margin-right: 0px !important; }
+            .contact-icon img { width: 20px !important; height: 20px !important; }
+            .contact-info-title { font-size: 14px !important; line-height: 20px !important; margin-bottom: 4px !important; font-weight: 600 !important; }
+            .contact-info-value, .contact-email-link { font-size: 13px !important; line-height: 20px !important; font-weight: 400 !important; }
+
+
+            /* Sezione Form */
+            .form-column {
+              width: 100% !important;
+              max-width: 100% !important;
+              min-width: auto !important;
+              order: 2 !important;
+              padding: 0 !important;
+            }
+
+            .contact-form {
+              width: 100% !important;
+              max-width: 100% !important;
+            }
+
+            /* 💥 CAMBIO CHIAVE: LARGHEZZA INPUT A 288PX 💥 */
+            .floating-input-container {
+              width: 288px !important; /* Forza il container a 288px */
+              max-width: 100% !important; /* Rende il container responsivo se la viewport è minore di 288px */
+              margin-bottom: 24px !important;
+            }
+
+            /* Etichetta (Label) */
+            .floating-label {
+              line-height: 24px !important; 
+              transition: all 0.22s cubic-bezier(.4,0,.2,1) !important;
+            }
+
+            /* Regola l'animazione della label in base al suo stato (vuota/piena) */
+            .floating-input-container > .floating-label[style*="top: 16px"] {
+                top: 12px !important; 
+                font-size: 16px !important; 
+                
+            }
+             .floating-input-container > .floating-label[style*="top: -18px"] {
+                top: -12px !important; 
+                font-size: 14px !important; 
+                              width: 288px !important; /* Forza il container a 288px */
+
+            }
+
+            /* Input/Textarea Fields */
+            .floating-input,
+            .floating-textarea {
+                          width: 360px !important; /* Forza il container a 288px */
+
+              /* L'input eredita width: 100% dal suo stile inline, che è il 100% del container (288px) */
+              font-size: 16px !important; 
+              line-height: 24px !important;
+              height: 48px !important;
+              border-bottom: 1px solid rgba(255, 255, 255) !important; 
+              padding-top: 8px !important; 
+              padding-bottom: 8px !important;
+              
+              /* Rimuove i bordi desktop */
+              border-width: 0 !important; 
+              border-bottom-width: 1px !important; /* Riabilita il bordo inferiore mobile */
+            }
+            
+            .floating-textarea {
+              min-height: 48px !important;
+              max-height: 150px !important;
+              resize: vertical !important;
+            }
+
+            /* Termini e Condizioni (omesso per brevità, resta invariato) */
+            .terms-container { margin-top: 24px !important; margin-bottom: 24px !important; width: 100% !important; }
+            .terms-title { font-size: 16px !important; line-height: 24px !important; margin-bottom: 8px !important; }
+            .terms-text { font-size: 13px !important; line-height: 20px !important; padding-top: 0 !important; }
+            .terms-checkbox .relative { margin-top: 2px !important; }
+            .terms-checkbox input[type="checkbox"] { width: 16px !important; height: 16px !important; margin-top: 2px !important; }
+            .checkbox-checked { width: 12px !important; height: 12px !important; }
+
+
+            /* Bottone */
+            .contact-form-btn {
+              width: 288px !important; /* Il bottone è allineato con gli input */
+              max-width: 100% !important; 
+              height: 56px !important; 
+              font-size: 16px !important;
+              line-height: 24px !important;
+              border-radius: 8px !important;
+              margin-top: 8px !important;
+            }
+              /* Termini e Condizioni */
+             .terms-container { 
+                width: 288px !important; /* Allineato agli input */
+                max-width: 100% !important;
+                margin-top: 24px !important; 
+                margin-bottom: 24px !important; 
+                max-height: 212px !important;
+                height: auto !important;
+            }
+            .terms-title { font-size: 16px !important; line-height: 24px !important; margin-bottom: 8px !important; }
+            .terms-text { font-size: 13px !important; line-height: 20px !important; padding-top: 0 !important; }
+            .terms-checkbox .relative { margin-top: 2px !important; }
+            .terms-checkbox input[type="checkbox"] { width: 16px !important; height: 16px !important; margin-top: 2px !important; }
+            .checkbox-checked { width: 12px !important; height: 12px !important; }
+          }
+          }
+        `}</style>
       </section>
 
       <Footer />

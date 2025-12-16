@@ -28,16 +28,13 @@ export default function Footer() {
         {/* BLOCCO SUPERIORE */}
         <div className="flex w-full">
           {/* SINISTRA */}
-          <div className="w-[1179px] flex flex-col items-start">
-            <div className="mb-[32px]">
+          <div className="flex-1 flex flex-col items-start">
+            <div className="footer-header-row mb-[32px]">
               <img src={logo} alt="Logo" className="footer-logo" />
+              <h1 className="footer-title">
+                Tecnologia che Unisce,<br />Automatizza e fa Crescere.
+              </h1>
             </div>
-
-            <h1 className="footer-title">
-              Tecnologia che Unisce,
-              <br />
-              Automatizza e fa Crescere.
-            </h1>
 
             <div className="flex flex-col gap-[24px]">
               {/* INDIRIZZO */}
@@ -66,8 +63,8 @@ export default function Footer() {
           </div>
 
           {/* DESTRA */}
-          <div className="flex flex-col items-end w-[181px]">
-            <nav className="flex flex-col items-end gap-[16px]">
+          <div className="flex flex-col items-end md:w-[181px] w-full">
+            <nav className="flex flex-col items-end md:items-end gap-[16px] w-full md:w-auto">
               {[
                 "Azienda",
                 "Servizi",
