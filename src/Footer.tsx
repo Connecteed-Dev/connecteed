@@ -31,7 +31,7 @@ export default function Footer() {
           <div className="flex-1 flex flex-col items-start">
             <div className="footer-header-row mb-[32px]">
               <img src={logo} alt="Logo" className="footer-logo" />
-              <h1 className="footer-title">
+              <h1 className="footer-title" style={{ width: 883 }}>
                 Tecnologia che Unisce,<br />Automatizza e fa Crescere.
               </h1>
             </div>
