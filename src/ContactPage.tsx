@@ -95,8 +95,8 @@ function FloatingInput({
               borderBottom: "2px solid #fff",
               background: "transparent",
               color: "#fff",
-              paddingTop: 8,
-              paddingBottom: 8,
+              paddingTop: 1,
+              paddingBottom: 1,
               resize: "vertical",
               overflowY: "auto",
               width: "100%", // Prende la larghezza del container (550px desktop)
