@@ -52,7 +52,7 @@
 /* il tuo SVG contiene già icona + testo "Connecteed" */
 .navbar-logo {
   height: 32px;  /* 40px come da guida */
-  width: auto;
+  width: 205px;
   display: block;
 }
 
@@ -164,6 +164,7 @@
   .navbar-menu {
     display: none;
   }
+ 
 }
 
 /* Regola globale: nessuno scroll orizzontale, larghezza massima viewport */
@@ -173,4 +174,93 @@ html, body, #root {
   overflow-x: hidden;
   box-sizing: border-box;
   /* NON mettere height: 100vh qui! */
+}
+/* SOLO MOBILE + SOLO QUANDO IL MENU È APERTO (#mobile-menu) */
+/* Ridimensiona SOLO le voci del menu (non il bottone Contattaci che è l'ultimo <li>) */
+
+/* =========================================
+   MOBILE MENU OPEN — FULL SCREEN + LOGO VISIBILE
+   (tocca SOLO quando il menu (#mobile-menu) è aperto)
+========================================= */
+@media (max-width: 900px) {
+.navbar-logo {
+  height: 32px;  /* 40px come da guida */
+  width: 154px;
+  display: block;
+}
+  /* Overlay a TUTTO SCHERMO (niente card) */
+  #mobile-menu {
+    position: fixed !important;
+    inset: 0 !important;               /* top:0 right:0 bottom:0 left:0 */
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: 100vw !important;
+    max-height: 100vh !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+
+    z-index: 9999 !important;
+    overflow: hidden !important;
+
+    /* stesso feel del mock: scuro pieno (se vuoi puoi lasciare la tua bg inline) */
+    background: rgba(8, 12, 20, 0.92) !important;
+    backdrop-filter: blur(18px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(180%) !important;
+
+    /* IMPORTANTISSIMO: niente limitazioni tipo max-width: 420px ecc */
+    box-shadow: none !important;
+  }
+
+  /* Contenuto del menu: garantisci padding corretto */
+  #mobile-menu > div {
+    width: 100% !important;
+    height: 100% !important;
+    padding: 16px !important;          /* come nel mock (8/16 ok) */
+    box-sizing: border-box !important;
+  }
+
+  /* Header row (logo left + X right) */
+  #mobile-menu > div > div:first-child {
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding-top: 8px !important;
+  }
+
+  /* LOGO: se risultava “sparito” per opacità/filtri, lo forziamo visibile */
+  #mobile-menu img,
+  #mobile-menu .navbar-logo,
+  #mobile-menu svg {
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: none !important;
+  }
+
+  /* Se il logo è un <img class="navbar-logo"> */
+  #mobile-menu .navbar-logo {
+    height: 24px !important;   /* nel mock era circa 24px */
+    width: auto !important;
+    display: block !important;
+  }
+
+  /* Se hai un wrapper tipo .navbar-left dentro l’overlay */
+  #mobile-menu .navbar-left {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;       /* come misure del mock */
+  }
+
+  /* ===== SOLO ridimensionamento voci menu (come ti avevo fatto prima) ===== */
+  #mobile-menu ul > li:not(:last-child) {
+    margin: 40px 0 !important;
+  }
+
+  #mobile-menu ul > li:not(:last-child) > button {
+    font-size: 16px !important;
+    line-height: 24px !important;
+    font-weight: 400 !important;
+  }
 }

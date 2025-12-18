@@ -88,34 +88,35 @@ const Navbar = () => {
                 display: "none",
                 marginLeft: 16,
                 cursor: "pointer",
-                padding: 8,
+                padding: 12,
               }}
             >
-              <span style={{ display: "block", width: 28, height: 28 }}>
+              <span style={{ display: "block", width: 18, height: 12 }}>
                 <span style={{
                   display: "block",
-                  width: 28,
-                  height: 3,
+                  width: 24,
+                  height: 2,
                   background: "#fff",
                   borderRadius: 2,
-                  marginBottom: 6,
+                  marginTop: 5,
+                  marginBottom: 5,
                   transition: "transform .3s",
                   transform: menuOpen ? "rotate(45deg) translateY(9px)" : "none"
                 }} />
                 <span style={{
                   display: "block",
-                  width: 28,
-                  height: 3,
+                  width: 24,
+                  height: 2,
                   background: "#fff",
                   borderRadius: 2,
-                  marginBottom: 6,
+                  marginBottom: 5,
                   opacity: menuOpen ? 0 : 1,
                   transition: "opacity .3s"
                 }} />
                 <span style={{
                   display: "block",
-                  width: 28,
-                  height: 3,
+                  width: 24,
+                  height: 2,
                   background: "#fff",
                   borderRadius: 2,
                   transition: "transform .3s",
@@ -128,89 +129,113 @@ const Navbar = () => {
       </nav>
 
       {/* Overlay menu mobile */}
-      {menuOpen && (
-        <div
-          id="mobile-menu"
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100vw",
-            height: "100vh",
-            background: "rgba(10,12,20,0.98)",
-            zIndex: 9999,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            transition: "opacity .3s",
-          }}
-        >
+     {menuOpen && (
+  <div
+    id="mobile-menu"
+    style={{
+      position: "fixed",
+      top: 0,
+      left: 0,
+      width: "100vw",
+      height: "100vh",
+      background: "rgba(10,12,20,0.98)",
+      zIndex: 9999,
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      transition: "opacity .3s",
+    }}
+  >
+    {/* HEADER MOBILE (LOGO + X) */}
+    <div
+      style={{
+        position: "absolute",
+        top: 16,
+        left: 16,
+        right: 16,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        zIndex: 10001,
+      }}
+    >
+      <img
+        src={logo}
+        alt="Connecteed logo"
+        style={{ height: 24, width: "auto", display: "block" }}
+        onClick={() => {
+          setMenuOpen(false);
+          window.location.pathname = "/";
+        }}
+      />
+
+      <button
+        aria-label="Chiudi menu"
+        onClick={() => setMenuOpen(false)}
+        style={{
+          background: "none",
+          border: "none",
+          color: "#fff",
+          fontSize: 36,
+          cursor: "pointer",
+          lineHeight: 1,
+        }}
+      >
+        ×
+      </button>
+    </div>
+
+    {/* LISTA (IDENTICA A PRIMA) */}
+    <ul style={{ listStyle: "none", padding: 0, margin: 0, width: "100%", textAlign: "center" }}>
+      {NAV_LINKS.map(link => (
+        <li key={link.label} style={{ margin: "24px 0" }}>
           <button
-            aria-label="Chiudi menu"
-            onClick={() => setMenuOpen(false)}
+            type="button"
             style={{
-              position: "absolute",
-              top: 24,
-              right: 24,
               background: "none",
               border: "none",
               color: "#fff",
-              fontSize: 36,
+              fontSize: 24,
+              fontFamily: "Host Grotesk, sans-serif",
               cursor: "pointer",
-              zIndex: 10001,
+              padding: 0,
+            }}
+            onClick={() => {
+              setMenuOpen(false);
+              window.location.pathname = link.href;
             }}
           >
-            ×
+            {link.label}
           </button>
-          <ul style={{ listStyle: "none", padding: 0, margin: 0, width: "100%", textAlign: "center" }}>
-            {NAV_LINKS.map(link => (
-              <li key={link.label} style={{ margin: "24px 0" }}>
-                <button
-                  type="button"
-                  style={{
-                    background: "none",
-                    border: "none",
-                    color: "#fff",
-                    fontSize: 24,
-                    fontFamily: 'Host Grotesk, sans-serif',
-                    cursor: "pointer",
-                    padding: 0,
-                  }}
-                  onClick={() => {
-                    setMenuOpen(false);
-                    window.location.pathname = link.href;
-                  }}
-                >
-                  {link.label}
-                </button>
-              </li>
-            ))}
-            <li style={{ margin: "32px 0 0 0" }}>
-              <button
-                type="button"
-                style={{
-                  background: "#fff",
-                  color: "#001b66",
-                  border: "none",
-                  borderRadius: 20,
-                  fontSize: 20,
-                  fontWeight: 600,
-                  padding: "12px 32px",
-                  fontFamily: 'Host Grotesk, sans-serif',
-                  cursor: "pointer",
-                }}
-                onClick={() => {
-                  setMenuOpen(false);
-                  window.location.pathname = "/ContactPage";
-                }}
-              >
-                Contattaci
-              </button>
-            </li>
-          </ul>
-        </div>
-      )}
+        </li>
+      ))}
+      <li style={{ margin: "32px 0 0 0" }}>
+        <button
+          type="button"
+          style={{
+            background: "#fff",
+            color: "#001b66",
+            border: "none",
+            borderRadius: 20,
+            fontSize: 20,
+            fontWeight: 600,
+            padding: "12px 32px",
+            fontFamily: "Host Grotesk, sans-serif",
+            cursor: "pointer",
+          }}
+          onClick={() => {
+            setMenuOpen(false);
+            window.location.pathname = "/ContactPage";
+          }}
+        >
+          Contattaci
+        </button>
+      </li>
+    </ul>
+  </div>
+)}
+
 
       {/* Responsive CSS per mostrare burger solo su mobile */}
       <style>{`

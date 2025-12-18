@@ -67,9 +67,10 @@
 
 @media (max-width: 768px) {
   .hero-section {
-    height: auto;
+    
     min-height: 60vh;
-    padding: 32px 0;
+    padding: 0 0 32px 0;
+    max-height: 710px;
   }
 
   .hero-heading {

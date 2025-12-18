@@ -53,14 +53,14 @@
   font-weight: 300;             /* Light */
   font-size: 20px;
   line-height: 28px;
-  color: #464646;               /* grigio #464646 come da specifica */
+  color: #656565;               /* grigio #464646 come da specifica */
   margin: 0 0 24px 0;           /* 24px tra P1 e P2 */
   text-align: center;
 }
 
 /* SECOND PARAGRAPH (più scuro) */
 .business-support-desc-secondary {
-  color: #10101c;               /* nero per il secondo paragrafo */
+  color: #656565; /* nero per il secondo paragrafo */
   margin-bottom: 48px;          /* 48px verso le card, da guida */
 }
 
@@ -151,28 +151,37 @@
 
   .business-support-subtitle {
     font-size: 14px;
-    line-height: 18px;
-    margin-bottom: 10px;
-  }
-
-  .business-support-title {
-    font-size: 16px;
     line-height: 22px;
-    margin-bottom: 10px;
+    margin-bottom: 24px;
+  }
+.cars  {
+    font-weight: 100;
+  }
+  .business-support-title {
+    font-size: 24px;
+    line-height: 32px;
+    margin-bottom: 24px;
     word-break: break-word;
+    font-weight: 500;
   }
 
   .business-support-desc,
   .business-support-desc-secondary {
-    font-size: 12px;
-    line-height: 16px;
+    font-size: 15px;
+    line-height: 24px;
     margin-bottom: 8px;
     text-align: center;
     padding: 0 8px;
+    font-weight: 400;
   }
 
   .business-support-desc-secondary {
     margin-bottom: 16px;
+    line-height: 24px;
+    margin-bottom: 8px;
+    text-align: center;
+    padding: 0 8px;
+    font-weight: 500;
   }
 
   .business-support-cards-wrapper {
@@ -257,8 +266,8 @@
 /* TITOLO CARD */
 .business-support-card-title {
   font-family: "Host Grotesk", sans-serif;
-  font-size: 20px;
-  line-height: 28px;
+  font-size: 16px;
+  line-height: 24px;
   font-weight: 400;          /* Regular */
   color: #010f1c;            /* colore testo card da guida */
   text-align: center;

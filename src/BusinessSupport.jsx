@@ -10,18 +10,18 @@ export default function BusinessSupport() {
         <div className="business-support-title-block">
           <div className="business-support-subtitle">— Cosa facciamo —</div>
 
-          <h2 className="business-support-title">
+          <h2 className="business-support-title cars">
             Sviluppiamo <span className="blue">soluzioni digitali</span> su misura
             che semplificano i processi,
             <br />
             integrano i sistemi e accelerano la crescita del tuo business.
           </h2>
 
-          <p className="business-support-desc">
+          <div className="business-support-desc">
             In un mercato sempre più complesso, le aziende si trovano a gestire
             una moltitudine di strumenti diversi: marketing, gestione dati,
             vendite, post–vendita, logistica e molto altro.
-          </p>
+          </div>
 
           <p className="business-support-desc business-support-desc-secondary">
             <span className="business-support-highlight">
