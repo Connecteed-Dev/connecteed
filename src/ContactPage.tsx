@@ -6,7 +6,260 @@ import markerPin from "./assets/marker-pin-01.svg";
 import mailIcon from "./assets/mail-01.svg";
 import rectangleCheck from "./assets/Rectangle 42.svg";
 
-// Campo input con label animata sopra la linea
+/* =========================
+   CSS INLINE (stesso metodo: root + before/after)
+   ========================= */
+const pageStyles = `
+  /* ROOT come nelle altre pagine */
+  html, body, #root {
+    width: 100vw;
+    max-width: 100vw;
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+
+  /* ============ PAGE WRAPPER (before/after) ============ */
+  .contact-page {
+    position: relative;
+    isolation: isolate;
+    overflow-x: clip;
+  }
+
+  /* Glow decorativi dietro */
+  .contact-page::before,
+  .contact-page::after{
+    content:"";
+    position:absolute;
+    z-index: 1;          /* sopra video (0), sotto overlay (10) e contenuto (20) */
+    pointer-events:none;
+    display:block;
+  }
+
+  .contact-page::before{
+    width: 520px;
+    height: 520px;
+    top: -160px;
+    right: -180px;
+    background: radial-gradient(circle at 30% 30%, rgba(0, 61, 214, 0.18), rgba(0, 61, 214, 0) 60%);
+  }
+
+  .contact-page::after{
+    width: 520px;
+    height: 520px;
+    bottom: -220px;
+    left: -200px;
+    background: radial-gradient(circle at 40% 40%, rgba(255,255,255,0.10), rgba(255,255,255,0) 60%);
+  }
+
+  /* placeholder bianco */
+  .floating-input::placeholder,
+  .floating-textarea::placeholder {
+    color: #fff !important;
+    opacity: 1 !important;
+  }
+
+  /* Nascondi scrollbar textarea */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+
+  /* CTA button (stile coerente) */
+  .navbar-contact {
+    background: rgba(255,255,255,0.9);
+    color: #001b66;
+    border: 1px solid rgba(255,255,255,0.35);
+    height: 40px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-family: "Host Grotesk", system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background .18s ease, color .18s ease, transform .10s ease;
+    width: auto;
+    min-width: 0;
+  }
+  .navbar-contact:hover { background: #D7EBFF; color: #001B66; }
+  .navbar-contact:active { background: #4FA1FF; color: #fff; transform: scale(0.97); }
+
+  /* ============ RESPONSIVE (mobile layout) ============ */
+  @media (max-width: 768px) {
+    /* decori OFF su mobile (come le altre pagine) */
+    .contact-page::before,
+    .contact-page::after { display: none; }
+
+    .contact-form-container {
+      flex-direction: column !important;
+      gap: 72px !important;
+      padding: 0 16px !important;
+      margin-top: 96px !important;
+      padding-bottom: 40px !important;
+      min-height: auto !important;
+    }
+
+    .text-column {
+      width: 100% !important;
+      max-width: 100% !important;
+      order: 1 !important;
+    }
+
+    .contact-title {
+      width: 100% !important;
+      font-size: 24px !important;
+      line-height: 32px !important;
+      margin-bottom: 12px !important;
+      font-weight: 700 !important;
+    }
+
+    .contact-description {
+      width: 100% !important;
+      font-size: 14px !important;
+      line-height: 22px !important;
+      margin-bottom: 32px !important;
+      min-height: auto !important;
+    }
+
+    .contact-info-card {
+      width: 100% !important;
+      margin-bottom: 20px !important;
+      padding-bottom: 16px !important;
+    }
+
+    .contact-icon {
+      width: 24px !important;
+      height: 24px !important;
+      min-width: 24px !important;
+    }
+    .contact-icon img { width: 20px !important; height: 20px !important; }
+
+    .contact-info-title { font-size: 14px !important; line-height: 20px !important; margin-bottom: 4px !important; font-weight: 600 !important; }
+    .contact-info-value, .contact-email-link { font-size: 13px !important; line-height: 20px !important; font-weight: 400 !important; }
+
+    .form-column {
+      width: 100% !important;
+      max-width: 100% !important;
+      min-width: auto !important;
+      order: 2 !important;
+      padding: 0 !important;
+    }
+
+    .contact-form {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    /* container input “288px” (tuo requisito) */
+    .floating-input-container {
+      width: 288px !important;
+      max-width: 100% !important;
+      margin-bottom: 24px !important;
+    }
+
+    .floating-input,
+    .floating-textarea {
+      font-size: 16px !important;
+      line-height: 24px !important;
+      height: 48px !important;
+      border-bottom: 1px solid rgba(255,255,255,1) !important;
+      padding-top: 8px !important;
+      padding-bottom: 8px !important;
+      border-width: 0 !important;
+      border-bottom-width: 1px !important;
+    }
+
+    .floating-textarea {
+      min-height: 48px !important;
+      max-height: 150px !important;
+      resize: vertical !important;
+      overflow-y: auto !important;
+    }
+
+    .terms-container {
+      width: 288px !important;
+      max-width: 100% !important;
+      margin-top: 24px !important;
+      margin-bottom: 24px !important;
+    }
+    .terms-title { font-size: 16px !important; line-height: 24px !important; margin-bottom: 8px !important; }
+    .terms-text { font-size: 14px !important; line-height: 22px !important; }
+
+    .contact-form-btn {
+      width: 100% !important;
+      max-width: 288px !important;
+      margin-top: 8px !important;
+      height: 48px !important;
+    }
+      
+/* =====================================================
+   FIX RESPONSIVE — TABLET / IPAD (MAI OVERFLOW)
+   ===================================================== */
+.contact-form-container,
+.text-column,
+.form-column {
+  min-width: 0 !important;
+}
+
+@media (max-width: 1200px) {
+  .contact-form-container {
+    gap: 48px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .text-column,
+  .form-column {
+    width: auto !important;
+    max-width: none !important;
+    flex: 1 1 0 !important;
+  }
+
+  .contact-title,
+  .contact-description,
+  .contact-info-card,
+  .contact-form {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .floating-input-container {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 980px) {
+  .contact-form-container {
+    flex-direction: column !important;
+    gap: 64px !important;
+    margin-top: 120px !important;
+  }
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .contact-page::before,
+  .contact-page::after { display: none; }
+
+  .contact-form-container {
+    padding: 0 16px 76px 16px !important;
+    gap: 72px !important;
+  }
+
+  .floating-input-container {
+    width: 288px !important;
+    max-width: 100% !important;
+  }
+
+  .contact-form-btn {
+    width: 288px !important;
+  }
+}
+`;
+
+// Campo input con label animata
 function FloatingInput({
   label,
   name,
@@ -14,11 +267,10 @@ function FloatingInput({
   value,
   onChange,
   required = false,
-}) {
+}: any) {
   const [focused, setFocused] = useState(false);
   const isActive = focused || value;
-  
-  // Placeholder contestuale (omesso per brevità, resta invariato)
+
   let contextualPlaceholder = "";
   if (isActive && !value) {
     switch (name) {
@@ -43,8 +295,10 @@ function FloatingInput({
   }
 
   return (
-    // AGGIUNTO w-[288px] PER DESKTOP E MOBILE (sarà sovrascritto in mobile via CSS/JSX)
-    <div className="floating-input-container w-[550px] md:w-[288px]" style={{ position: "relative", marginBottom: 32 }}>
+    <div
+      className="floating-input-container w-[550px] md:w-[288px]"
+      style={{ position: "relative", marginBottom: 32 }}
+    >
       <label
         htmlFor={name}
         className="floating-label"
@@ -63,48 +317,35 @@ function FloatingInput({
       >
         {label}
       </label>
+
       {name === "message" ? (
-        <>
-          <style>{`
-            /* Nascondi scrollbar per textarea messaggio */
-            .no-scrollbar::-webkit-scrollbar { display: none; }
-            .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
-              /* Placeholder bianco per tutti gli input e textarea */
-              .floating-input::placeholder,
-              .floating-textarea::placeholder {
-                color: #fff !important;
-                opacity: 1 !important;
-              }
-          `}</style>
-          <textarea
-            id={name}
-            name={name}
-            value={value}
-            onChange={onChange}
-            required={required}
-            onFocus={() => setFocused(true)}
-            onBlur={() => setFocused(false)}
-            // LA LARGHEZZA w-full QUI È SOSTITUITA DA w-288px NEL CSS
-            className="floating-textarea bg-transparent text-white text-[16px] leading-[28px] min-h-[56px] max-h-[200px] border-b border-white focus:border-white outline-none transition-colors duration-200 px-0 resize-y no-scrollbar"
-            style={{
-              fontFamily: "Host Grotesk, system-ui, sans-serif",
-              fontWeight: 400,
-              fontSize: 20,
-              lineHeight: "28px",
-              border: "none",
-              borderBottom: "2px solid #fff",
-              background: "transparent",
-              color: "#fff",
-              paddingTop: 1,
-              paddingBottom: 1,
-              resize: "vertical",
-              overflowY: "auto",
-              width: "100%", // Prende la larghezza del container (550px desktop)
-            }}
-            autoComplete="off"
-            placeholder={contextualPlaceholder}
-          />
-        </>
+        <textarea
+          id={name}
+          name={name}
+          value={value}
+          onChange={onChange}
+          required={required}
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
+          className="floating-textarea bg-transparent text-white text-[16px] leading-[28px] min-h-[56px] max-h-[200px] border-b border-white focus:border-white outline-none transition-colors duration-200 px-0 resize-y no-scrollbar"
+          style={{
+            fontFamily: "Host Grotesk, system-ui, sans-serif",
+            fontWeight: 400,
+            fontSize: 20,
+            lineHeight: "28px",
+            border: "none",
+            borderBottom: "2px solid #fff",
+            background: "transparent",
+            color: "#fff",
+            paddingTop: 1,
+            paddingBottom: 1,
+            resize: "vertical",
+            overflowY: "auto",
+            width: "100%",
+          }}
+          autoComplete="off"
+          placeholder={contextualPlaceholder}
+        />
       ) : (
         <input
           id={name}
@@ -115,7 +356,6 @@ function FloatingInput({
           required={required}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
-          // LA LARGHEZZA w-full QUI È SOSTITUITA DA w-288px NEL CSS
           className="floating-input bg-transparent text-white text-[16px] leading-[28px] h-[56px] border-b border-white focus:border-white outline-none transition-colors duration-200 px-0"
           style={{
             fontFamily: "Host Grotesk, system-ui, sans-serif",
@@ -126,7 +366,7 @@ function FloatingInput({
             borderBottom: "2px solid #fff",
             background: "transparent",
             color: "#fff",
-            width: "100%", // Prende la larghezza del container (550px desktop)
+            width: "100%",
           }}
           autoComplete="off"
           placeholder={contextualPlaceholder}
@@ -148,9 +388,7 @@ const ContactForm: React.FC = () => {
 
   const [status, setStatus] = useState<FormStatus>(FormStatus.IDLE);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -161,12 +399,10 @@ const ContactForm: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
     if (!formData.agreedToTerms) {
       alert("Devi accettare i termini e le condizioni.");
       return;
     }
-
     setStatus(FormStatus.SUBMITTING);
 
     setTimeout(() => {
@@ -185,10 +421,10 @@ const ContactForm: React.FC = () => {
 
   return (
     <>
-      <section
-        className="relative w-full min-h-[920px] flex justify-center text-white overflow-hidden"
-      >
-        {/* VIDEO DI SFONDO (omesso per brevità, resta invariato) */}
+      <style>{pageStyles}</style>
+
+      <section className="contact-page relative w-full min-h-[920px] flex justify-center text-white overflow-hidden">
+        {/* VIDEO */}
         <video
           src={videoBg}
           autoPlay
@@ -198,22 +434,15 @@ const ContactForm: React.FC = () => {
           className="absolute inset-0 w-full h-full object-cover z-0"
         />
 
-        {/* OVERLAY SCURO (omesso per brevità, resta invariato) */}
-        <div
-          className="absolute inset-0 z-10"
-          style={{ background: "rgba(2, 11, 45, 0.78)" }}
-        />
+        {/* OVERLAY SCURO */}
+        <div className="absolute inset-0 z-10" style={{ background: "rgba(2, 11, 45, 0.78)" }} />
 
         {/* CONTENUTO */}
         <div
           className="relative z-20 w-full max-w-[1440px] px-[40px] pt-[0px] pb-[40px] box-border flex gap-[142px] contact-form-container"
-          style={{
-            marginTop: 150,
-            minHeight: "920px",
-            marginBottom: 0,
-          }}
+          style={{ marginTop: 150, minHeight: "920px", marginBottom: 0 }}
         >
-          {/* COLONNA SINISTRA – TESTO (omesso per brevità, resta invariato) */}
+          {/* COLONNA SINISTRA */}
           <div className="text-column w-[668px] flex flex-col">
             <h2
               className="contact-title"
@@ -246,16 +475,15 @@ const ContactForm: React.FC = () => {
               Siamo a un messaggio di distanza!
               <br />
               Scrivici tramite il form e il nostro team ti ricontatterà rapidamente.
-              Che si tratti di informazioni, supporto o curiosità sul nostro
-              prodotto, siamo felici di darti una mano.
+              Che si tratti di informazioni, supporto o curiosità sul nostro prodotto,
+              siamo felici di darti una mano.
             </p>
 
-            {/* CARD – SEDE LEGALE (omesso per brevità, resta invariato) */}
-            <div className="contact-info-card w-[668px] border-b border-white/25 pb-[24px] mb-[24px] flex items-start gap-[16px] ">
+            <div className="contact-info-card w-[668px] border-b border-white/25 pb-[24px] mb-[24px] flex items-start gap-[16px]">
               <div className="contact-icon w-[32px] h-[32px] flex items-center justify-center">
                 <img src={markerPin} alt="Sede legale" style={{ width: 24, height: 24 }} />
               </div>
-              <div className="contact-info-text," style={{ textAlign: "left" }}>
+              <div style={{ textAlign: "left" }}>
                 <div
                   className="contact-info-title"
                   style={{
@@ -265,7 +493,6 @@ const ContactForm: React.FC = () => {
                     lineHeight: "24px",
                     color: "#FFFFFF",
                     marginBottom: 2,
-                    textAlign: "left",
                   }}
                 >
                   Sede legale
@@ -278,7 +505,6 @@ const ContactForm: React.FC = () => {
                     fontSize: 14,
                     lineHeight: "22px",
                     color: "#FFFFFF",
-                    textAlign: "left",
                   }}
                 >
                   Via della Conciliazione, 44 00193 – Roma
@@ -286,12 +512,11 @@ const ContactForm: React.FC = () => {
               </div>
             </div>
 
-            {/* CARD – EMAIL (omesso per brevità, resta invariato) */}
             <div className="contact-info-card w-[668px] border-b border-white/25 pb-[24px] flex items-start gap-[16px]">
               <div className="contact-icon w-[32px] h-[32px] flex items-center justify-center">
                 <img src={mailIcon} alt="Email" style={{ width: 24, height: 24 }} />
               </div>
-              <div className="contact-info-text" style={{ textAlign: "left" }}>
+              <div style={{ textAlign: "left" }}>
                 <div
                   className="contact-info-title"
                   style={{
@@ -301,7 +526,6 @@ const ContactForm: React.FC = () => {
                     lineHeight: "24px",
                     color: "#FFFFFF",
                     marginBottom: 2,
-                    textAlign: "left",
                   }}
                 >
                   Email
@@ -316,7 +540,6 @@ const ContactForm: React.FC = () => {
                     lineHeight: "22px",
                     color: "#FFFFFF",
                     textDecoration: "underline",
-                    textAlign: "left",
                   }}
                 >
                   contact@connecteed.com
@@ -325,7 +548,7 @@ const ContactForm: React.FC = () => {
             </div>
           </div>
 
-          {/* COLONNA DESTRA – FORM */}
+          {/* COLONNA DESTRA */}
           <div
             className="form-column w-[550px] flex flex-col items-center"
             style={{
@@ -336,77 +559,23 @@ const ContactForm: React.FC = () => {
               color: "#FFFFFF",
             }}
           >
-            <form
-              onSubmit={handleSubmit}
-              className="contact-form w-full flex flex-col"
-              style={{
-                width: 550,
-                maxWidth: 550,
-                gap: 0,
-              }}
-            >
-              {/* Gli input ora hanno la classe w-[288px] in mobile grazie al CSS */}
-              <FloatingInput
-                label="Nome E Cognome"
-                name="fullName"
-                value={formData.fullName}
-                onChange={handleChange}
-                required
-              />
-              <FloatingInput
-                label="Azienda"
-                name="company"
-                value={formData.company}
-                onChange={handleChange}
-              />
-              <FloatingInput
-                label="Email"
-                name="email"
-                type="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
-              <FloatingInput
-                label="Numero Di Telefono"
-                name="phone"
-                type="tel"
-                value={formData.phone}
-                onChange={handleChange}
-                required
-              />
-              <FloatingInput
-                label="Messaggio"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-              />
+            <form onSubmit={handleSubmit} className="contact-form w-full flex flex-col" style={{ width: 550, maxWidth: 550 }}>
+              <FloatingInput label="Nome E Cognome" name="fullName" value={formData.fullName} onChange={handleChange} required />
+              <FloatingInput label="Azienda" name="company" value={formData.company} onChange={handleChange} />
+              <FloatingInput label="Email" name="email" type="email" value={formData.email} onChange={handleChange} required />
+              <FloatingInput label="Numero Di Telefono" name="phone" type="tel" value={formData.phone} onChange={handleChange} required />
+              <FloatingInput label="Messaggio" name="message" value={formData.message} onChange={handleChange} required />
 
-              {/* Termini e Condizioni (omesso per brevità, resta invariato) */}
               <div className="terms-container mt-[24px]" style={{ marginBottom: 24 }}>
                 <span
                   className="terms-title block font-medium text-[20px] leading-[28px] text-white mb-[8px]"
-                  style={{
-                    fontFamily: "Host Grotesk, system-ui, sans-serif",
-                    fontWeight: 400,
-                  }}
+                  style={{ fontFamily: "Host Grotesk, system-ui, sans-serif", fontWeight: 400 }}
                 >
                   Termini e Condizioni*
                 </span>
-                <label
-                  className="terms-checkbox flex gap-[12px] cursor-pointer terms-container"
-                  style={{ alignItems: "flex-start" }}
-                >
-                  <div
-                    className="relative"
-                    style={{
-                      height: 24,
-                      marginTop: 4,
-                      display: "flex",
-                      alignItems: "flex-start",
-                    }}
-                  >
+
+                <label className="terms-checkbox flex gap-[12px] cursor-pointer terms-container" style={{ alignItems: "flex-start" }}>
+                  <div className="relative" style={{ height: 24, marginTop: 4, display: "flex", alignItems: "flex-start" }}>
                     <input
                       type="checkbox"
                       name="agreedToTerms"
@@ -420,11 +589,9 @@ const ContactForm: React.FC = () => {
                         background: "transparent",
                         verticalAlign: "top",
                         marginTop: 4,
-                        marginBottom: 0,
                         display: "block",
                       }}
                     />
-                    {/* Rectangle SVG check custom */}
                     {formData.agreedToTerms && (
                       <img
                         src={rectangleCheck}
@@ -442,6 +609,7 @@ const ContactForm: React.FC = () => {
                       />
                     )}
                   </div>
+
                   <p
                     className="terms-text font-normal text-[16px] leading-[24px] text-white"
                     style={{
@@ -454,38 +622,12 @@ const ContactForm: React.FC = () => {
                       display: "block",
                     }}
                   >
-                    Autorizzo il trattamento dei miei dati personali secondo quanto
-                    riportato nell&apos;informativa ai sensi del Decreto legislativo
-                    30 Giugno 2003, n. 196
+                    Autorizzo il trattamento dei miei dati personali secondo quanto riportato nell&apos;informativa ai sensi del Decreto legislativo 30 Giugno 2003, n. 196
                   </p>
                 </label>
               </div>
 
-              {/* Button */}
-
-              <button
-                type="submit"
-                disabled={status === FormStatus.SUBMITTING}
-                className="contact-form-btn navbar-contact"
-                style={{
-                  background: "rgba(255,255,255,0.9)",
-                  color: "#001b66",
-                  border: "1px solid rgba(255,255,255,0.35)",
-                  height: 40,
-                  padding: "8px 16px",
-                  borderRadius: 20,
-                  fontFamily: 'Host Grotesk, sans-serif',
-                  fontSize: 16,
-                  lineHeight: "24px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  cursor: "pointer",
-                  transition: "background .18s ease, color .18s ease, transform .10s ease",
-                  minWidth: 0,
-                  width: "auto"
-                }}
-              >
+              <button type="submit" disabled={status === FormStatus.SUBMITTING} className="contact-form-btn navbar-contact">
                 {status === FormStatus.SUBMITTING ? "Invio in corso..." : "Invia messaggio"}
               </button>
 
@@ -497,182 +639,6 @@ const ContactForm: React.FC = () => {
             </form>
           </div>
         </div>
-
-        {/* STILI MOBILE AGGIORNATI CON W-288PX E STILI BOTTONE */}
-        <style>{`
-          .navbar-contact {
-            background: rgba(255,255,255,0.9);
-            color: #001b66;
-            border: 1px solid rgba(255,255,255,0.35);
-            height: 40px;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-family: "Host Grotesk", sans-serif;
-            font-size: 16px;
-            line-height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: background .18s ease, color .18s ease, transform .10s ease;
-            width: auto;
-            min-width: 0;
-          }
-          .navbar-contact:hover {
-            background: #D7EBFF;
-            color: #001B66;
-          }
-          .navbar-contact:active {
-            background: #4FA1FF;
-            color: white;
-            transform: scale(0.97);
-          }
-          @media (max-width: 768px) {
-            .contact-form-container {
-              flex-direction: column !important;
-              gap: 40px !important;
-              padding: 0 16px !important; 
-              margin-top: 96px !important;
-              padding-bottom: 40px !important;
-              min-height: auto !important;
-            }
-
-            .text-column {
-              width: 100% !important;
-              max-width: 100% !important;
-              order: 1 !important;
-            }
-
-            .contact-title {
-              width: 100% !important;
-              font-size: 24px !important; 
-              line-height: 32px !important;
-              margin-bottom: 12px !important;
-              font-weight: 700 !important;
-            }
-
-            .contact-description {
-              width: 100% !important;
-              font-size: 14px !important;
-              line-height: 22px !important;
-              margin-bottom: 32px !important;
-              min-height: auto !important;
-            }
-
-            /* Sezione Informazioni (omessa per brevità, resta invariata) */
-            .contact-info-card {
-              width: 100% !important;
-              margin-bottom: 20px !important;
-              padding-bottom: 16px !important;
-            }
-            .contact-info-card:first-of-type { border-bottom: 1px solid rgba(255, 255, 255) !important; }
-            .contact-info-card:nth-of-type(2) { border-bottom:1px solid rgba(255, 255, 255) !important; margin-bottom: 0 !important; }
-            .contact-icon { width: 24px !important; height: 24px !important; min-width: 24px !important; padding-top: 0px !important; margin-right: 0px !important; }
-            .contact-icon img { width: 20px !important; height: 20px !important; }
-            .contact-info-title { font-size: 14px !important; line-height: 20px !important; margin-bottom: 4px !important; font-weight: 600 !important; }
-            .contact-info-value, .contact-email-link { font-size: 13px !important; line-height: 20px !important; font-weight: 400 !important; }
-
-
-            /* Sezione Form */
-            .form-column {
-              width: 100% !important;
-              max-width: 100% !important;
-              min-width: auto !important;
-              order: 2 !important;
-              padding: 0 !important;
-            }
-
-            .contact-form {
-              width: 100% !important;
-              max-width: 100% !important;
-            }
-
-            /* 💥 CAMBIO CHIAVE: LARGHEZZA INPUT A 288PX 💥 */
-            .floating-input-container {
-              width: 288px !important; /* Forza il container a 288px */
-              max-width: 100% !important; /* Rende il container responsivo se la viewport è minore di 288px */
-              margin-bottom: 24px !important;
-            }
-
-            /* Etichetta (Label) */
-            .floating-label {
-              line-height: 24px !important; 
-              transition: all 0.22s cubic-bezier(.4,0,.2,1) !important;
-            }
-
-            /* Regola l'animazione della label in base al suo stato (vuota/piena) */
-            .floating-input-container > .floating-label[style*="top: 16px"] {
-                top: 12px !important; 
-                font-size: 16px !important; 
-                
-            }
-             .floating-input-container > .floating-label[style*="top: -18px"] {
-                top: -12px !important; 
-                font-size: 14px !important; 
-                              width: 288px !important; /* Forza il container a 288px */
-
-            }
-
-            /* Input/Textarea Fields */
-            .floating-input,
-            .floating-textarea {
-                          width: 360px !important; /* Forza il container a 288px */
-
-              /* L'input eredita width: 100% dal suo stile inline, che è il 100% del container (288px) */
-              font-size: 16px !important; 
-              line-height: 24px !important;
-              height: 48px !important;
-              border-bottom: 1px solid rgba(255, 255, 255) !important; 
-              padding-top: 8px !important; 
-              padding-bottom: 8px !important;
-              
-              /* Rimuove i bordi desktop */
-              border-width: 0 !important; 
-              border-bottom-width: 1px !important; /* Riabilita il bordo inferiore mobile */
-            }
-            
-            .floating-textarea {
-              min-height: 48px !important;
-              max-height: 150px !important;
-              resize: vertical !important;
-            }
-
-            /* Termini e Condizioni (omesso per brevità, resta invariato) */
-            .terms-container { margin-top: 24px !important; margin-bottom: 24px !important; width: 100% !important; }
-            .terms-title { font-size: 16px !important; line-height: 24px !important; margin-bottom: 8px !important; }
-            .terms-text { font-size: 13px !important; line-height: 20px !important; padding-top: 0 !important; }
-            .terms-checkbox .relative { margin-top: 2px !important; }
-            .terms-checkbox input[type="checkbox"] { width: 16px !important; height: 16px !important; margin-top: 2px !important; }
-            .checkbox-checked { width: 12px !important; height: 12px !important; }
-
-
-            /* Bottone */
-            .contact-form-btn {
-              width: 100% !important;
-              max-width: 288px !important;
-              margin-top: 8px !important;
-              background: none;
-              border: none;
-              box-shadow: none;
-              padding: 0;
-            }
-              /* Termini e Condizioni */
-             .terms-container { 
-                width: 288px !important; /* Allineato agli input */
-                max-width: 100% !important;
-                margin-top: 24px !important; 
-                margin-bottom: 24px !important; 
-                max-height: 212px !important;
-                height: auto !important;
-            }
-            .terms-title { font-size: 16px !important; line-height: 24px !important; margin-bottom: 8px !important; }
-            .terms-text { font-size: 13px !important; line-height: 20px !important; padding-top: 0 !important; }
-            .terms-checkbox .relative { margin-top: 2px !important; }
-            .terms-checkbox input[type="checkbox"] { width: 16px !important; height: 16px !important; margin-top: 2px !important; }
-            .checkbox-checked { width: 12px !important; height: 12px !important; }
-          }
-          }
-        `}</style>
       </section>
 
       <Footer />

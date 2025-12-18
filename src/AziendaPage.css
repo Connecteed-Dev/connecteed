@@ -1,17 +1,57 @@
 /* ===========================
-   BASE PAGINA AZIENDA (DESKTOP)
+   AZIENDA PAGE — DEFINITIVO
+   Metodo: container 1440 + ::before/after + mobile locked
    =========================== */
 
 #azienda-page-root {
   font-family: "Host Grotesk", system-ui, sans-serif !important;
   margin: 0 auto !important;
-  padding: 0 40px 160px !important;
+  padding: 0 40px 0 !important;
   box-sizing: border-box !important;
   background: #ffffff !important;
   overflow-x: hidden !important;
+
+  position: relative !important;
+  isolation: isolate !important;
 }
 
-/* Titoli */
+/* ========== DECORAZIONI DESKTOP (stesso metodo) ========== */
+#azienda-page-root::before,
+#azienda-page-root::after {
+  content: "" !important;
+  position: absolute !important;
+  z-index: -1 !important;
+  pointer-events: none !important;
+  display: block !important;
+}
+
+#azienda-page-root::before {
+  width: 520px !important;
+  height: 520px !important;
+  top: 120px !important;
+  right: -160px !important;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(0, 61, 214, 0.16),
+    rgba(0, 61, 214, 0) 60%
+  ) !important;
+}
+
+#azienda-page-root::after {
+  width: 520px !important;
+  height: 520px !important;
+  bottom: 420px !important;
+  left: -180px !important;
+  background: radial-gradient(
+    circle at 40% 40%,
+    rgba(16, 16, 28, 0.08),
+    rgba(16, 16, 28, 0) 60%
+  ) !important;
+}
+
+/* ===========================
+   TITOLI
+   =========================== */
 .section-title {
   font-size: 24px !important;
   line-height: 32px !important;
@@ -21,13 +61,12 @@
 }
 
 /* ===========================
-   HERO / ABOUT – DESKTOP
+   HERO / ABOUT — DESKTOP
    =========================== */
-
 .about-hero-section {
   max-width: 1360px !important;
   margin: 0 auto !important;
-  padding-top: 140px !important;
+  padding-top: 140px !important; /* spazio sotto navbar */
 }
 
 .about-title {
@@ -39,14 +78,14 @@
 }
 
 .about-intro-text {
-  font-size: 16px !important;
-  line-height: 24px !important;
-  color: #BDBDBD !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
+  color: #667085 !important;
   max-width: 553px !important;
   margin: 0 !important;
 }
 
-/* Collage wrapper */
+/* Collage desktop */
 .about-section-images {
   position: relative !important;
   width: 100% !important;
@@ -55,7 +94,6 @@
   margin-top: 40px !important;
 }
 
-/* Rossa */
 .about-section-img.main-img {
   position: absolute !important;
   left: 0 !important;
@@ -67,7 +105,6 @@
   z-index: 3 !important;
 }
 
-/* B/N */
 .about-section-img.grayscale {
   position: absolute !important;
   left: 235px !important;
@@ -80,7 +117,6 @@
   z-index: 2 !important;
 }
 
-/* Codice */
 .about-section-code-img {
   position: absolute !important;
   right: 0 !important;
@@ -100,9 +136,8 @@
 }
 
 /* ===========================
-   STATS – DESKTOP
+   STATS — DESKTOP
    =========================== */
-
 .stats-section {
   max-width: 1360px !important;
   margin: 80px auto 0 !important;
@@ -115,12 +150,16 @@
   gap: 40px !important;
 }
 
+.stat {
+  flex: 1 1 0 !important;
+  text-align: center !important;
+}
+
 .stat-number {
   font-size: 56px !important;
   line-height: 64px !important;
   font-weight: 500 !important;
   color: #101828 !important;
-  text-align: center !important;
 }
 
 .stat-label {
@@ -128,13 +167,11 @@
   font-size: 14px !important;
   line-height: 20px !important;
   color: #667085 !important;
-  text-align: center !important;
 }
 
 /* ===========================
-   VALORI – DESKTOP
+   VALORI — DESKTOP
    =========================== */
-
 .values-section {
   margin-top: 120px !important;
   max-width: 1360px !important;
@@ -142,7 +179,18 @@
   display: grid !important;
   grid-template-columns: 553px 1fr !important;
   column-gap: 179px !important;
-  align-items: center !important;
+  align-items: start !important;
+}
+
+.values-text {
+  max-width: 553px !important;
+}
+
+.values-subtext {
+  font-size: 14px !important;
+  line-height: 20px !important;
+  color: #667085 !important;
+  margin: 0 0 12px !important;
 }
 
 .values-image {
@@ -162,9 +210,8 @@
 }
 
 /* ===========================
-   APPROCCIO – DESKTOP
+   APPROCCIO — DESKTOP
    =========================== */
-
 .approach-section {
   margin-top: 160px !important;
   margin-bottom: 200px !important;
@@ -202,282 +249,314 @@
   font-size: 16px !important;
   font-weight: 600 !important;
   margin: 0 0 10px !important;
+  color: #101828 !important;
 }
 
 .approach-step-text {
-  font-size: 14px !important;
-  line-height: 22px !important;
+  font-size: 12px !important;
+  line-height: 18px !important;
   color: #667085 !important;
   margin: 0 !important;
 }
 
 /* ===========================
-   ASPIRATIONS – DESKTOP
+   ASPIRAZIONI — FULL BLEED (DESKTOP)
    =========================== */
-
 .aspirations-section {
-  background: #020b2d !important;
-  color: #ffffff !important;
-  width: 100vw !important;
   position: relative !important;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-top: 120px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 100vw !important;
+  background: #0b1a2b !important;
+  color: #ffffff !important;
+  padding: 120px 0 !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
 }
 
 .aspirations-inner {
-  max-width: 1360px !important;
+  width: 100% !important;
+  max-width: 1440px !important;
   margin: 0 auto !important;
+  padding: 0 40px !important;
+  box-sizing: border-box !important;
+
   display: grid !important;
   grid-template-columns: 1fr 1fr !important;
-  gap: 60px !important;
+  gap: 56px !important;
   align-items: center !important;
 }
 
+.aspirations-title {
+  font-size: 24px !important;
+  line-height: 32px !important;
+  font-weight: 600 !important;
+  margin: 0 0 18px !important;
+}
+
 .aspirations-text {
-  padding: 80px 0 !important;
-}
-
-.aspirations-text .section-title {
-  color: #ffffff !important;
-}
-
-.aspirations-text .about-intro-text {
-  color: #BDBDBD !important;
-  max-width: 620px !important;
-  margin-top: 18px !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
+  color: rgba(255,255,255,0.75) !important;
+  margin: 0 0 12px !important;
 }
 
 .aspirations-image {
-  height: 520px !important;
+  width: 100% !important;
+  border-radius: 32px !important;
   overflow: hidden !important;
 }
 
 .aspirations-image img {
   width: 100% !important;
   height: 100% !important;
+  display: block !important;
   object-fit: cover !important;
 }
 
-/* =====================================================
-   MOBILE FLUID: 320px → 768px
-   (le misure "base" sono quelle di 320 e crescono fino a 768)
-   ===================================================== */
-@media (min-width: 320px) and (max-width: 768px) {
-  /* SCALE SYSTEM (fluid da 320 a 768, ma con BASE corretta a 320) */
+/* ===========================
+   RESPONSIVE TABLET
+   =========================== */
+@media (max-width: 900px) {
   #azienda-page-root {
-    --padX: clamp(16px, 4vw, 24px);          /* ✅ a 320 = 16px */
-    --heroTop: clamp(112px, 10vw, 104px);
-
-    --h1: clamp(26px, 4.2vw, 34px);
-    --h1-lh: clamp(34px, 5.2vw, 44px);
-
-    --h2: clamp(20px, 3.2vw, 26px);
-    --h2-lh: clamp(28px, 4vw, 34px);
-
-    --text: clamp(14px, 2.1vw, 16px);
-    --text-lh: clamp(22px, 3.2vw, 26px);
-
-    --gap: clamp(12px, 2.6vw, 16px);
-    --radius: clamp(16px, 2.6vw, 22px);
-
-    --imgSmallH: clamp(140px, 26vw, 190px);
-    --imgCodeH: clamp(160px, 30vw, 230px);
-
-    --statsNum: clamp(36px, 6vw, 44px);
-
-    --valuesTop: clamp(56px, 7vw, 88px);
-    --valuesImgH: clamp(240px, 38vw, 340px);
-
-    --approachTop: clamp(72px, 10vw, 110px);
-    --approachGap: clamp(28px, 5vw, 44px);
-    --iconSize: clamp(44px, 7vw, 56px);
-    --iconInner: clamp(20px, 3.2vw, 24px);
-
-    --darkPadY: clamp(24px, 5.5vw, 44px);
-    --darkImgH: clamp(360px, 70vw, 569px);  /* ✅ vicino al tuo 320×569 */
+    padding: 0 20px 140px !important;
   }
 
-  /* ✅ Padding pagina: 16→24 */
-  #azienda-page-root {
-    padding: 0 var(--padX) 0 !important;
-  }
-
-  /* HERO */
   .about-hero-section {
-    padding-top: var(--heroTop) !important;
-    padding-bottom: clamp(24px, 5vw, 40px) !important;
+    padding-top: 120px !important;
   }
 
   .about-title {
-    font-size: var(--h1) !important;
-    line-height: var(--h1-lh) !important;
-    margin-bottom: clamp(10px, 2.4vw, 14px) !important;
+    font-size: 44px !important;
+    line-height: 52px !important;
   }
 
-  .about-intro-text {
-    font-size: var(--text) !important;
-    line-height: var(--text-lh) !important;
-    max-width: 100% !important;
-  }
-
-  /* COLLAGE (1 sopra + 2 sotto) */
-  .about-section-images {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    grid-template-areas:
-      "code code"
-      "red  bw" !important;
-    gap: var(--gap) !important;
-    height: auto !important;
-    margin-top: clamp(18px, 4vw, 28px) !important;
-  }
-
-  .about-section-img.main-img { grid-area: red !important; }
-  .about-section-img.grayscale { grid-area: bw !important; }
-  .about-section-code-img { grid-area: code !important; }
-
-  .about-section-img.main-img,
-  .about-section-img.grayscale,
-  .about-section-code-img {
-    position: relative !important;
-    width: 100% !important;
-    left: 0 !important;
-    top: 0 !important;
-    right: 0 !important;
-    border-radius: var(--radius) !important;
-    overflow: hidden !important;
-  }
-
-  .about-section-img.main-img,
-  .about-section-img.grayscale {
-    height: var(--imgSmallH) !important;
-  }
-
-  .about-section-code-img {
-    height: var(--imgCodeH) !important;
-  }
-
-  /* STATS (colonna + divisori) */
-  .stats-section {
-    margin-top: clamp(18px, 4vw, 28px) !important;
-    padding: 0 !important;
-    border-top: 1px solid #e5e7eb !important;
-    border-bottom: 1px solid #e5e7eb !important;
-  }
-
-  .stats-row {
-    flex-direction: column !important;
-    gap: 0 !important;
-    width: 100% !important;
-    padding: 0 !important; /* ✅ già hai pad sul root */
-    margin: 0 !important;
-  }
-
-  .stats-row > div {
-    width: 100% !important;
-    padding: clamp(18px, 4.2vw, 26px) 0 !important;
-    text-align: center !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-  }
-
-  .stats-row > div:not(:last-child) {
-    border-bottom: 1px solid #e5e7eb !important;
-  }
-
-  .stat-number {
-    font-size: var(--statsNum) !important;
-    line-height: 1.1 !important;
-    width: 100% !important;
-  }
-
-  .stat-label {
-    margin-top: clamp(6px, 1.2vw, 10px) !important;
-    font-size: clamp(14px, 2vw, 15px) !important;
-    width: 100% !important;
-  }
-
-  /* TITOLI SEZIONI */
-  .section-title {
-    font-size: var(--h2) !important;
-    line-height: var(--h2-lh) !important;
-    margin-bottom: clamp(12px, 3vw, 18px) !important;
-  }
-
-  /* VALORI */
   .values-section {
-    margin-top: var(--valuesTop) !important;
     grid-template-columns: 1fr !important;
-    gap: clamp(18px, 4vw, 28px) !important;
-  }
-
-  .values-image {
-    height: var(--valuesImgH) !important;
-    border-radius: var(--radius) !important;
-  }
-
-  /* APPROCCIO */
-  .approach-section {
-    margin-top: var(--approachTop) !important;
-    margin-bottom: clamp(72px, 10vw, 140px) !important;
+    row-gap: 24px !important;
   }
 
   .approach-steps {
     grid-template-columns: 1fr !important;
-    gap: var(--approachGap) !important;
-    margin-top: clamp(28px, 5.5vw, 44px) !important;
-    padding: 0 !important; /* ✅ già pad sul root */
-  }
-
-  .approach-icon {
-    width: var(--iconSize) !important;
-    height: var(--iconSize) !important;
-    margin-bottom: clamp(12px, 2.6vw, 16px) !important;
-  }
-
-  .approach-icon img {
-    width: var(--iconInner) !important;
-    height: var(--iconInner) !important;
-  }
-
-  .approach-step-title {
-    font-size: clamp(15px, 2.3vw, 17px) !important;
-    margin: 0 0 clamp(8px, 1.8vw, 12px) !important;
-  }
-
-  .approach-step-text {
-    font-size: clamp(13px, 2vw, 14px) !important;
-    line-height: clamp(20px, 3vw, 22px) !important;
-  }
-
-  /* ✅ ASPIRAZIONI: full-bleed come screenshot (NO altezze fisse) */
-  .aspirations-section {
-    width: 100vw !important;
-    max-width: 100vw !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    margin-top: clamp(48px, 7vw, 80px) !important;
-
-    height: auto !important;       /* ✅ rimuove i 1117px */
-    min-height: 0 !important;
-    max-height: none !important;
+    gap: 28px !important;
+    max-width: 520px !important;
   }
 
   .aspirations-inner {
-    max-width: 100% !important;
-    width: 100% !important;
     grid-template-columns: 1fr !important;
-    gap: 0 !important;
-    padding: 0 !important;
+  }
+}
+
+/* ===========================
+   MOBILE — LAYOUT DEFINITIVO (identico allo screenshot)
+   =========================== */
+@media (max-width: 640px) {
+  /* decorazioni OFF su mobile */
+  #azienda-page-root::before,
+  #azienda-page-root::after {
+    display: none !important;
+  }
+.section-title {
+  font-size: 24px !important;
+  line-height: 32px !important;
+  font-weight: 600 !important;
+  margin: 108px 0 24px !important;
+  color: #101828 !important;
+}
+  #azienda-page-root {
+    padding: 0 16px 120px !important;
+  }
+
+  /* HERO */
+  .about-hero-section {
+    padding-top: 84px !important; /* come nello screen */
+    max-width: 100% !important;
+  }
+
+  .about-title {
+    font-size: 24px !important;
+    line-height: 32px !important;
+    margin: 0 0 12px !important;
+  }
+
+  .about-intro-text {
+    max-width: 100% !important;
+    font-size: 10px !important;
+    line-height: 14px !important;
+    color: #667085 !important;
+    margin-bottom: 18px !important;
+  }
+
+  /* COLLAGE MOBILE: 2 colonne, 3 blocchi come nello screen */
+  .about-section-images {
+    position: relative !important;
+    height: auto !important;
+    margin-top: 12px !important;
+
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px !important;
+    align-items: start !important;
+  }
+
+  /* reset assoluti desktop */
+  .about-section-img.main-img,
+  .about-section-img.grayscale,
+  .about-section-code-img {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 16px !important;
+  }
+
+  /* disposizione come screenshot:
+     - codice in alto a destra
+     - immagine rossa a sinistra
+     - b/n a destra sotto */
+  .about-section-code-img {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    aspect-ratio: 4 / 3 !important;
+  }
+
+  .about-section-img.main-img {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+    aspect-ratio: 4 / 3 !important;
+  }
+
+  .about-section-img.grayscale {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+    aspect-ratio: 4 / 3 !important;
+    filter: grayscale(100%) !important;
+  }
+
+  .about-section-img img,
+  .about-section-code-img img {
+    border-radius: 16px !important;
+  }
+@media (max-width: 640px) {
+  /* STATS MOBILE — layout pulito */
+
+  .stats-section {
+    margin: 64px auto 0 !important;
+    text-align: center;
+  }
+
+  .stats-row {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 85px !important;          /* ✅ distanza tra i blocchi */
+    border: none !important;
+  }
+
+  .stat {
+    padding: 0 !important;         /* ❌ niente aria extra */
+    border: none !important;
+    text-align: center !important;
+  }
+
+  .stat-number {
+    font-size: 40px !important;
+    line-height: 1 !important;     /* ✅ numero compatto */
+    margin: 0 !important;
+  }
+
+  .stat-label {
+    margin-top: 32px !important;    /* ✅ testo attaccato al numero */
+    font-size: 10px !important;
+    line-height: 14px !important;
+  }
+}
+
+
+  /* VALORI MOBILE: testo sopra, immagine sotto (come screenshot) */
+  .values-section {
+    margin-top: 40px !important;
+    grid-template-columns: 1fr !important;
+    column-gap: 0 !important;
+    row-gap: 40px !important;
+    max-width: 100% !important;
+  }
+
+  .values-subtext {
+    font-size: 10px !important;
+    line-height: 14px !important;
+  }
+
+  .values-image {
+    height: 210px !important;
+    border-radius: 16px !important;
+  }
+
+  /* APPROCCIO MOBILE: verticale con spazi come screen */
+  .approach-section {
+    margin-top: 48px !important;
+    margin-bottom: 56px !important;
+  }
+
+  .approach-steps {
+    margin-top: 20px !important;
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+    max-width: 100% !important;
+  }
+
+  .approach-icon {
+    width: 34px !important;
+    height: 34px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .approach-icon img {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .approach-step-title {
+    font-size: 10px !important;
+    line-height: 14px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .approach-step-text {
+    font-size: 8px !important;
+    line-height: 12px !important;
+  }
+
+  /* ASPIRAZIONI MOBILE: full-bleed, testo sopra, immagine sotto */
+  .aspirations-section {
+    padding: 40px 0 !important;
+  }
+
+  .aspirations-inner {
+    padding: 0 16px !important;
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .aspirations-title {
+    font-size: 14px !important;
+    line-height: 18px !important;
+    margin-bottom: 10px !important;
   }
 
   .aspirations-text {
-    padding: var(--darkPadY) var(--padX) !important; /* ✅ 16→24 */
+    font-size: 8px !important;
+    line-height: 12px !important;
+    margin-bottom: 10px !important;
   }
 
   .aspirations-image {
-    height: var(--darkImgH) !important; /* ✅ 320×569-ish */
+    border-radius: 16px !important;
   }
+}
+
+/* Anti overflow globale */
+html, body, #root {
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden;
 }

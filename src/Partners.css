@@ -1,36 +1,92 @@
-.partner-icon-eprice {
+/* =========================
+   ROOT — come nelle altre pagine
+   ========================= */
+html, body, #root {
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+/* =========================
+   PARTNERS — Section
+   Sistema: container + ::before/::after
+   ========================= */
+
+.partner-icon-eprice { 
   width: 80px !important;
   height: 68px !important;
   min-width: 80px !important;
   min-height: 68px !important;
 }
 
-
-/* SEZIONE GENERALE (1440 + padding 40) */
+/* SEZIONE GENERALE (full width, contenuto centrato) */
 .partners-section {
   width: 100vw;
   max-width: 100vw;
   margin: 0;
-  padding: 80px 0 80px; /* 80 top come in Figma */
+  padding: 80px 0 80px;
   display: flex;
   justify-content: center;
-  background: #ffffff; /* mantengo il colore attuale della sezione */
+  background: #ffffff;
+
+  position: relative;
+  isolation: isolate;
+  overflow-x: clip;
 }
 
-/* CONTENITORE INTERNO */
+/* DECORAZIONI (stesso metodo: ::before / ::after) */
+
+.partners-section::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  display: block;
+}
+
+/* glow alto a destra */
+.partners-section::before {
+  width: 520px;
+  height: 520px;
+  top: -140px;
+  right: -160px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(0, 61, 214, 0.16),
+    rgba(0, 61, 214, 0) 60%
+  );
+}
+
+/* glow basso a sinistra */
+.partners-section::after {
+  width: 520px;
+  height: 520px;
+  bottom: -180px;
+  left: -180px;
+  background: radial-gradient(
+    circle at 40% 40%,
+    rgba(16, 16, 28, 0.08),
+    rgba(16, 16, 28, 0) 60%
+  );
+}
+
+/* CONTENITORE INTERNO — 1440 + padding 40 */
 .partners-inner {
-  width: 100vw;
-  max-width: 100vw;
-  margin: 0;
-  padding: 0;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px;
   box-sizing: border-box;
+  position: relative;
+  z-index: 1;
 }
 
 /* BLOCCO TITOLO */
 .partners-title-block {
   width: 100%;
   max-width: 1360px;
-  margin: 0 auto 72px auto; /* spazio verso "Tra i nostri clienti" */
+  margin: 0 auto 72px auto;
   text-align: center;
 }
 
@@ -54,10 +110,10 @@
   margin: 0 0 24px 0;
 }
 
-/* PARAGRAFO (terza immagine) */
+/* PARAGRAFO */
 .partners-desc {
   font-family: "Host Grotesk", sans-serif;
-  font-weight: 300;        /* Light */
+  font-weight: 300;
   font-size: 20px;
   line-height: 28px;
   color: #464646;
@@ -67,7 +123,6 @@
 /* GRUPPI (clienti + partner) */
 .partners-group {
   width: 100%;
- 
   margin: 0 auto;
 }
 
@@ -85,20 +140,19 @@
   line-height: 28px;
   font-weight: 400;
   color: #000000;
-  margin: 72px 0 40px 0; /* 72 dal testo sopra, 40 dal carosello (come in Figma) */
+  margin: 72px 0 40px 0;
   letter-spacing: 0.02em;
 }
 
-/* WRAPPER CAROSELLO (1360) */
+/* WRAPPER CAROSELLO */
 .partners-slider-wrapper {
   width: 100%;
-  overflow: visible; /* Cambia da hidden a visible per mostrare il box-shadow */
+  overflow: visible; /* per mostrare box-shadow */
   margin: 0 auto;
-  background: transparent; /* carte restano bianche, niente banda bianca piena */
+  background: transparent;
 }
 
-/* ANIMAZIONI – invariate */
-
+/* SLIDER */
 .partners-slider {
   display: flex;
   gap: 32px;
@@ -117,16 +171,16 @@
   animation: partners-scroll-alt 32s linear infinite;
 }
 
-/* Aggiungi questa classe per scorrere verso destra */
 .partners-slider-reverse {
   animation-direction: reverse;
 }
 
 @keyframes partners-scroll {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  100% { transform: translateX(-50); }
 }
 
+/* FIX: l'animazione deve andare a -50% (percentuale) */
 @keyframes partners-scroll-alt {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -145,18 +199,21 @@
   padding: 0;
   border: 1px solid #eeeeee;
   transition: box-shadow 0.2s;
+  text-decoration: none;
 }
 
 .partner-card:hover {
   box-shadow: 0 4px 24px rgba(0, 112, 243, 0.1);
 }
 
-.partner-icon:not(.partner-icon-eprice) {
+/* ICONE */
+.partner-icon:not(.partner-icon-eprice):not(.partner-icon-novare) {
   width: 152px !important;
-  height: 119px !important;
+  height: 119px;
   min-width: 152px;
   min-height: 119px;
 }
+
 .partner-icon {
   object-fit: contain;
 }
@@ -168,9 +225,10 @@
   min-height: 68px !important;
 }
 
+/* =========================
+   RESPONSIVE
+   ========================= */
 
-
-/* RESPONSIVE: niente overflow orizzontale */
 @media (max-width: 1024px) {
   .partners-section {
     padding: 64px 0 64px;
@@ -179,6 +237,8 @@
   .partners-inner {
     padding: 0 20px;
   }
+
+
 
   .partners-title {
     font-size: 32px;
@@ -193,5 +253,100 @@
   .partners-label {
     margin-top: 56px;
     margin-bottom: 32px;
+  }
+
+  /* decorazioni adattate */
+  .partners-section::before {
+    width: 420px;
+    height: 420px;
+    top: -120px;
+    right: -140px;
+  }
+
+  .partners-section::after {
+    width: 420px;
+    height: 420px;
+    bottom: -160px;
+    left: -160px;
+  }
+}
+
+@media (max-width: 640px) {
+  .partners-inner {
+    padding: 0 16px;
+  }
+  @media (max-width: 640px) {
+  /* CARD mobile */
+  .partner-card {
+    width: 148px;
+    height: 74px;
+    padding: 0 16px;              /* ← padding richiesto */
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* LOGHI mobile */
+  .partner-icon {
+    height: 42px !important;      /* ← altezza fissa */
+    width: auto !important;       /* ← larghezza fluida */
+    max-width: 100%;              /* ← rientra nel padding */
+    min-width: 0 !important;
+    min-height: 0 !important;
+    object-fit: contain;
+  }
+
+  /* eccezioni: mantieni solo l’altezza */
+  .partner-icon-eprice,
+  .partner-icon-novare {
+    height: 42px !important;
+    width: auto !important;
+    max-width: 100%;
+  }
+}
+
+/* CARD */
+.partner-card {
+  background: #ffffff;
+  border-radius: 48px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 148px;
+  height: 74px;
+  padding: 0;
+  border: 1px solid #eeeeee;
+  transition: box-shadow 0.2s;
+  text-decoration: none;
+}
+  /* su mobile: decori OFF come nelle altre pagine */
+  .partners-section::before,
+  .partners-section::after {
+    display: none;
+  }
+}
+@media (max-width: 640px) {
+  /* base: tutti a 42px + padding card già impostato */
+  .partner-card { padding: 0 16px; }
+
+  .partner-icon {
+    height: 42px !important;
+    width: auto !important;
+    max-width: 100% !important;
+    object-fit: contain !important;
+    min-width: 0 !important;
+  }
+
+  /* FIX mirato: questi SVG sono "tight" e risultano visivamente troppo grandi */
+  img.partner-icon[alt*="Bounz" i],
+  img.partner-icon[alt*="LUXR" i],
+  img.partner-icon[alt*="Insyde" i] {
+    height: 34px !important;       /* più piccoli */
+    max-width: 100% !important;
+    width: auto !important;
+    object-fit: contain !important;
   }
 }

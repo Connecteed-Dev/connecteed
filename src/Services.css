@@ -1,392 +1,246 @@
-@media (max-width: 480px) {
-  .hover-preview-container {
-    max-width: 320px;
-    margin: 0 auto;
-    padding: 32px 0 0 0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    box-sizing: border-box;
-  }
-  .ambient-glow {
-    display: none;
-  }
-  .content-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .text-block {
-    width: 100%;
-    max-width: 320px;
-    color: #f5f4f9;
-    text-align: center;
-    font-family: "Host Grotesk", system-ui, sans-serif;
-    font-size: 18px;
-    line-height: 26px;
-    font-weight: 300;
-    margin: 0 auto;
-    padding: 0 8px;
-  }
-  .text-block p {
-    margin-bottom: 24px;
-    font-size: 18px;
-    line-height: 26px;
-    color: #f5f4f9;
-    font-weight: 300;
-  }
-  .text-block p:last-child {
-    margin-bottom: 0;
-  }
-  .hover-link {
-    color: #fff;
-    font-weight: 600;
-    text-decoration: none;
-    background: none;
-  }
-}
-/* SEZIONE GENERALE */
-.services-section {
-  width: 100%;                     /* NO 100vw → niente overflow orizzontale */
-  margin: 0;
-  padding: 0 0 161px;
-  display: flex;
-  justify-content: center;
+/* === WRAPPER stile editoriale (Jakala-like) === */
+.services {
+  width: 100%;
   background: #ffffff;
+  padding: 120px 0 120px;
 }
 
-/* CONTENITORE INTERNO */
-.services-inner {
+.services__wrap {
   width: 100%;
-  max-width: 1440px;               /* larghezza layout */
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 0 40px;                 /* 40px + 40px → area utile 1360px */
-  box-sizing: border-box;          /* padding incluso nei 1440 */
+  padding: 0 40px;
+  box-sizing: border-box;
+
+  position: relative;
+  isolation: isolate; /* importante per ::before/::after */
 }
 
-/* BLOCCO TITOLO */
-.services-title-block {
-  width: 100%;
-  max-width: 1138px;
-  margin: 0 auto 40px auto;
+/* Decorazioni (mesh/glow) gestite via pseudo-elementi */
+
+.services__wrap::after {
+  content: "";
+  position: absolute;
+  inset: auto;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* glow alto a destra */
+.services__wrap::before {
+  width: 520px;
+  height: 520px;
+  top: -120px;
+  right: -120px;
+  background: radial-gradient(circle at 30% 30%, rgba(0, 61, 214, 0.18), rgba(0, 61, 214, 0) 60%);
+  filter: blur(2px);
+}
+
+/* glow basso a sinistra */
+.services__wrap::after {
+  width: 520px;
+  height: 520px;
+  bottom: -180px;
+  left: -180px;
+  background: radial-gradient(circle at 40% 40%, rgba(16, 16, 28, 0.08), rgba(16, 16, 28, 0) 60%);
+}
+
+.services__header {
+  max-width: 920px;   /* “colonna” leggibile come articolo */
+  margin: 0 auto 56px;
   text-align: center;
 }
 
-/* — I nostri servizi — */
-.services-subtitle {
-  font-family: "Host Grotesk", sans-serif;
-  font-weight: 400;             /* Regular */
+.services__kicker {
+  font-family: "Host Grotesk", system-ui, sans-serif;
   font-size: 14px;
   line-height: 24px;
+  font-weight: 400;
   color: #003dd6;
-  text-align: center;
-  margin-bottom: 28px;          /* come in Figma */
+  margin-bottom: 24px;
 }
 
-/* H2 PRINCIPALE */
-.services-title {
-  font-family: "Host Grotesk", sans-serif;
-  font-weight: 500;             /* Medium */
+.services__title {
+  font-family: "Host Grotesk", system-ui, sans-serif;
   font-size: 40px;
   line-height: 48px;
+  font-weight: 500;
   color: #10101c;
-  text-align: center;
-  margin: 0 0 24px 0;           /* 24px verso il paragrafo */
+  margin: 0 0 14px 0;
 }
 
-/* PARAGRAFO */
-.services-desc {
-  font-family: "Host Grotesk", sans-serif;
-  font-weight: 300;             /* Light */
+.services__accent {
+  color: #003dd6;
+}
+
+.services__meta {
+  font-family: "Host Grotesk", system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+  color: #656565;
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.services__dot {
+  opacity: 0.7;
+}
+
+.services__intro {
+  font-family: "Host Grotesk", system-ui, sans-serif;
   font-size: 20px;
   line-height: 28px;
+  font-weight: 300;
   color: #464646;
-  text-align: center;
   margin: 0;
 }
 
-
-/* GRID SERVIZI */
-.services-grid {
-  width: 100%;                     /* usa tutta l’area utile (max 1360) */
-  margin: 40px auto 0 auto;
+/* === GRID (2 colonne desktop, 1 colonna tablet/mobile) === */
+.services__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;                       /* 24px orizzontali e verticali */
+  gap: 24px;
 }
 
 /* CARD */
-.service-card {
-  background: #EDF5FF;
+.service {
+  background: #edf5ff;
   border-radius: 24px;
   box-shadow: 0 24px 40px rgba(0, 0, 0, 0.08);
-  display: flex;
-  flex-direction: column;
-  padding: 0 0 24px 0;
-  color: #10101c; /* testo nero per tutto il contenuto card */
+  overflow: hidden;
+
+  display: grid;
+  grid-template-rows: auto 1fr;
 }
 
-/* CARD FULL-WIDTH (centrale) */
+/* “featured” (il tuo full) può diventare più largo su desktop */
+.service--featured {
+  grid-column: 1 / -1;
+}
 
-
-/* IMMAGINE */
-
-.service-card-img {
-  width: 100%;
-  height: auto;                   /* da Figma */
-  border-radius: 8px;
-  overflow: hidden;
-  margin-bottom: 24px;
+.service__media {
+  padding: 24px;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
-  box-sizing: border-box;
 }
 
-/* IMMAGINE SPECIALE: nessun bordo, nessun taglio, sempre intera */
-.service-card-img-real[src$="Frame 1707480709 (1).svg"] {
-  border-radius: 0 !important;
-  object-fit: contain !important;
-  background: transparent !important;
-  box-shadow: none !important;
-}
-.service-card-img-real {
+.service__img {
   width: 100%;
-  height: 100%;
+  
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 12px;
   display: block;
 }
 
-/* CONTENUTO CARD */
-.service-card-content {
+.service__img--contain {
+  object-fit: contain;
+  background: transparent;
+}
+
+.service__body {
+  padding: 0 24px 24px;
   text-align: center;
 }
 
-.service-card-title {
-  font-family: "Host Grotesk", sans-serif;
+.service__title {
+  font-family: "Host Grotesk", system-ui, sans-serif;
   font-size: 24px;
   line-height: 32px;
   font-weight: 500;
   color: #10101c;
-  margin-bottom: 8px;
+  margin: 0 0 8px;
 }
 
-.service-card-desc {
-  font-family: "Host Grotesk", sans-serif;
+.service__desc {
+  font-family: "Host Grotesk", system-ui, sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 300;
   color: #464646;
-  margin-bottom: 15px;
+  margin: 0 0 16px;
 }
 
-/* CTA */
-.service-card-btns {
+.service__actions {
   display: flex;
   justify-content: center;
 }
 
-/* default */
-.service-btn {
+.service__btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 16px;
-  min-height: 40px;
+  padding: 12px 16px;
+  
   border-radius: 24px;
-  border: none;
-  font-family: "Host Grotesk", sans-serif;
+  text-decoration: none;
+
+  font-family: "Host Grotesk", system-ui, sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 500;
-  cursor: pointer;
+
   background: #003dd6;
   color: #ffffff;
-  box-shadow:
-    0 4px 6px rgba(10, 13, 18, 0.03),
-    0 12px 16px rgba(10, 13, 18, 0.08);
-  transition: background 0.15s ease,
-              box-shadow 0.15s ease,
-              transform 0.05s ease;
+
+  box-shadow: 0 4px 6px rgba(10, 13, 18, 0.03),
+              0 12px 16px rgba(10, 13, 18, 0.08);
+  transition: background 0.15s ease, box-shadow 0.15s ease;
 }
 
-/* hover */
-.service-btn:hover {
+.service__btn:hover {
   background: #2877ff;
-  box-shadow:
-    0 6px 10px rgba(10, 13, 18, 0.06),
-    0 16px 24px rgba(10, 13, 18, 0.12);
 }
 
-/* pressed */
-.service-btn:active {
-  background: #07205f;
-  transform: translateY(0);
-  box-shadow:
-    0 4px 6px rgba(10, 13, 18, 0.08),
-    0 12px 16px rgba(10, 13, 18, 0.16);
-}
-
-/* RESPONSIVE: niente scroll orizzontale, card impilate */
+/* === RESPONSIVE === */
 @media (max-width: 1024px) {
-  .services-section {
-    padding: 96px 0 96px;
+  .services {
+    padding: 96px 0;
   }
 
-  .services-inner {
-    padding: 0 20px;              /* padding ridotto ma sempre dentro il 100% */
+  .services__wrap {
+    padding: 0 20px;
   }
 
-  .services-grid {
-    grid-template-columns: 1fr;   /* una sola colonna → mai overflow */
+  .services__grid {
+    grid-template-columns: 1fr;
   }
 
-  .service-card-full {
+  .service--featured {
     grid-column: auto;
   }
 }
 
 @media (max-width: 480px) {
-  .services-title {
+  .services__wrap::before,
+  .services__wrap::after {
+    display: none; /* come “decorazioni” che spariscono su mobile */
+  }
+
+  .services__title {
     font-size: 20px;
     line-height: 28px;
-    font-weight: 500;
   }
-.service-card-title {
- margin-top: 0!important;
-}
-  .services-desc {
+
+  .services__intro {
     font-size: 16px;
     line-height: 24px;
-    color: #656565 !important;               /* grigio #464646 come da specifica */
-
-  }
-  .service-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 16px;
-  min-height: 40px;
-  border-radius: 24px;
-  border: none;
-  font-family: "Host Grotesk", sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
-  cursor: pointer;
-  background: #003dd6;
-  color: #ffffff;
-  box-shadow:
-    0 4px 6px rgba(10, 13, 18, 0.03),
-    0 12px 16px rgba(10, 13, 18, 0.08);
-  transition: background 0.15s ease,
-              box-shadow 0.15s ease,
-              transform 0.05s ease;
-}
-  .service-card {
-    height: 482px;
-  }
-.service-card-img {
-  width: 100%;
-  height: 250px;                   /* da Figma */
-  border-radius: 8px;
-  overflow: hidden;
-  margin-bottom: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
- 
-  box-sizing: border-box;
-}
-.service-btn:hover {
-  background: #003dd6;
-  box-shadow:
-    0 6px 10px rgba(10, 13, 18, 0.06),
-    0 16px 24px rgba(10, 13, 18, 0.12);
-}
-.service-card {
-  background: #EDF5FF;
-  border-radius: 24px;
-  box-shadow: 0 24px 40px rgba(0, 0, 0, 0.08);
-  display: flex;
-  flex-direction: column;
-  padding: 0 0 0 0;
-  color: #10101c; /* testo nero per tutto il contenuto card */
-}
-/* pressed */
-.service-btn:active {
-  background: #07205f;
-  transform: translateY(0);
-  box-shadow:
-    0 4px 6px rgba(10, 13, 18, 0.08),
-    0 12px 16px rgba(10, 13, 18, 0.16);
-}
-
-  /* Card UX/UI Design & Branding e Website & E-commerce: height 502px su mobile */
-  .services-grid .service-card:nth-of-type(4),
-  .services-grid .service-card:nth-of-type(5) {
-    height: 490px !important;
-    padding: 0 16px 0 16px !important;
+    color: #656565;
   }
 
-
-  /* Card UX/UI Design & Branding: nessun padding laterale/bottom all'immagine */
-  .services-grid .service-card:nth-of-type(4) .service-card-img,
-  .services-grid .service-card:nth-of-type(5) .service-card-img {
-    padding: 0 !important;
-    margin: 0;
-  }
-  /* Card UX/UI Design & Branding: object-fit contain sull'immagine */
-  .services-grid .service-card:nth-of-type(4) .service-card-img-real {
-    object-fit: contain !important;
-  }
-.services-grid .service-card:nth-of-type(5) .service-card-img-real {
-    object-fit: contain !important;
-  }
-    /* Card UX/UI Design & Branding: margin-bottom 18px al bottone */
-    .services-grid .service-card:nth-of-type(4) .service-card-btns .service-btn,
-    .services-grid .service-card:nth-of-type(5) .service-card-btns .service-btn {
-      margin-bottom: 22px !important;
-    }
-
-  /* Card Product Feed Manager: margin laterale a contenuto */
-  .services-grid .service-card:nth-of-type(3) .service-card-content {
-    margin-left: 16px;
-    margin-right: 16px;
+  .service__media {
+    padding: 16px 16px 0;
   }
 
-    /* Card Product Feed Manager: altezza 520px */
-    .services-grid .service-card:nth-of-type(3) {
-      height: 520px !important;
-    }
-}
+  .service__body {
+    padding: 16px;
+  }
 
-.no-border {
-  border-radius: 0 !important;
-  object-fit: contain !important;
-  background: transparent !important;
-  box-shadow: none !important;
-}
-
-.services-section,
-.services-inner,
-.services-grid {
-  max-width: 100vw;
-  box-sizing: border-box;
-  
-}
-
-.services-title,
-.services-title-block,
-.services-subtitle,
-
-.service-card-title,
-.partner-name {
-  color: #10101c !important;
+  .service__img {
+    height: 240px;
+  }
 }

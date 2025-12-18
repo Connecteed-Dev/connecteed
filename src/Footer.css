@@ -1,13 +1,77 @@
-/* Rimuove il margin-block dei <p> solo nel footer */
+/* Nuova struttura ordinata per il blocco inferiore del footer */
+.footer-bottom-ordered {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.footer-bottom-ordered .footer-legal {
+  flex: 1 1 0;
+}
+
+.footer-bottom-ordered .footer-socials {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+@media (max-width: 600px) {
+  .footer-bottom-ordered {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .footer-bottom-ordered .footer-socials {
+    align-items: center;
+    width: 100%;
+    padding-top: 27px;
+  }
+  .footer-bottom-ordered .footer-copyright {
+    order: 2;
+    margin-top: 8px !important;
+    width: 100%;
+    text-align: center !important;
+  }
+}
+/* =========================
+   ROOT — come nelle altre pagine
+========================= */
+html, body, #root{
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+*, *::before, *::after{ box-sizing: border-box; }
+
+/* Reset margini paragrafi solo nel footer */
 .footer p {
-  margin-block-start: 0 !important;
-  margin-block-end: 0 !important;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
+  margin: 0 !important;
 }
 
 /* =========================
-   FOOTER BASE (DESKTOP/TABLET)
+   FLUID TOKENS
+========================= */
+:root{
+  --space: clamp(8px, 1.1vw, 16px);
+
+  --fs-xxs: clamp(12px, 0.95vw, 12px);
+  --fs-xs:  clamp(13px, 1.00vw, 16px);
+  --fs-sm:  clamp(14px, 1.05vw, 18px);
+  --fs-md:  clamp(16px, 1.15vw, 20px);
+
+  --fs-h1:  clamp(22px, 3.8vw, 64px);
+  --lh-h1:  clamp(28px, 4.2vw, 72px);
+
+  --radius: clamp(10px, 1.2vw, 14px);
+}
+
+/* =========================
+   FOOTER BASE (DESKTOP: NON CAMBIO)
 ========================= */
 .footer {
   color: #fff;
@@ -15,6 +79,7 @@
   justify-content: center;
   overflow: hidden;
   font-family: "Host Grotesk", system-ui, sans-serif;
+
   background: radial-gradient(
     circle at right bottom,
     rgb(123, 152, 231) 13%,
@@ -22,12 +87,36 @@
     rgb(1, 15, 28) 69%,
     rgb(1, 15, 28) 80%
   );
+
+  /* stesso metodo delle altre pagine */
+  position: relative;
+  isolation: isolate;
+  overflow-x: clip;
+}
+
+/* ::before / ::after (DESKTOP OK, MOBILE OFF più sotto) */
+
+
+.footer::before{
+  width: 520px;
+  height: 520px;
+  top: -220px;
+  left: -240px;
+  background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.10), rgba(255,255,255,0) 60%);
+}
+
+.footer::after{
+  width: 520px;
+  height: 520px;
+  bottom: -260px;
+  right: -260px;
+  background: radial-gradient(circle at 35% 35%, rgba(0,61,214,0.18), rgba(0,61,214,0) 60%);
 }
 
 .footer-container {
   width: 100%;
   max-width: 1440px;
-  padding: 40px;
+  padding: calc(var(--space) * 3) calc(var(--space) * 2.5);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -39,59 +128,66 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  gap: 16px;
+  gap: calc(var(--space) * 1);
 }
 
-/* Titolo desktop */
+/* Logo */
+.footer-logo{
+  width: clamp(24px, 2.2vw, 75px);
+  height: clamp(24px, 2.2vw, 80px);
+  flex-shrink: 0;
+}
+
+/* Titolo */
 .footer-title {
   max-width: 883px;
   height: auto;
   font-weight: 400;
-  font-size: 64px;
-  line-height: 72px;
+  font-size: var(--fs-h1);
+  line-height: var(--lh-h1);
   color: rgba(248, 250, 255, 0.98);
-  margin-bottom: 48px;
+  margin-bottom: calc(var(--space) * 3);
   text-align: left;
 }
 
 /* Label */
 .footer-label {
   font-weight: 700;
-  font-size: 18px;
-  line-height: 26px;
+  font-size: clamp(14px, 1.2vw, 18px);
+  line-height: clamp(18px, 1.6vw, 26px);
   color: #ffffff;
 }
 
 /* Testi */
 .footer-text {
   font-weight: 400;
-  font-size: 16px;
+  font-size: var(--fs-xs);
   line-height: 24px;
   color: rgba(248, 250, 255, 0.8);
 }
 
 .footer-text-muted {
   color: rgba(248, 250, 255, 0.7);
+  font-size: var(--fs-xxs);
+  line-height: 16px;
 }
 
 /* Link */
 .footer-link {
   font-weight: 400;
-  font-size: 16px;
+  font-size: var(--fs-xs);
   line-height: 24px;
   color: rgba(248, 250, 255, 0.8);
   text-decoration: underline;
   transition: color 0.2s ease;
 }
 
-.footer-link:hover {
-  color: #ffffff;
-}
+.footer-link:hover { color: #ffffff; }
 
 /* Menu */
 .footer-menu-link {
   font-weight: 400;
-  font-size: 16px;
+  font-size: clamp(15px, 1.15vw, 16px);
   line-height: 24px;
   color: #ffffff;
   height: 40px;
@@ -106,27 +202,29 @@
   text-align: left;
 }
 
+/* questo margine enorme lo rendiamo fluido */
 .footer-legal-spacing {
-  margin-bottom: 99px;
+  margin-bottom: clamp(0px, 6vw, 99px);
 }
 
-/* Copyright (desktop absolute al centro del blocco inferiore) */
+/* Copyright desktop centrato */
 .footer-copyright {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
   font-weight: 400;
-  font-size: 16px;
+  font-size: var(--fs-xs);
   line-height: 24px;
   color: rgba(248, 250, 255, 0.8);
+  padding-top: 27px;
 }
 
-/* Social button */
+/* Social */
 .social-btn {
-  width: 48px;
-  height: 48px;
-  border-radius: 14px;
+  width: clamp(44px, 3.8vw, 48px);
+  height: clamp(44px, 3.8vw, 48px);
+  border-radius: var(--radius);
   border: 1px solid rgba(255, 255, 255, 0.4);
   display: flex;
   align-items: center;
@@ -136,172 +234,139 @@
 }
 
 .social-btn:hover,
-.social-btn:focus {
-  background: #2877ff;
-}
+.social-btn:focus { background: #2877ff; }
 
-.social-btn:active {
-  background: #07205f;
-}
+.social-btn:active { background: #07205f; }
 
 .social-icon {
-  width: 20px;
-  height: 20px;
+  width: clamp(18px, 1.6vw, 20px);
+  height: clamp(18px, 1.6vw, 20px);
   color: #ffffff;
   opacity: 0.9;
 }
 
 /* =======================================================
-   MOBILE — REPLICA IDENTICA COME SCREEN (max-width: 600px)
+   MOBILE (come screenshot allegato) — 600px
 ======================================================= */
 @media (max-width: 600px) {
-  /* pagina piena altezza */
   .footer {
-    padding: 0 !important;
     width: 100vw;
     min-height: 100vh;
+  }
+
+  /* su mobile: niente decori (stesso pattern delle altre pagine) */
+  .footer::before,
+  .footer::after{
+    display: none;
   }
 
   .footer-container {
     max-width: 100vw;
     min-height: 100vh;
-    padding: 24px 16px !important;
-    box-sizing: border-box;
+    padding: calc(var(--space) * 3) calc(var(--space) * 2);
     justify-content: flex-start;
     align-items: stretch;
   }
 
-  /* blocco superiore: colonna e centrato */
+  /* blocco superiore: colonna */
   .flex.w-full {
     flex-direction: column !important;
     align-items: center !important;
     width: 100% !important;
   }
+  .flex.w-full > div { width: 100% !important; }
 
-  .flex.w-full > div {
-    width: 100% !important;
-  }
-
-  /* header: logo a sinistra + titolo a sinistra (come screenshot) */
+  /* header: logo + titolo left */
   .footer-header-row {
     width: 100%;
     justify-content: flex-start !important;
     align-items: flex-start !important;
-    margin-bottom: 32px !important;
-    gap: 16px !important;
-  }
-
-  .footer-logo {
-    width: 32px !important;
-    height: 32px !important;
-    flex-shrink: 0;
-    margin: 0 !important;
+    margin-bottom: calc(var(--space) * 2) !important;
+    gap: calc(var(--space) * 1) !important;
   }
 
   .footer-title {
-    width: 288px !important;
-    height: 96px !important;
-    font-size: 22px !important;
-    line-height: 28px !important;
-    text-align: left !important;
+    width: clamp(260px, 70vw, 288px) !important;
+    font-size: clamp(20px, 5.6vw, 22px) !important;
+    line-height: clamp(26px, 7.0vw, 28px) !important;
     margin: 0 !important;
-    display: block !important;
+    text-align: left !important;
   }
 
   /* indirizzo + contatti centrati */
-  .footer-label {
-    font-size: 14px !important;
-    line-height: 18px !important;
-    text-align: center !important;
-    width: 100%;
-  }
-
+  .footer-label,
   .footer-text,
-  .footer-link {
-    font-size: 13px !important;
-    line-height: 18px !important;
+  .footer-link,
+  .footer-text-muted {
     text-align: center !important;
     width: 100%;
   }
 
-  /* colonna sinistra (quella con indirizzo/contatti) deve centrare i blocchi */
   .flex-1.flex.flex-col.items-start {
     align-items: center !important;
   }
 
-  /* menu: centrato in colonna con spacing uniforme */
+  /* menu centrato */
   .footer-container nav {
     width: 100% !important;
-    margin-top: 40px !important;
-    margin-bottom: 40px !important;
-    gap: 24px !important;
+    margin-top: calc(var(--space) * 5) !important;
+    margin-bottom: calc(var(--space) * 5) !important;
+    gap: calc(var(--space) * 3) !important;
     align-items: center !important;
   }
 
   .footer-menu-link {
     padding: 0 !important;
     height: auto !important;
-    font-size: 15px !important;
+    font-size: clamp(14px, 4.0vw, 15px) !important;
     line-height: 20px !important;
     justify-content: center !important;
     text-align: center !important;
     width: 100%;
   }
 
-  /* blocco inferiore: tutto impilato e centrato */
+  /* blocco inferiore: colonna */
   .relative.w-full.flex.items-end.justify-between {
     position: static !important;
-    flex-direction: column !important;
+    flex-direction: column-reverse !important;
     align-items: center !important;
     justify-content: flex-start !important;
-    gap: 24px !important;
-    margin-top: 0 !important;
+    gap: calc(var(--space) * 3) !important;
   }
 
-  /* legal centrato e senza mega margin-bottom */
   .footer-legal {
     max-width: 100% !important;
     text-align: center !important;
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
   }
 
   .footer-legal-spacing {
     margin-bottom: 0 !important;
   }
 
-  .footer-text-muted {
-    font-size: 12px !important;
-    line-height: 16px !important;
-    text-align: center !important;
-  }
-
-  /* social: riga centrata */
+  /* social centrato */
   .relative.w-full.flex.items-end.justify-between > .flex {
     justify-content: center !important;
-    gap: 16px !important;
+    gap: calc(var(--space) * 2) !important;
   }
 
-  .social-btn {
-    width: 44px !important;
-    height: 44px !important;
-    border-radius: 10px !important;
-  }
-
-  .social-icon {
-    width: 18px !important;
-    height: 18px !important;
-  }
-
-  /* copyright: ultimo, centrato, con spazio sopra */
+  /* copyright ultimo */
   .footer-copyright {
     position: static !important;
-    left: auto !important;
     transform: none !important;
-    margin-top: 16px !important;
-    font-size: 12px !important;
+    margin-top: calc(var(--space) * 2) !important;
+    font-size: var(--fs-xxs) !important;
     line-height: 16px !important;
-    text-align: center !important;
     width: 100%;
+    order: 2;
+  }
+
+  /* Solo copyright dopo i social su mobile */
+  @media (max-width: 600px) {
+    .footer-copyright {
+      order: 2 !important;
+    }
+    .flex.gap-\[16px\] {
+      order: 1 !important;
+    }
   }
 }

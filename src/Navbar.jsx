@@ -23,8 +23,10 @@ const Navbar = () => {
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
     }
   }, [menuOpen]);
 
@@ -132,98 +134,60 @@ const Navbar = () => {
      {menuOpen && (
   <div
     id="mobile-menu"
-    style={{
-      position: "fixed",
-      top: 0,
-      left: 0,
-      width: "100vw",
-      height: "100vh",
-      background: "rgba(10,12,20,0.98)",
-      zIndex: 9999,
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      transition: "opacity .3s",
-    }}
+    className="bs-mobile-overlay"
+    role="dialog"
+    aria-modal="true"
   >
-    {/* HEADER MOBILE (LOGO + X) */}
-    <div
-      style={{
-        position: "absolute",
-        top: 16,
-        left: 16,
-        right: 16,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        zIndex: 10001,
-      }}
-    >
-      <img
-        src={logo}
-        alt="Connecteed logo"
-        style={{ height: 24, width: "auto", display: "block" }}
-        onClick={() => {
-          setMenuOpen(false);
-          window.location.pathname = "/";
-        }}
-      />
+    {/* TOP identico alla navbar chiusa */}
+    <div className="bs-mobile-topbar">
+      <div className="navbar-left">
+        <img
+          src={logo}
+          alt="Connecteed logo"
+          className="navbar-logo"
+          onClick={() => {
+            setMenuOpen(false);
+            window.location.pathname = "/";
+          }}
+          style={{ cursor: "pointer" }}
+        />
+      </div>
 
-      <button
-        aria-label="Chiudi menu"
-        onClick={() => setMenuOpen(false)}
-        style={{
-          background: "none",
-          border: "none",
-          color: "#fff",
-          fontSize: 36,
-          cursor: "pointer",
-          lineHeight: 1,
-        }}
-      >
-        ×
-      </button>
+      <div className="navbar-right">
+        <button
+          aria-label="Chiudi menu"
+          className="navbar-burger bs-mobile-close"
+          onClick={() => setMenuOpen(false)}
+        >
+          <span className="close-x-bar close-x-bar1"></span>
+          <span className="close-x-bar close-x-bar2"></span>
+        </button>
+      </div>
     </div>
 
-    {/* LISTA (IDENTICA A PRIMA) */}
-    <ul style={{ listStyle: "none", padding: 0, margin: 0, width: "100%", textAlign: "center" }}>
-      {NAV_LINKS.map(link => (
-        <li key={link.label} style={{ margin: "24px 0" }}>
+    {/* CONTENUTO CENTRATO */}
+    <div className="bs-mobile-body">
+      <div className="bs-mobile-links">
+        {NAV_LINKS.map((link) => (
           <button
+            key={link.label}
             type="button"
-            style={{
-              background: "none",
-              border: "none",
-              color: "#fff",
-              fontSize: 24,
-              fontFamily: "Host Grotesk, sans-serif",
-              cursor: "pointer",
-              padding: 0,
-            }}
+            className="bs-mobile-link"
             onClick={() => {
               setMenuOpen(false);
-              window.location.pathname = link.href;
+              window.location.pathname = link.href; // identico al desktop
             }}
           >
             {link.label}
           </button>
-        </li>
-      ))}
-      <li style={{ margin: "32px 0 0 0" }}>
+        ))}
+      </div>
+
+      {/* CTA */}
+      <div className="bs-mobile-cta-wrap">
         <button
           type="button"
-          style={{
-            background: "#fff",
-            color: "#001b66",
-            border: "none",
-            borderRadius: 20,
-            fontSize: 20,
-            fontWeight: 600,
-            padding: "12px 32px",
-            fontFamily: "Host Grotesk, sans-serif",
-            cursor: "pointer",
-          }}
+          className="bs-mobile-cta"
           onClick={() => {
             setMenuOpen(false);
             window.location.pathname = "/ContactPage";
@@ -231,10 +195,11 @@ const Navbar = () => {
         >
           Contattaci
         </button>
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
 )}
+
 
 
       {/* Responsive CSS per mostrare burger solo su mobile */}

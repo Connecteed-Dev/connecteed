@@ -4,10 +4,10 @@ import type React from "react"
 import { useState, useCallback, useRef, useEffect } from "react"
 
 const previewData = {
-  midjourney: {
+  Connecteed: {
     image: "https://images.unsplash.com/photo-1695144244472-a4543101ef35?w=560&h=320&fit=crop",
     title: "Connecteed",
-    subtitle: "AI-powered business solutions",
+    subtitle: "Create stunning AI-generated artwork",
   },
   stable: {
     image: "https://images.unsplash.com/photo-1712002641088-9d76f9080889?w=560&h=320&fit=crop",
@@ -22,63 +22,7 @@ const previewData = {
 }
 
 const styles = `
-  @media (max-width: 480px) {
-    .hover-preview-container {
-      margin: 0;
-      padding: 0 !important;
-      min-height: 100vh;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-      justify-content: stretch;
-    }
-    .ambient-glow {
-      width: 320px;
-      height: 320px;
-      top: 30%;
-      left: 50%;
-      transform: translate(-50%, -30%);
-    }
-    .content-container {
-      max-width: 320px;
-      width: 100%;
-      padding: 0 16px;
-      box-sizing: border-box;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    .text-block {
-      font-size: 24px;
-      line-height: 1.4;
-      color: #e5e5e5;
-      text-align: center;
-      font-weight: 400;
-      max-width: 320px;
-      width: 100%;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    .text-block p {
-      margin-bottom: 1.2em;
-      font-size: 24px;
-      line-height: 1.4;
-      opacity: 1;
-      animation: none;
-      text-align: center;
-    }
-    .hover-link {
-      font-size: 24px;
-    }
-  }
-
-  @import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@300;400;500;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;500;700&display=swap');
 
   .hover-preview-container {
     min-height: 100vh;
@@ -87,7 +31,7 @@ const styles = `
     align-items: center;
     justify-content: center;
     padding: 40px;
-    font-family: 'Host Grotesk', sans-serif !important;
+    font-family: 'Host Grotesk', system-ui, sans-serif;
     overflow-x: hidden;
     position: relative;
   }
@@ -127,16 +71,21 @@ const styles = `
   .content-container {
     max-width: 900px;
     width: 100%;
-    font-family: 'Host Grotesk', sans-serif !important;
   }
 
   .text-block {
     font-size: clamp(1.5rem, 4vw, 2.5rem);
-    line-height: 1.6;
+    line-height: 32px;
     color: #888;
     font-weight: 400;
     letter-spacing: -0.02em;
-    font-family: 'Host Grotesk', sans-serif !important;
+    font-family: 'Host Grotesk', system-ui, sans-serif;
+  }
+
+  @media (max-width: 600px) {
+    .text-block {
+      text-align: center;
+    }
   }
 
   .text-block p {
@@ -163,7 +112,7 @@ const styles = `
   .hover-link {
     color: #fff;
     font-weight: 700;
-    font-family: 'Host Grotesk', sans-serif !important;
+    font-family: 'Host Grotesk', system-ui, sans-serif;
     cursor: pointer;
     position: relative;
     display: inline-block;
@@ -224,7 +173,7 @@ const styles = `
     font-size: 0.85rem;
     color: #fff;
     font-weight: 600;
-    font-family: 'Syne', sans-serif;
+    font-family: 'Host Grotesk', system-ui, sans-serif;
   }
 
   .preview-card-subtitle {
@@ -367,19 +316,21 @@ export function HoverPreview() {
         <div className="content-container">
           <div className="text-block">
             <p>
-              Sfruttiamo l’
+              Sfruttiamo 
               <HoverLink
-                previewKey="midjourney"
+                previewKey="Connecteed"
                 onHoverStart={handleHoverStart}
                 onHoverMove={handleHoverMove}
                 onHoverEnd={handleHoverEnd}
               >
-                Intelligenza Artificiale
-              </HoverLink>
-              {" "}per automatizzare i processi, velocizzare le attività operative e ottimizzare ogni flusso di lavoro.
+             l’ Intelligenza Artificiale
+              </HoverLink>{" "}
+              per automatizzare i processi, velocizzare le attività operative e ottimizzare ogni flusso di lavoro.
             </p>
+
             <p>
               Offriamo ai nostri clienti soluzioni moderne, intelligenti e scalabili.
+              
             </p>
           </div>
         </div>

@@ -29,9 +29,10 @@ export default function Footer() {
         <div className="flex w-full">
           {/* SINISTRA */}
           <div className="flex-1 flex flex-col items-start">
-            <div className="footer-header-row mb-[32px]">
+
+            <div className="footer-header-row mb-[32px]" style={{ flexDirection: 'column', alignItems: 'flex-start', gap: 0 }}>
               <img src={logo} alt="Logo" className="footer-logo" />
-              <h1 className="footer-title" style={{ width: 883 }}>
+              <h1 className="footer-title" style={{ width: 883, marginTop: 16 }}>
                 Tecnologia che Unisce,<br />Automatizza e fa Crescere.
               </h1>
             </div>
@@ -91,8 +92,8 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* BLOCCO INFERIORE */}
-        <div className="relative w-full flex items-end justify-between">
+        {/* BLOCCO INFERIORE ORDINATO */}
+        <div className="footer-bottom-ordered">
           <div className="footer-legal flex flex-col gap-[4px]">
             <span className="footer-text-muted footer-legal-spacing">
               Connecteed S.r.l. PMI innovativa – società benefit
@@ -107,21 +108,21 @@ export default function Footer() {
               Capitale sociale €5.437.953,14
             </span>
           </div>
-
-          <p className="footer-copyright">
-            © 2025 Copyright Connecteed
-          </p>
-
-          <div className="flex gap-[16px]">
-            <SocialBtn label="LinkedIn">
-              <LinkedInIcon />
-            </SocialBtn>
-            <SocialBtn label="Instagram">
-              <InstagramIcon />
-            </SocialBtn>
-            <SocialBtn label="Facebook">
-              <FacebookIcon />
-            </SocialBtn>
+          <div className="footer-socials">
+            <div className="flex gap-[16px]">
+              <SocialBtn label="LinkedIn">
+                <LinkedInIcon />
+              </SocialBtn>
+              <SocialBtn label="Instagram">
+                <InstagramIcon />
+              </SocialBtn>
+              <SocialBtn label="Facebook">
+                <FacebookIcon />
+              </SocialBtn>
+            </div>
+            <p className="footer-copyright">
+              © 2025 Copyright Connecteed
+            </p>
           </div>
         </div>
       </div>

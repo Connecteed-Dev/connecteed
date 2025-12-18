@@ -60,7 +60,7 @@ export default function Partners() {
           <div className="partners-label">Tra i nostri clienti</div>
 
           <div className="partners-slider-wrapper">
-            <div className="partners-slider">
+            <div className="partners-slider partners-slider-alt partners-slider">
               {[...clienti, ...clienti].map((p, i) => (
                 <a
                   className="partner-card"
