@@ -368,19 +368,7 @@
    MOBILE — LAYOUT DEFINITIVO (identico allo screenshot)
    =========================== */
 @media (max-width: 640px) {
-    .aspiration-paragraph {
-      max-width: 100% !important;
-      font-size: 16px !important;
-      line-height: 24px !important;
-      color: #BDBDBD !important;
-      margin-bottom: 18px !important;
-      padding: 0 16px !important;
-      font-weight: 300 !important;
-      background: none !important;
-      border: none !important;
-      box-shadow: none !important;
-      display: block !important;
-    }
+  
   /* decorazioni OFF su mobile */
   #azienda-page-root::before,
   #azienda-page-root::after {
@@ -406,7 +394,7 @@
   font-size: 24px !important;
   line-height: 32px !important;
   font-weight: 400 !important;
-  margin: 0 0 24px 16px !important;
+  margin: 24px 0 24px 0 !important;
   color: #F5F4F9 !important;
   text-align: left !important;
 }
@@ -437,15 +425,7 @@
     padding: 0 16px !important;
     font-weight: 300 !important;
   }
-.aspiration-paragraph {
-    max-width: 100% !important;
-    font-size: 16px !important;
-    line-height: 24px !important;
-    color: #BDBDBD !important;
-    margin-bottom: 18px !important;
-    padding: 0 16px !important;
-    font-weight: 300 !important;
-  }
+
   /* COLLAGE MOBILE: 2 colonne, 3 blocchi come nello screen */
   .about-section-images {
     position: relative !important;
@@ -457,7 +437,9 @@
     gap: 12px !important;
     align-items: start !important;
   }
-
+.pd{
+    padding: 0 16px !important;
+  }
   /* reset assoluti desktop */
   .about-section-img.main-img,
   .about-section-img.grayscale,
@@ -509,6 +491,15 @@
     text-align: center;
   }
 
+.aspiration-paragraph {
+    max-width: 100% !important;
+    font-size: 16px !important;
+    line-height: 24px !important;
+    color: #BDBDBD !important;
+    margin-bottom: 18px !important;
+    padding: 0 16px !important;
+    font-weight: 300 !important;
+  }
   .stats-row {
     flex-direction: column !important;
     align-items: center !important;
@@ -611,10 +602,7 @@
   }
 
   /* ASPIRAZIONI MOBILE: full-bleed, testo sopra, immagine sotto */
-  .aspirations-section {
-    padding: 40px 0 !important;
-    height: 1117px !important;
-  }
+  
 
   .aspirations-inner {
     padding: 0 !important;

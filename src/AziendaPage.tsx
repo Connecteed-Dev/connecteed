@@ -2,18 +2,18 @@ import React from "react";
 import "./AziendaPage.css";
 import Footer from "./Footer";
 
+
+
 import MessageCircleIcon from "./assets/message-circle.svg";
 import LayoutGridIcon from "./assets/layout-grid-01.svg";
 import TrendingUpIcon from "./assets/trending-up-01.svg";
+import FrameAspirazioni from "./assets/azienda/Frame 1707480702.svg";
+import ImgCode from "./assets/azienda/imgCode.svg";
+import ImgDesk from "./assets/azienda/imgDesk.svg";
+import ImgRed from "./assets/azienda/imgRed.svg";
 
-const IMG_RED_WORKSHOP =
-  "https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=1200&auto=format&fit=crop";
-const IMG_DESK_OFFICE =
-  "https://images.unsplash.com/photo-1497215842964-222b430dc094?q=80&w=1200&auto=format&fit=crop";
-const IMG_CODE_SCREEN =
-  "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop";
-const IMG_LAPTOP_DASHBOARD =
-  "https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1500&auto=format&fit=crop";
+
+
 
 export default function AziendaPage() {
   return (
@@ -32,15 +32,15 @@ export default function AziendaPage() {
 
           <div className="about-section-images">
             <div className="about-section-code-img">
-              <img src={IMG_CODE_SCREEN} alt="Schermo con codice" />
+              <img src={ImgCode} alt="Schermo con codice" />
             </div>
 
             <div className="about-section-img main-img">
-              <img src={IMG_RED_WORKSHOP} alt="Workshop alla lavagna" />
+              <img src={ImgRed} alt="Workshop alla lavagna" />
             </div>
 
             <div className="about-section-img grayscale">
-              <img src={IMG_DESK_OFFICE} alt="Desk ufficio" />
+              <img src={ImgDesk} alt="Desk ufficio" />
             </div>
           </div>
         </section>
@@ -126,7 +126,7 @@ export default function AziendaPage() {
         {/* ASPIRATIONS */}
         <section className="aspirations-section">
           <div className="aspirations-inner">
-            <div className="">
+            <div className="pd">
               <h2 className="aspiration-titlee">A cosa aspiriamo</h2>
               <p className="aspirations-paragraph">
                 Vogliamo offrire soluzioni su misura e servizi digitali costruiti
@@ -145,7 +145,7 @@ export default function AziendaPage() {
             </div>
 
             <div className="aspirations-image">
-              <img src={IMG_LAPTOP_DASHBOARD} alt="Dashboard su laptop" />
+              <img src={FrameAspirazioni} alt="Aspirazioni azienda" />
             </div>
           </div>
         </section>

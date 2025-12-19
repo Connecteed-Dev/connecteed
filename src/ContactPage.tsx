@@ -567,12 +567,7 @@ const ContactForm: React.FC = () => {
               <FloatingInput label="Messaggio" name="message" value={formData.message} onChange={handleChange} required />
 
               <div className="terms-container mt-[24px]" style={{ marginBottom: 24 }}>
-                <span
-                  className="terms-title block font-medium text-[20px] leading-[28px] text-white mb-[8px]"
-                  style={{ fontFamily: "Host Grotesk, system-ui, sans-serif", fontWeight: 400 }}
-                >
-                  Termini e Condizioni*
-                </span>
+                
 
                 <label className="terms-checkbox flex gap-[12px] cursor-pointer terms-container" style={{ alignItems: "flex-start" }}>
                   <div className="relative" style={{ height: 24, marginTop: 4, display: "flex", alignItems: "flex-start" }}>
