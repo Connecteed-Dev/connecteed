@@ -466,10 +466,10 @@ const ContactForm: React.FC = () => {
               style={{
                 width: 668,
                 fontFamily: "Host Grotesk, system-ui, sans-serif",
-                fontWeight: 400,
-                fontSize: 16,
-                lineHeight: "26px",
-                color: "#FFFFFF",
+                fontWeight: 300,
+                fontSize: 20,
+                lineHeight: "28px",
+                color: "#f5f4f9",
                 marginBottom: 40,
                 minHeight: 186,
               }}
@@ -490,10 +490,10 @@ const ContactForm: React.FC = () => {
                   className="contact-info-title"
                   style={{
                     fontFamily: "Host Grotesk, system-ui, sans-serif",
-                    fontWeight: 400,
-                    fontSize: 16,
-                    lineHeight: "24px",
-                    color: "#FFFFFF",
+                    fontWeight: 500,
+                    fontSize: 20,
+                    lineHeight: "28px",
+                    color: "#f8faff",
                     marginBottom: 2,
                   }}
                 >
@@ -504,9 +504,9 @@ const ContactForm: React.FC = () => {
                   style={{
                     fontFamily: "Host Grotesk, system-ui, sans-serif",
                     fontWeight: 300,
-                    fontSize: 14,
-                    lineHeight: "22px",
-                    color: "#FFFFFF",
+                    fontSize: 16,
+                    lineHeight: "20px",
+                    color: "#f8faff",
                   }}
                 >
                   Via della Conciliazione, 44 00193 – Roma
@@ -523,10 +523,10 @@ const ContactForm: React.FC = () => {
                   className="contact-info-title"
                   style={{
                     fontFamily: "Host Grotesk, system-ui, sans-serif",
-                    fontWeight: 400,
-                    fontSize: 16,
-                    lineHeight: "24px",
-                    color: "#FFFFFF",
+                    fontWeight: 500,
+                    fontSize: 20,
+                    lineHeight: "28px",
+                    color: "#f8faff",
                     marginBottom: 2,
                   }}
                 >
@@ -538,9 +538,9 @@ const ContactForm: React.FC = () => {
                   style={{
                     fontFamily: "Host Grotesk, system-ui, sans-serif",
                     fontWeight: 300,
-                    fontSize: 14,
-                    lineHeight: "22px",
-                    color: "#FFFFFF",
+                    fontSize: 16,
+                    lineHeight: "24px",
+                    color: "#f8faff",
                     textDecoration: "underline",
                   }}
                 >
