@@ -23,7 +23,7 @@ export default function AziendaPage() {
         <section className="about-hero-section">
           <h1 className="about-title">Qualcosa Su Di Noi</h1>
 
-          <p className="pd">
+          <p className="ps">
             Persone, idee, risultati. Dietro ogni progetto di successo ci sono
             persone: voli, storie, idee. Il nostro team è prima di tutto una
             squadra, crediamo nella forza della collaborazione, nell’ascolto
