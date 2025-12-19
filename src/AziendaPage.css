@@ -2,7 +2,8 @@
    BASE
 =========================== */
 html, body, #root {
-  width: 100vw;
+  width: 100%;
+  max-width: 1440px;
   max-width: 100vw;
   overflow-x: hidden;
 }
