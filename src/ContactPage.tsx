@@ -231,7 +231,7 @@ const pageStyles = `
     }
 
     .terms-container {
-      width: 288px !important;
+      
       max-width: 100% !important;
       margin-top: 24px !important;
       margin-bottom: 24px !important;
@@ -302,7 +302,7 @@ const pageStyles = `
   }
 
   .floating-input-container {
-    width: 288px !important;
+    
     max-width: 100% !important;
   }
 
