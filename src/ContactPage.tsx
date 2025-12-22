@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { ContactFormData, FormStatus } from "./types";
 import Footer from "./Footer";
 import videoBg from "./assets/Composizione1.mp4";
@@ -27,7 +27,6 @@ const pageStyles = `
   }
 
   /* Glow decorativi dietro */
-  
   .contact-page::after{
     content:"";
     position:absolute;
@@ -84,92 +83,77 @@ const pageStyles = `
   }
   .navbar-contact:hover { background: #D7EBFF; color: #001B66; }
   .navbar-contact:active { background: #4FA1FF; color: #fff; transform: scale(0.97); }
-/* ===========================================
-   iPAD ONLY (portrait + landscape)
-   641px – 1024px
-   NON tocca desktop, NON tocca mobile
-   =========================================== */
-   /* =====================================================
+
+  /* =====================================================
    DESKTOP FLUIDO 1025px → 1439px
    Stesso layout 1440px, ma senza overflow
    ===================================================== */
-@media (min-width: 1025px) and (max-width: 1439px) {
-
-  .contact-form-container {
-    gap: 80px !important;              /* riduce gap */
-    padding-left: 40px !important;
-    padding-right: 40px !important;
+  @media (min-width: 1025px) and (max-width: 1439px) {
+    .contact-form-container {
+      gap: 80px !important;
+      padding-left: 40px !important;
+      padding-right: 40px !important;
+    }
+    .text-column {
+      width: auto !important;
+      max-width: 620px !important;
+      flex: 1 1 0;
+    }
+    .form-column {
+      width: auto !important;
+      max-width: 520px !important;
+      min-width: 0 !important;
+      flex: 1 1 0;
+    }
+    .contact-form {
+      width: 100% !important;
+      max-width: 520px !important;
+    }
   }
 
-  .text-column {
-    width: auto !important;
-    max-width: 620px !important;
-    flex: 1 1 0;
+  /* ===========================================
+    iPAD ONLY (portrait + landscape)
+    641px – 1024px
+    NON tocca desktop, NON tocca mobile
+  =========================================== */
+  @media (min-width: 641px) and (max-width: 1024px) {
+    .contact-form-container {
+      gap: 64px;
+      padding-left: 32px;
+      padding-right: 32px;
+    }
+    .text-column {
+      width: auto !important;
+      max-width: 100% !important;
+      flex: 1 1 0;
+    }
+    .form-column {
+      width: auto !important;
+      max-width: 520px !important;
+      min-width: 0 !important;
+      flex: 1 1 0;
+    }
+    .contact-title {
+      font-size: 36px !important;
+      line-height: 44px !important;
+    }
+    .contact-description {
+      font-size: 18px !important;
+      line-height: 26px !important;
+      min-height: auto !important;
+    }
+    .floating-input-container {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    .contact-form {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
   }
-
-  .form-column {
-    width: auto !important;
-    max-width: 520px !important;
-    min-width: 0 !important;
-    flex: 1 1 0;
-  }
-
-  .contact-form {
-    width: 100% !important;
-    max-width: 520px !important;
-  }
-}
-
-@media (min-width: 641px) and (max-width: 1024px) {
-
-  /* layout resta a 2 colonne come desktop */
-  .contact-form-container {
-    gap: 64px;                 /* più stretto del desktop */
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-
-  /* colonne elastiche (desktop aveva width fisse) */
-  .text-column {
-    width: auto !important;
-    max-width: 100% !important;
-    flex: 1 1 0;
-  }
-
-  .form-column {
-    width: auto !important;
-    max-width: 520px !important;
-    min-width: 0 !important;
-    flex: 1 1 0;
-  }
-
-  /* titoli leggermente più compatti, MA desktop resta identico */
-  .contact-title {
-    font-size: 36px !important;
-    line-height: 44px !important;
-  }
-
-  .contact-description {
-    font-size: 18px !important;
-    line-height: 26px !important;
-    min-height: auto !important;
-  }
-
-  /* input full width su iPad */
-  .floating-input-container {
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-
-  .contact-form {
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-}
 
   /* ============ RESPONSIVE (mobile layout) ============ */
   @media (max-width: 900px) {
-    /* decori OFF su mobile (come le altre pagine) */
     .contact-page::before,
     .contact-page::after { display: none; }
 
@@ -188,23 +172,23 @@ const pageStyles = `
       order: 1 !important;
     }
 
-   .contact-title {
-  width: 100% !important;
-  font-size: 24px !important;
-  line-height: 32px !important;
-  margin-bottom: 16px !important;
-  font-weight: 500 !important; /* Medium */
-}
+    .contact-title {
+      width: 100% !important;
+      font-size: 24px !important;
+      line-height: 32px !important;
+      margin-bottom: 16px !important;
+      font-weight: 500 !important;
+    }
 
-.contact-description {
-  width: 100% !important;
-  font-size: 16px !important;
-  line-height: 24px !important;
-  font-weight: 300 !important; /* Light */
-  color: #F5F4F9 !important;
-  margin-bottom: 40px !important;
-  min-height: auto !important;
-}
+    .contact-description {
+      width: 100% !important;
+      font-size: 16px !important;
+      line-height: 24px !important;
+      font-weight: 300 !important;
+      color: #F5F4F9 !important;
+      margin-bottom: 40px !important;
+      min-height: auto !important;
+    }
 
     .contact-info-card {
       width: 100% !important;
@@ -235,7 +219,6 @@ const pageStyles = `
       max-width: 100% !important;
     }
 
-    /* container input “288px” (tuo requisito) */
     .floating-input-container {
       width: 288px !important;
       max-width: 100% !important;
@@ -262,12 +245,10 @@ const pageStyles = `
     }
 
     .terms-container {
-      
       max-width: 100% !important;
       margin-top: 24px !important;
       margin-bottom: 24px !important;
     }
-    .terms-title { font-size: 16px !important; line-height: 24px !important; margin-bottom: 8px !important; }
     .terms-text { font-size: 14px !important; line-height: 22px !important; }
 
     .contact-form-btn {
@@ -276,72 +257,7 @@ const pageStyles = `
       margin-top: 8px !important;
       height: 48px !important;
     }
-      
-/* =====================================================
-   FIX RESPONSIVE — TABLET / IPAD (MAI OVERFLOW)
-   ===================================================== */
-.contact-form-container,
-.text-column,
-.form-column {
-  min-width: 0 !important;
-}
-
-@media (max-width: 1200px) {
-  .contact-form-container {
-    gap: 48px !important;
-    padding-left: 20px !important;
-    padding-right: 20px !important;
   }
-
-  .text-column,
-  .form-column {
-    width: auto !important;
-    max-width: none !important;
-    flex: 1 1 0 !important;
-  }
-
-  .contact-title,
-  .contact-description,
-  .contact-info-card,
-  .contact-form {
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-
-  .floating-input-container {
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-}
-
-@media (max-width: 980px) {
-  .contact-form-container {
-    flex-direction: column !important;
-    gap: 64px !important;
-    margin-top: 120px !important;
-  }
-}
-
-/* ===== MOBILE ===== */
-@media (max-width: 768px) {
-  .contact-page::before,
-  .contact-page::after { display: none; }
-
-  .contact-form-container {
-    padding: 0 16px 76px 16px !important;
-    gap: 72px !important;
-  }
-
-  .floating-input-container {
-    
-    max-width: 100% !important;
-  }
-
-  .contact-form-btn {
-    width: 288px !important;
-  }
-}
-  
 `;
 
 // Campo input con label animata
@@ -472,6 +388,13 @@ const ContactForm: React.FC = () => {
   });
 
   const [status, setStatus] = useState<FormStatus>(FormStatus.IDLE);
+  const [errorMsg, setErrorMsg] = useState<string>("");
+
+  // Base URL dal .env di Vite
+  const apiBaseUrl = useMemo(() => {
+    const raw = (import.meta as any).env?.VITE_API_URL as string | undefined;
+    return (raw ?? "http://localhost:8086").replace(/\/$/, "");
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -482,17 +405,51 @@ const ContactForm: React.FC = () => {
     setFormData((prev) => ({ ...prev, agreedToTerms: e.target.checked }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMsg("");
+
     if (!formData.agreedToTerms) {
       alert("Devi accettare i termini e le condizioni.");
       return;
     }
+
     setStatus(FormStatus.SUBMITTING);
 
-    setTimeout(() => {
+    try {
+      // ⚠️ questo endpoint deve esistere nel tuo backend
+      // esempio: POST http://localhost:8086/api/contact
+      const res = await fetch(`${apiBaseUrl}/api/send-email`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fullName: formData.fullName,
+          company: formData.company,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+          agreedToTerms: formData.agreedToTerms,
+        }),
+      });
+
+      if (!res.ok) {
+        // prova a leggere un messaggio dal backend
+        let serverMsg = "";
+        try {
+          const data = await res.json();
+          serverMsg = data?.message || "";
+        } catch {
+          // ignore
+        }
+        throw new Error(serverMsg || `Errore invio (${res.status})`);
+      }
+
       setStatus(FormStatus.SUCCESS);
+
       setTimeout(() => setStatus(FormStatus.IDLE), 3000);
+
       setFormData({
         fullName: "",
         company: "",
@@ -501,7 +458,11 @@ const ContactForm: React.FC = () => {
         message: "",
         agreedToTerms: false,
       });
-    }, 1500);
+    } catch (err: any) {
+      setStatus(FormStatus.ERROR as any); // se nel tuo enum non c'è ERROR, lasciamo messaggio e torniamo IDLE
+      setErrorMsg(err?.message || "Errore durante l’invio. Riprova.");
+      setTimeout(() => setStatus(FormStatus.IDLE), 2500);
+    }
   };
 
   return (
@@ -652,8 +613,6 @@ const ContactForm: React.FC = () => {
               <FloatingInput label="Messaggio" name="message" value={formData.message} onChange={handleChange} required />
 
               <div className="terms-container mt-[24px]" style={{ marginBottom: 24 }}>
-                
-
                 <label className="terms-checkbox flex gap-[12px] cursor-pointer terms-container" style={{ alignItems: "flex-start" }}>
                   <div className="relative" style={{ height: 24, marginTop: 4, display: "flex", alignItems: "flex-start" }}>
                     <input
@@ -714,6 +673,12 @@ const ContactForm: React.FC = () => {
               {status === FormStatus.SUCCESS && (
                 <div className="mt-2 text-green-400 text-center text-sm font-medium">
                   Messaggio inviato con successo!
+                </div>
+              )}
+
+              {!!errorMsg && (
+                <div className="mt-2 text-red-300 text-center text-sm font-medium">
+                  {errorMsg}
                 </div>
               )}
             </form>
