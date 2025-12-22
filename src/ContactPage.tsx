@@ -390,10 +390,11 @@ const ContactForm: React.FC = () => {
   const [status, setStatus] = useState<FormStatus>(FormStatus.IDLE);
   const [errorMsg, setErrorMsg] = useState<string>("");
 
-  // Base URL dal .env di Vite
+  // take the base url from env variable
   const apiBaseUrl = useMemo(() => {
-    return import.meta.env.VITE_API_URL || "";
+    return process.env.REACT_APP_API_BASE_URL || "http://localhost:8086";
   }, []);
+  
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
