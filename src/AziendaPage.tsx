@@ -67,7 +67,7 @@ export default function AziendaPage() {
         {/* VALORI */}
         <section className="values-section">
           <div>
-            <h2 className="section-title">I nostri valori</h2>
+            <h2 className="section-title">Crediamo in un modo più semplice e umano di fare business.</h2>
             <p className="about-intro-text">
               Con Connecteed aiutiamo le aziende a lavorare in un unico ecosistema, eliminando inefficienze e trasformando la complessità in valore. Prodotti, vendite, operations e post-vendita si muovono in perfetta armonia, supportati da una tecnologia potente ma sempre al servizio delle persone. Perché dietro ogni processo ci sono decisioni, relazioni e obiettivi reali. Connecteed connette sistemi, ma soprattutto persone, per permetterti di concentrarti su ciò che conta davvero: far crescere il tuo business.
             </p>
@@ -79,7 +79,17 @@ export default function AziendaPage() {
         {/* APPROCCIO */}
         <section className="approach-section">
           <h2 className="approccio-titolo">Il nostro approccio</h2>
-
+          <p className="approach-desc" style={{
+            fontSize: 20,
+            lineHeight: '28px',
+            color: '#464646',
+            maxWidth: 800,
+            margin: '0 0 56px 0',
+            fontWeight: 300
+          }}>
+            Un percorso costruito su misura, pensato per accompagnarti dalla visione alla realizzazione.<br />
+            Un metodo semplice e collaborativo che trasforma le tue esigenze in soluzioni concrete.
+          </p>
           <div className="approach-steps">
             <div className="approach-step">
               <div className="approach-icon">
