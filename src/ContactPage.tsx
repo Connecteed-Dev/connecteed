@@ -390,10 +390,10 @@ const ContactForm: React.FC = () => {
   const [status, setStatus] = useState<FormStatus>(FormStatus.IDLE);
   const [errorMsg, setErrorMsg] = useState<string>("");
 
-  // take the base url from env variable
-  const apiBaseUrl = useMemo(() => {
-    return process.env.VITE_API_URL || "http://localhost:8086";
-  }, []);
+
+const apiBaseUrl = useMemo(() => {
+  return import.meta.env.VITE_API_URL || "http://localhost:8086";
+}, []);
 
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
