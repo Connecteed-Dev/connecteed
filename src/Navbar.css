@@ -311,9 +311,9 @@ html, body, #root {
       height: 3px;
       background: #fff;
       border-radius: 2px;
-      transform-origin: center;
-      transition: background 0.2s;
-      pointer-events: none;
+        background: #080c14;
+        /* backdrop-filter: blur(18px) saturate(180%); */
+        /* -webkit-backdrop-filter: blur(18px) saturate(180%); */
       font-weight: 200;
     }
     .close-x-bar1 {
