@@ -260,7 +260,8 @@ html, body, #root {
 .approach-section {
   margin-top: 160px;
   margin-bottom: 200px;
-  width: 1440px;
+  max-width: 1440px;
+  margin-inline: auto;
 }
 
 .approccio-titolo {
