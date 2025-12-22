@@ -1,0 +1,6 @@
+@media (max-width: 1200px) {
+  .home-page {
+    padding-top: calc(96px + env(safe-area-inset-top, 0px));
+    margin-top: 0;
+  }
+}

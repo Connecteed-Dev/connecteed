@@ -8,10 +8,11 @@ import { HoverPreview } from "../components/ui/hover-preview";
 import Partners from "./Partners";
 import { WaitlistHero } from "../components/ui/waitlist-hero";
 import Footer from "./Footer.tsx";
+import "./HomePage.css";
 
 export default function HomePage() {
   return (
-    <>
+    <main className="home-page">
       <Hero />
       <BlueGradientSection />
       <BusinessSupport />
@@ -20,6 +21,6 @@ export default function HomePage() {
       <Partners />
       <WaitlistHero />
       <Footer />
-    </>
+    </main>
   );
 }
