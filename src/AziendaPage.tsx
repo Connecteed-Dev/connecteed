@@ -8,6 +8,7 @@ import MessageCircleIcon from "./assets/message-circle.svg";
 import LayoutGridIcon from "./assets/layout-grid-01.svg";
 import TrendingUpIcon from "./assets/trending-up-01.svg";
 import FrameAspirazioni from "./assets/azienda/Frame 1707480702.svg";
+import FrameImage from "./assets/Frame 1707480695.svg";
 import ImgCode from "./assets/azienda/imgCode.svg";
 import ImgDesk from "./assets/azienda/imgDesk.svg";
 import ImgRed from "./assets/azienda/imgRed.svg";
@@ -73,7 +74,9 @@ export default function AziendaPage() {
             </p>
           </div>
 
-          <div className="values-image placeholder" />
+          <div className="values-image">
+            <img src={FrameImage} alt="Valori azienda" />
+          </div>
         </section>
 
         {/* APPROCCIO */}

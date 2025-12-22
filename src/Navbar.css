@@ -416,3 +416,31 @@ html, body, #root {
     box-shadow: none !important;
   }
 }
+/* ===== SOLO HOMEPAGE (mobile): fascia nera come Azienda ===== */
+@media (max-width: 1200px) {
+  body.is-home .navbar-glass {
+    top: 0 !important;
+    height: calc(96px + env(safe-area-inset-top, 0px)) !important;
+    padding-top: env(safe-area-inset-top, 0px) !important;
+    background: transparent !important;
+  }
+
+  body.is-home .navbar-glass::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(8, 12, 20, 0.70) !important;
+    backdrop-filter: blur(18px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(180%) !important;
+    pointer-events: none;
+  }
+
+  body.is-home .navbar-glass-inner {
+    position: relative;
+    z-index: 1;
+    height: 96px !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+}
