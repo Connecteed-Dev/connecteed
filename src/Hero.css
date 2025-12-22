@@ -85,3 +85,10 @@
     opacity: 0.35;
   }
 }
+@supports (-webkit-touch-callout: none) {
+  @media (max-width: 768px) {
+    .hero-section {
+      width: 100%;
+    }
+  }
+}
