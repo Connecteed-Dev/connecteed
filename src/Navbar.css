@@ -341,7 +341,7 @@ html, body, #root {
   /* CTA in basso */
   .bs-mobile-cta-wrap {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     padding-top: 16px;
   }
 
@@ -362,7 +362,7 @@ html, body, #root {
     cursor: pointer;
   }
 }
-@media (max-width: 1025px) {
+@media (max-width: 1200px) {
   /* overlay full screen */
   #mobile-menu.bs-mobile-overlay {
     position: fixed;
@@ -501,7 +501,7 @@ html, body, #root {
   /* CTA in basso */
   .bs-mobile-cta-wrap {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     padding-top: 16px;
   }
 
