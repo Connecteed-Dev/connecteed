@@ -181,6 +181,12 @@
     padding: 0 16px;
     grid-template-columns: 1fr auto; /* logo | burger */
   }
+.navbar-glass,
+.navbar-glass-inner {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
+}
 
   .navbar-menu { display: none; }
   .navbar-contact-desktop { display: none; }
@@ -192,11 +198,12 @@
 
 /* Regola anti overflow */
 html, body, #root {
-  width: 100vw;
-  max-width: 100vw;
-  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip; /* oppure hidden se clip non ti piace */
   box-sizing: border-box;
 }
+
 /* Safari iOS: la navbar deve essere SEMPRE attaccata sopra */
 @supports (-webkit-touch-callout: none) {
   .navbar-glass {
@@ -374,8 +381,9 @@ html, body, #root {
   #mobile-menu.bs-mobile-overlay {
     position: fixed;
     inset: 0;
-    width: 100vw;
-    height: 100vh;
+   width: 100%;
+  height: 100dvh;
+
     z-index: 9999;
     overflow: hidden;
 
@@ -471,7 +479,7 @@ html, body, #root {
 
   /* BODY: centro verticale + CTA in basso */
   .bs-mobile-body {
-    height: calc(100vh - 96px);
+    height: calc(100dvh - 96px);
     padding: 0 16px 24px;
     box-sizing: border-box;
 
