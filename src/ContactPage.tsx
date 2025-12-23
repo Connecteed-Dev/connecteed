@@ -220,7 +220,6 @@ const pageStyles = `
     }
 
     .floating-input-container {
-      width: 288px !important;
       max-width: 100% !important;
       margin-bottom: 24px !important;
     }
