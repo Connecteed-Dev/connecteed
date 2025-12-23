@@ -218,6 +218,12 @@ html, body, #root {
    ========================= */
 @media (max-width: 900px) {
   /* overlay full screen */
+  .bs-mobile-topbar {
+  background: rgba(0,0,0,0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
   #mobile-menu.bs-mobile-overlay {
     position: fixed;
     inset: 0;
@@ -539,4 +545,10 @@ html, body, #root {
 
     cursor: pointer;
   }
+}
+/* Quando l’overlay è aperto, nascondo la navbar sotto
+   così non “filtra” la X del burger trasformato */
+.navbar-hidden-when-menu {
+  opacity: 0;
+  pointer-events: none;
 }

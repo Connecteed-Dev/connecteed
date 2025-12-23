@@ -32,7 +32,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className={`navbar-glass${visible ? " navbar-visible" : ""}`}>
+<nav className={`navbar-glass${visible ? " navbar-visible" : ""}${menuOpen ? " navbar-hidden-when-menu" : ""}`}>
         <div className="navbar-glass-inner">
           {/* SINISTRA: LOGO SVG (icona + scritta) */}
           <div className="navbar-left">
