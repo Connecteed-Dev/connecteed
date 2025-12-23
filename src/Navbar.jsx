@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Navbar.css";
 import logo from "./assets/logo.svg";
-
+import logoX from "./assets/CTA.svg";
 const NAV_LINKS = [
   { label: "Azienda", href: "/Azienda" },
   { label: "Servizi", href: "/Comingsoon" },
@@ -100,7 +100,6 @@ const Navbar = () => {
                   height: 3,
                   background: "#fff",
                   borderRadius: 2,
-                  marginTop: 5,
                   marginBottom: 5,
                   transition: "transform .3s",
                   transform: menuOpen ? "rotate(45deg) translateY(9px)" : "none"
@@ -159,8 +158,11 @@ const Navbar = () => {
           className="navbar-burger bs-mobile-close"
           onClick={() => setMenuOpen(false)}
         >
-          <span className="close-x-bar close-x-bar1"></span>
-          <span className="close-x-bar close-x-bar2"></span>
+           <img
+            src={logoX}
+            alt="Chiudi menu"
+            style={{ width: 40, height: 40 }}
+          />
         </button>
       </div>
     </div>

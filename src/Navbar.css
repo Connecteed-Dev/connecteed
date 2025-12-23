@@ -177,6 +177,12 @@
    ========================= */
 
 @media (max-width: 1200px) {
+  .navbar-logo {
+  height: 32px;   /* spec: 32 */
+  width: auto;
+  display: block;
+  margin-bottom: 5px;
+}
   .navbar-glass-inner {
     padding: 0 16px;
     grid-template-columns: 1fr auto; /* logo | burger */
@@ -190,7 +196,7 @@
 
   .navbar-menu { display: none; }
   .navbar-contact-desktop { display: none; }
-  .navbar-burger { display: block !important; }
+  .navbar-burger { display: block !important;margin-bottom: 5px; }
 
   .navbar-right { justify-self: end; }
 }
@@ -222,6 +228,7 @@ html, body, #root {
   background: rgba(0,0,0,0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+ 
 }
 
   #mobile-menu.bs-mobile-overlay {
